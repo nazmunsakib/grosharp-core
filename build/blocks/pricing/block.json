@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "grosharp/pricing",
+  "version": "0.1.0",
+  "title": "Grosharp Pricing",
+  "category": "grosharp",
+  "description": "Engagement models or package cards.",
+  "example": {},
+  "textdomain": "grosharp",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Engagement models"
+    },
+    "text": {
+      "type": "string",
+      "default": "Choose the support level that fits your growth stage."
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Launch",
+          "text": "A focused website or campaign foundation."
+        },
+        {
+          "title": "Growth",
+          "text": "Ongoing design, development, and marketing support."
+        },
+        {
+          "title": "Scale",
+          "text": "Custom systems for ambitious digital teams."
+        }
+      ]
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}

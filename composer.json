@@ -1,0 +1,29 @@
+{
+	"name": "grosharp/grosharp-core",
+	"description": "Core functionality for the Grosharp WordPress agency website.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"autoload": {
+		"psr-4": {
+			"GrosharpCore\\": [
+				"src/",
+				"includes/"
+			]
+		}
+	},
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.1"
+	},
+	"scripts": {
+		"lint:php": "phpcs --standard=WordPress --extensions=php .",
+		"autoload": "composer dump-autoload"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}

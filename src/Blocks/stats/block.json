@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/stats",
+	"version": "0.1.0",
+	"title": "Grosharp Stats",
+	"category": "grosharp",
+	"description": "A results and metrics section.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [
+				{ "value": "32+", "label": "Projects shipped" },
+				{ "value": "148%", "label": "Average reach lift" },
+				{ "value": "4.9/5", "label": "Client satisfaction" }
+			]
+		}
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
+

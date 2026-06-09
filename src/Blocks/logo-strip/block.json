@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/logo-strip",
+	"version": "0.1.0",
+	"title": "Grosharp Partner Logos",
+	"category": "grosharp",
+	"description": "An infinite scrolling partner logo marquee.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "Trusted by teams building sharper digital products" },
+		"items": {
+			"type": "array",
+			"default": [
+				{ "label": "Imprintify", "imageId": 0, "imageUrl": "", "imageAlt": "Imprintify logo", "url": "" },
+				{ "label": "Berlin", "imageId": 0, "imageUrl": "", "imageAlt": "Berlin logo", "url": "" },
+				{ "label": "U-Turn", "imageId": 0, "imageUrl": "", "imageAlt": "U-Turn logo", "url": "" },
+				{ "label": "Swiss", "imageId": 0, "imageUrl": "", "imageAlt": "Swiss logo", "url": "" },
+				{ "label": "KOBE", "imageId": 0, "imageUrl": "", "imageAlt": "KOBE logo", "url": "" },
+				{ "label": "On Event", "imageId": 0, "imageUrl": "", "imageAlt": "On Event logo", "url": "" }
+			]
+		},
+		"speed": { "type": "number", "default": 42 }
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

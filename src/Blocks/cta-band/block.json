@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/cta-band",
+	"version": "0.1.0",
+	"title": "Grosharp CTA Band",
+	"category": "grosharp",
+	"description": "A final conversion call-to-action section.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"heading": { "type": "string", "default": "Ready to build sharper digital growth?" },
+		"text": { "type": "string", "default": "Tell us what you are building and we will help shape the next move." },
+		"buttonLabel": { "type": "string", "default": "Start a Project" },
+		"buttonUrl": { "type": "string", "default": "/contact/" }
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
+

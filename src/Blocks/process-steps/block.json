@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/process-steps",
+	"version": "0.1.0",
+	"title": "Grosharp Process Steps",
+	"category": "grosharp",
+	"description": "A structured process section.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"heading": { "type": "string", "default": "Process" },
+		"text": { "type": "string", "default": "A focused workflow from strategy to launch." },
+		"steps": {
+			"type": "array",
+			"default": [
+				{ "title": "Discover", "text": "Map the business goal, audience, and opportunity." },
+				{ "title": "Design", "text": "Shape a clear experience and visual direction." },
+				{ "title": "Build", "text": "Develop the site, content system, and launch foundation." }
+			]
+		}
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
+

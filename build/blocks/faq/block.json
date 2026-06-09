@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "grosharp/faq",
+  "version": "0.1.0",
+  "title": "Grosharp FAQ",
+  "category": "grosharp",
+  "description": "Frequently asked questions.",
+  "example": {},
+  "textdomain": "grosharp",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "FAQ"
+    },
+    "text": {
+      "type": "string",
+      "default": "Answers to common project questions."
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "question": "What does Grosharp do?",
+          "answer": "Grosharp provides development, design, and marketing services for digital growth."
+        },
+        {
+          "question": "Can we start with one service?",
+          "answer": "Yes. Projects can start with one focused need and expand over time."
+        }
+      ]
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}
