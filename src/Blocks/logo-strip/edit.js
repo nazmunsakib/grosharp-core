@@ -1,49 +1,23 @@
 import { InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from '@wordpress/block-editor';
-import { Button, PanelBody, RangeControl, TextControl } from '@wordpress/components';
+import { Button, PanelBody, RangeControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
-const createLogo = () => ( {
-	label: '',
-	imageId: 0,
-	imageUrl: '',
-	imageAlt: '',
-	url: '',
-} );
+const createLogo = () => ( { imageId: 0, imageUrl: '', imageAlt: '' } );
 
-const normalizeLogo = ( item ) => {
-	if ( typeof item === 'string' ) {
-		return {
-			...createLogo(),
-			label: item,
-			imageAlt: item,
-		};
-	}
-
-	return {
-		...createLogo(),
-		...( item || {} ),
-	};
-};
-
-function updateItem( items, index, nextItem ) {
-	return items.map( ( item, itemIndex ) => ( itemIndex === index ? { ...item, ...nextItem } : item ) );
+function updateItem( logos, index, next ) {
+	return logos.map( ( item, i ) => ( i === index ? { ...item, ...next } : item ) );
 }
 
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
-	const items = Array.isArray( attributes.items ) ? attributes.items.map( normalizeLogo ) : [];
+	const logos = Array.isArray( attributes.logos ) ? attributes.logos : [];
 
 	return (
 		<div { ...blockProps }>
 			<InspectorControls>
-				<PanelBody title={ __( 'Partner Logos', 'grosharp' ) } initialOpen={ true }>
-					<TextControl
-						label={ __( 'Intro text', 'grosharp' ) }
-						value={ attributes.eyebrow || '' }
-						onChange={ ( eyebrow ) => setAttributes( { eyebrow } ) }
-					/>
+				<PanelBody title={ __( 'Brand Logos', 'grosharp' ) } initialOpen={ true }>
 					<RangeControl
 						label={ __( 'Scroll speed', 'grosharp' ) }
 						value={ attributes.speed || 42 }
@@ -51,7 +25,8 @@ export default function Edit( { attributes, setAttributes } ) {
 						max={ 90 }
 						onChange={ ( speed ) => setAttributes( { speed } ) }
 					/>
-					{ items.map( ( item, index ) => (
+
+					{ logos.map( ( logo, index ) => (
 						<div
 							key={ index }
 							style={ {
@@ -60,71 +35,77 @@ export default function Edit( { attributes, setAttributes } ) {
 								paddingTop: '16px',
 							} }
 						>
-							<TextControl
-								label={ __( 'Logo name', 'grosharp' ) }
-								value={ item.label || '' }
-								onChange={ ( label ) => setAttributes( { items: updateItem( items, index, { label } ) } ) }
-							/>
-							<TextControl
-								label={ __( 'Logo link', 'grosharp' ) }
-								value={ item.url || '' }
-								onChange={ ( url ) => setAttributes( { items: updateItem( items, index, { url } ) } ) }
-							/>
+							<p style={ { margin: '0 0 8px', fontWeight: 600, fontSize: '12px', textTransform: 'uppercase', color: '#666' } }>
+								{ __( 'Logo', 'grosharp' ) } { index + 1 }
+							</p>
+
+							{ logo.imageUrl ? (
+								<div style={ { marginBottom: '8px' } }>
+									<img
+										src={ logo.imageUrl }
+										alt={ logo.imageAlt || '' }
+										style={ { display: 'block', maxHeight: '44px', maxWidth: '180px', objectFit: 'contain' } }
+									/>
+								</div>
+							) : null }
+
 							<MediaUploadCheck>
 								<MediaUpload
 									allowedTypes={ [ 'image' ] }
-									value={ item.imageId || 0 }
+									value={ logo.imageId || 0 }
 									onSelect={ ( media ) =>
 										setAttributes( {
-											items: updateItem( items, index, {
+											logos: updateItem( logos, index, {
 												imageId: media?.id || 0,
 												imageUrl: media?.url || '',
-												imageAlt: media?.alt || media?.title || item.label || '',
+												imageAlt: media?.alt || media?.title || '',
 											} ),
 										} )
 									}
 									render={ ( { open } ) => (
-										<Button variant="secondary" onClick={ open }>
-											{ item.imageUrl ? __( 'Replace logo', 'grosharp' ) : __( 'Select logo', 'grosharp' ) }
+										<Button variant="secondary" onClick={ open } style={ { marginRight: '8px' } }>
+											{ logo.imageUrl
+												? __( 'Replace image', 'grosharp' )
+												: __( 'Upload logo', 'grosharp' ) }
 										</Button>
 									) }
 								/>
 							</MediaUploadCheck>
-							{ item.imageUrl ? (
-								<>
-									<img
-										src={ item.imageUrl }
-										alt=""
-										style={ { display: 'block', marginTop: '12px', maxHeight: '42px', maxWidth: '180px' } }
-									/>
-									<Button
-										isDestructive
-										variant="link"
-										onClick={ () =>
-											setAttributes( {
-												items: updateItem( items, index, {
-													imageId: 0,
-													imageUrl: '',
-												} ),
-											} )
-										}
-									>
-										{ __( 'Remove logo image', 'grosharp' ) }
-									</Button>
-								</>
+
+							{ logo.imageUrl ? (
+								<Button
+									variant="link"
+									onClick={ () =>
+										setAttributes( {
+											logos: updateItem( logos, index, { imageId: 0, imageUrl: '', imageAlt: '' } ),
+										} )
+									}
+									style={ { marginRight: '8px' } }
+								>
+									{ __( 'Clear', 'grosharp' ) }
+								</Button>
 							) : null }
+
 							<Button
 								isDestructive
 								variant="link"
-								onClick={ () => setAttributes( { items: items.filter( ( _item, itemIndex ) => itemIndex !== index ) } ) }
+								onClick={ () =>
+									setAttributes( { logos: logos.filter( ( _, i ) => i !== index ) } )
+								}
 							>
-								{ __( 'Remove logo', 'grosharp' ) }
+								{ __( 'Remove', 'grosharp' ) }
 							</Button>
 						</div>
 					) ) }
-					<Button variant="primary" onClick={ () => setAttributes( { items: [ ...items, createLogo() ] } ) }>
-						{ __( 'Add logo', 'grosharp' ) }
-					</Button>
+
+					<div style={ { borderTop: logos.length ? '1px solid #e0e0e0' : 'none', marginTop: logos.length ? '16px' : '0', paddingTop: logos.length ? '16px' : '0' } }>
+						<Button
+							variant="primary"
+							onClick={ () => setAttributes( { logos: [ ...logos, createLogo() ] } ) }
+						>
+							{ __( '+ Add logo', 'grosharp' ) }
+						</Button>
+					</div>
 				</PanelBody>
 			</InspectorControls>
 			<ServerSideRender block={ metadata.name } attributes={ attributes } />

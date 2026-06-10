@@ -9,12 +9,12 @@
 	"example": {},
 	"textdomain": "grosharp",
 	"attributes": {
-		"heading": { "type": "string", "default": "Featured case studies" },
-		"text": { "type": "string", "default": "Recent work across development, design, and marketing." },
-		"count": { "type": "number", "default": 3 }
+		"eyebrow": { "type": "string", "default": "01 Work" },
+		"heading": { "type": "string", "default": "Featured work." },
+		"text":    { "type": "string", "default": "Recent work across development, design, and marketing." },
+		"count":   { "type": "number", "default": 4 }
 	},
 	"supports": { "align": [ "wide", "full" ], "html": false },
 	"editorScript": "file:./index.js",
 	"render": "file:./render.php"
 }
-

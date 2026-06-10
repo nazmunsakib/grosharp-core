@@ -9,56 +9,9 @@
   "example": {},
   "textdomain": "grosharp",
   "attributes": {
-    "eyebrow": {
-      "type": "string",
-      "default": "Trusted by teams building sharper digital products"
-    },
-    "items": {
+    "logos": {
       "type": "array",
-      "default": [
-        {
-          "label": "Imprintify",
-          "imageId": 0,
-          "imageUrl": "",
-          "imageAlt": "Imprintify logo",
-          "url": ""
-        },
-        {
-          "label": "Berlin",
-          "imageId": 0,
-          "imageUrl": "",
-          "imageAlt": "Berlin logo",
-          "url": ""
-        },
-        {
-          "label": "U-Turn",
-          "imageId": 0,
-          "imageUrl": "",
-          "imageAlt": "U-Turn logo",
-          "url": ""
-        },
-        {
-          "label": "Swiss",
-          "imageId": 0,
-          "imageUrl": "",
-          "imageAlt": "Swiss logo",
-          "url": ""
-        },
-        {
-          "label": "KOBE",
-          "imageId": 0,
-          "imageUrl": "",
-          "imageAlt": "KOBE logo",
-          "url": ""
-        },
-        {
-          "label": "On Event",
-          "imageId": 0,
-          "imageUrl": "",
-          "imageAlt": "On Event logo",
-          "url": ""
-        }
-      ]
+      "default": []
     },
     "speed": {
       "type": "number",

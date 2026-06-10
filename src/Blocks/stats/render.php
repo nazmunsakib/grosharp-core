@@ -9,20 +9,28 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] )
 	? $attributes['items']
 	: array(
 		array( 'value' => '32+', 'label' => __( 'Projects shipped', 'grosharp' ) ),
-		array( 'value' => '148%', 'label' => __( 'Average reach lift', 'grosharp' ) ),
-		array( 'value' => '4.9/5', 'label' => __( 'Client satisfaction', 'grosharp' ) ),
+		array( 'value' => '4.9/5', 'label' => __( 'Client rating', 'grosharp' ) ),
+		array( 'value' => '3×', 'label' => __( 'Average growth', 'grosharp' ) ),
+		array( 'value' => '100%', 'label' => __( 'On-time delivery', 'grosharp' ) ),
 	);
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-stats gs-section' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-stats bg-[#0d0d12] py-20 md:py-24' ) ); ?>>
 	<div class="gs-container">
-		<div class="grosharp-stats__grid">
+		<!--
+			gap-px + bg-white/[0.08] on the grid creates 1px white-tinted gaps between cells.
+			Each cell uses bg-[#0d0d12] to fill its area, making the gaps the only visible dividers.
+		-->
+		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/[0.08] lg:grid-cols-4">
 			<?php foreach ( $items as $item ) : ?>
-				<div class="gs-card gs-reveal">
-					<strong><?php echo esc_html( $item['value'] ?? '' ); ?></strong>
-					<span><?php echo esc_html( $item['label'] ?? '' ); ?></span>
+				<div class="flex flex-col items-center bg-[#0d0d12] px-8 py-14 text-center" data-gs-stat>
+					<dt class="font-heading text-[56px] font-semibold leading-none tracking-[-0.02em] text-white md:text-[64px]">
+						<?php echo esc_html( $item['value'] ?? '' ); ?>
+					</dt>
+					<dd class="mt-3 text-sm font-medium uppercase tracking-widest text-[#9a9ab0]">
+						<?php echo esc_html( $item['label'] ?? '' ); ?>
+					</dd>
 				</div>
 			<?php endforeach; ?>
-		</div>
+		</dl>
 	</div>
 </section>
-

@@ -1,0 +1,52 @@
+# ── PHP dependencies ──────────────────────────────────────────────────────────
+# vendor/ is committed so the plugin works on servers without Composer.
+# If you add a CI/CD deploy step that runs `composer install`, uncomment below:
+# vendor/
+
+# ── JS dependencies ───────────────────────────────────────────────────────────
+node_modules/
+
+# ── Build artifacts ───────────────────────────────────────────────────────────
+# Keep build/ tracked — WordPress loads blocks from build/blocks/ at runtime.
+# Only exclude source maps.
+build/**/*.map
+assets/build/**/*.map
+
+# ── OS / editor junk ──────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── IDE / editor config ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.nova/
+
+# ── Logs & temp files ─────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Environment & secrets ─────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── WordPress ─────────────────────────────────────────────────────────────────
+wp-config.php
+wp-config-local.php
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.zip
+*.tar.gz
+.cache/
