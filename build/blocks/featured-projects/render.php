@@ -20,7 +20,7 @@ $query = new WP_Query(
 $placeholder_projects = array(
 	array(
 		'title'    => __( 'Elevance — Brand & Website', 'grosharp' ),
-		'type'     => __( 'Design · Development', 'grosharp' ),
+		'type'     => __( 'Design', 'grosharp' ),
 		'url'      => '/case-studies/',
 		'gradient' => 'linear-gradient(145deg,#111111 0%,#2a2a2a 100%)',
 	),
@@ -47,8 +47,8 @@ $placeholder_projects = array(
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-projects bg-white py-24 md:py-32' ) ); ?>>
 	<div class="gs-container">
 
-		<!-- Section header -->
-		<div class="mb-12 flex items-end justify-between gap-6 md:mb-16">
+		<!-- ── Section header ──────────────────────────────────────────────── -->
+		<div class="mb-14 flex items-end justify-between gap-6 md:mb-16">
 			<div>
 				<p class="mb-3 font-body text-sm italic text-[#888]" data-gs-project-eyebrow>
 					(<?php echo esc_html( $eyebrow ); ?>)
@@ -58,14 +58,14 @@ $placeholder_projects = array(
 				</h2>
 			</div>
 			<a href="/case-studies/"
-			   class="flex-none rounded-full bg-[#0d0d12] px-6 py-3 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-[#654cff] hover:shadow-[0_8px_24px_rgba(101,76,255,0.35)]"
+			   class="flex-none rounded-full bg-[#0d0d12] px-7 py-3.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-[#654cff] hover:shadow-[0_8px_24px_rgba(101,76,255,0.35)]"
 			   data-gs-project-cta>
 				All projects
 			</a>
 		</div>
 
-		<!-- 2 × 2 project grid -->
-		<div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 md:gap-y-14">
+		<!-- ── 2 × 2 project grid ──────────────────────────────────────────── -->
+		<div class="grid grid-cols-1 gap-7 md:grid-cols-2">
 
 			<?php if ( $query->have_posts() ) : ?>
 				<?php while ( $query->have_posts() ) : ?>
@@ -75,90 +75,92 @@ $placeholder_projects = array(
 					$type_label = ( is_array( $type_terms ) && ! empty( $type_terms ) ) ? $type_terms[0]->name : '';
 					$permalink  = get_permalink();
 					?>
-					<article class="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-[20px]" data-gs-project-card>
+					<article class="group cursor-pointer" data-gs-project-card>
 
-						<!-- Background image -->
-						<?php if ( has_post_thumbnail() ) : ?>
-							<img
-								class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out"
-								src="<?php the_post_thumbnail_url( 'large' ); ?>"
-								alt="<?php the_title_attribute(); ?>"
-								loading="lazy"
-								data-gs-project-img
-							/>
-						<?php else : ?>
-							<div class="absolute inset-0 bg-[#1a1a2e]" data-gs-project-img></div>
-						<?php endif; ?>
+						<!-- ── Image with hover overlay ───────────────────── -->
+						<a href="<?php echo esc_url( $permalink ); ?>"
+						   class="relative block overflow-hidden rounded-[20px] no-underline"
+						   style="aspect-ratio:16/10;" aria-label="<?php the_title_attribute(); ?>">
 
-						<!-- Permanent bottom title (fades on hover) -->
-						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent px-6 pb-6 pt-24 transition-opacity duration-300 group-hover:opacity-0">
-							<h3 class="font-heading text-[22px] font-bold leading-tight text-white md:text-[24px]">
-								<?php the_title(); ?>
-							</h3>
-						</div>
+							<?php if ( has_post_thumbnail() ) : ?>
+								<img
+									class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+									src="<?php the_post_thumbnail_url( 'large' ); ?>"
+									alt="<?php the_title_attribute(); ?>"
+									loading="lazy"
+									data-gs-project-img
+								/>
+							<?php else : ?>
+								<div class="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+								     style="background:linear-gradient(145deg,#1a1a2e 0%,#2d2d4e 100%);"
+								     data-gs-project-img></div>
+							<?php endif; ?>
 
-						<!-- Glass overlay — slides up on hover -->
-						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-full flex-col justify-between rounded-b-[20px] border-t border-white/10 p-6 pt-6 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:pointer-events-auto"
-						     style="height:65%;backdrop-filter:blur(20px) saturate(1.4);background:rgba(10,10,16,0.70);">
+							<!-- Dark tint -->
+							<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-out group-hover:opacity-100"></div>
 
-							<div>
-								<?php if ( $type_label ) : ?>
-									<span class="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-xs font-semibold text-white/80">
-										<?php echo esc_html( $type_label ); ?>
-									</span>
-								<?php endif; ?>
-								<h3 class="mt-3 font-heading text-[20px] font-bold leading-snug text-white md:text-[22px]">
-									<?php the_title(); ?>
-								</h3>
+							<!-- "View Project" button -->
+							<div class="absolute inset-0 flex items-center justify-center">
+								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[15px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
+									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
+									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-sm" aria-hidden="true">→</span>
+								</span>
 							</div>
 
-							<a href="<?php echo esc_url( $permalink ); ?>"
-							   class="inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-5 py-2.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-[#0d0d12]">
-								<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-								<span aria-hidden="true">→</span>
-							</a>
+						</a>
 
+						<!-- ── Info row ───────────────────────────────────── -->
+						<div class="mt-5 flex items-center justify-between gap-5">
+							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[24px]">
+								<?php the_title(); ?>
+							</h3>
+							<?php if ( $type_label ) : ?>
+								<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold text-[#654cff]">
+									<?php echo esc_html( $type_label ); ?>
+								</span>
+							<?php endif; ?>
 						</div>
+
 					</article>
 				<?php endwhile; ?>
 				<?php wp_reset_postdata(); ?>
 
 			<?php else : ?>
 				<?php foreach ( $placeholder_projects as $project ) : ?>
-					<article class="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-[20px]" data-gs-project-card>
+					<article class="group cursor-pointer" data-gs-project-card>
 
-						<!-- Background gradient -->
-						<div class="absolute inset-0 transition-transform duration-700 ease-out"
-						     style="background:<?php echo esc_attr( $project['gradient'] ); ?>;"
-						     data-gs-project-img></div>
+						<!-- ── Image with hover overlay ───────────────────── -->
+						<a href="<?php echo esc_url( $project['url'] ); ?>"
+						   class="relative block overflow-hidden rounded-[20px] no-underline"
+						   style="aspect-ratio:16/10;" aria-label="<?php echo esc_attr( $project['title'] ); ?>">
 
-						<!-- Permanent bottom title (fades on hover) -->
-						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent px-6 pb-6 pt-24 transition-opacity duration-300 group-hover:opacity-0">
-							<h3 class="font-heading text-[22px] font-bold leading-tight text-white md:text-[24px]">
-								<?php echo esc_html( $project['title'] ); ?>
-							</h3>
-						</div>
+							<div class="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+							     style="background:<?php echo esc_attr( $project['gradient'] ); ?>;"
+							     data-gs-project-img></div>
 
-						<!-- Glass overlay — slides up on hover -->
-						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-full flex-col justify-between rounded-b-[20px] border-t border-white/10 p-6 pt-6 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:pointer-events-auto"
-						     style="height:65%;backdrop-filter:blur(20px) saturate(1.4);background:rgba(10,10,16,0.70);">
+							<!-- Dark tint -->
+							<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-out group-hover:opacity-100"></div>
 
-							<div>
-								<span class="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-xs font-semibold text-white/80">
-									<?php echo esc_html( $project['type'] ); ?>
+							<!-- "View Project" button -->
+							<div class="absolute inset-0 flex items-center justify-center">
+								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[15px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
+									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
+									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-sm" aria-hidden="true">→</span>
 								</span>
-								<h3 class="mt-3 font-heading text-[20px] font-bold leading-snug text-white md:text-[22px]">
-									<?php echo esc_html( $project['title'] ); ?>
-								</h3>
 							</div>
 
-							<a href="<?php echo esc_url( $project['url'] ); ?>"
-							   class="inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-5 py-2.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-[#0d0d12]">
-								<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-								<span aria-hidden="true">→</span>
-							</a>
+						</a>
 
+						<!-- ── Info row ───────────────────────────────────── -->
+						<div class="mt-5 flex items-center justify-between gap-5">
+							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[24px]">
+								<?php echo esc_html( $project['title'] ); ?>
+							</h3>
+							<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold text-[#654cff]">
+								<?php echo esc_html( $project['type'] ); ?>
+							</span>
 						</div>
+
 					</article>
 				<?php endforeach; ?>
 			<?php endif; ?>

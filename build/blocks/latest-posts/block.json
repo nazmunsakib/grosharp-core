@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/latest-posts",
+	"version": "0.1.0",
+	"title": "Grosharp Latest Posts",
+	"category": "grosharp",
+	"description": "Displays recent blog posts as article cards.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow":   { "type": "string", "default": "Latest Articles" },
+		"heading":   { "type": "string", "default": "Insights from the team." },
+		"subtext":   { "type": "string", "default": "Tips, case studies, and thinking on design, development, and digital growth." },
+		"ctaLabel":  { "type": "string", "default": "More Articles" },
+		"ctaUrl":    { "type": "string", "default": "/blog/" },
+		"count":     { "type": "number", "default": 3 }
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

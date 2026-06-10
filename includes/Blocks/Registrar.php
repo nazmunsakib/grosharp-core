@@ -31,6 +31,7 @@ final class Registrar {
 		'pricing',
 		'faq',
 		'cta-band',
+		'latest-posts',
 	);
 
 	/**
