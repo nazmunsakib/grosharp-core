@@ -48,20 +48,26 @@ $placeholder_projects = array(
 	<div class="gs-container">
 
 		<!-- ── Section header ──────────────────────────────────────────────── -->
-		<div class="mb-14 flex items-end justify-between gap-6 md:mb-16">
+		<div class="mb-14 flex items-end justify-between gap-8 md:mb-16">
+
+			<!-- Left: eyebrow + title -->
 			<div>
-				<p class="mb-3 font-body text-sm italic text-[#888]" data-gs-project-eyebrow>
-					(<?php echo esc_html( $eyebrow ); ?>)
+				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-project-eyebrow>
+					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="font-heading text-[52px] font-bold leading-[1.0] tracking-[-0.025em] text-[#0d0d12] sm:text-[68px] lg:text-[80px]" data-gs-project-heading>
+				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]" data-gs-project-heading>
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
+
+			<!-- Right: CTA -->
 			<a href="/case-studies/"
 			   class="flex-none rounded-full bg-[#0d0d12] px-7 py-3.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-[#654cff] hover:shadow-[0_8px_24px_rgba(101,76,255,0.35)]"
 			   data-gs-project-cta>
 				All projects
 			</a>
+
 		</div>
 
 		<!-- ── 2 × 2 project grid ──────────────────────────────────────────── -->

@@ -140,13 +140,12 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 	<div class="gs-container">
 		<div class="mx-auto mb-14 max-w-2xl text-center md:mb-16">
 
-			<!-- Dark eyebrow pill with green dot -->
-			<p class="inline-flex items-center gap-2.5 rounded-full bg-[#0d0d12] px-5 py-2 font-body text-[11px] font-semibold uppercase tracking-widest text-white" data-gs-eyebrow>
-				<span class="h-2 w-2 flex-none rounded-full bg-[#22c55e]" aria-hidden="true"></span>
+			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[36px] font-bold leading-[1.07] tracking-[-0.025em] text-[#0d0d12] sm:text-[48px] lg:text-[56px]">
+			<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 

@@ -110,14 +110,14 @@ if ( $query->have_posts() ) {
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[38px] font-bold leading-[1.06] tracking-[-0.025em] text-[#0d0d12] sm:text-[52px] lg:text-[60px]">
+				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
 			<!-- Right: body + CTA -->
 			<div class="max-w-[360px] md:shrink-0 md:pb-2 md:text-right">
-				<p class="font-body text-base leading-relaxed text-[#5c5d6d]">
+				<p class="font-body text-[20px] leading-[28px] text-[#5c5d6d]">
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
