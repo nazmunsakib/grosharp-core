@@ -73,42 +73,51 @@ $placeholder_projects = array(
 					$query->the_post();
 					$type_terms = get_the_terms( get_the_ID(), 'project_type' );
 					$type_label = ( is_array( $type_terms ) && ! empty( $type_terms ) ) ? $type_terms[0]->name : '';
+					$permalink  = get_permalink();
 					?>
-					<article class="group cursor-pointer" data-gs-project-card>
-						<!-- Image -->
-						<a href="<?php the_permalink(); ?>" class="block overflow-hidden rounded-[20px]" tabindex="-1" aria-hidden="true">
-							<div class="relative aspect-[4/3] overflow-hidden" data-gs-project-img-wrap>
-								<?php if ( has_post_thumbnail() ) : ?>
-									<img
-										class="h-full w-full object-cover"
-										src="<?php the_post_thumbnail_url( 'large' ); ?>"
-										alt="<?php the_title_attribute(); ?>"
-										loading="lazy"
-										data-gs-project-img
-									/>
-								<?php else : ?>
-									<div class="h-full w-full" data-gs-project-img></div>
-								<?php endif; ?>
-								<!-- Hover overlay -->
-								<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" data-gs-project-overlay>
-									<div class="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-white font-bold text-[#0d0d12] shadow-lg" aria-hidden="true" data-gs-project-arrow>
-										↗
-									</div>
-								</div>
-							</div>
-						</a>
-						<!-- Card info -->
-						<div class="mt-4 flex items-center justify-between gap-4">
-							<h3 class="font-heading text-[20px] font-bold leading-tight text-[#0d0d12] md:text-[22px]">
-								<a href="<?php the_permalink(); ?>" class="no-underline transition-colors duration-200 hover:text-[#654cff]">
-									<?php the_title(); ?>
-								</a>
+					<article class="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-[20px]" data-gs-project-card>
+
+						<!-- Background image -->
+						<?php if ( has_post_thumbnail() ) : ?>
+							<img
+								class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out"
+								src="<?php the_post_thumbnail_url( 'large' ); ?>"
+								alt="<?php the_title_attribute(); ?>"
+								loading="lazy"
+								data-gs-project-img
+							/>
+						<?php else : ?>
+							<div class="absolute inset-0 bg-[#1a1a2e]" data-gs-project-img></div>
+						<?php endif; ?>
+
+						<!-- Permanent bottom title (fades on hover) -->
+						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent px-6 pb-6 pt-24 transition-opacity duration-300 group-hover:opacity-0">
+							<h3 class="font-heading text-[22px] font-bold leading-tight text-white md:text-[24px]">
+								<?php the_title(); ?>
 							</h3>
-							<?php if ( $type_label ) : ?>
-								<span class="flex-none rounded-full border border-black/15 px-4 py-1.5 font-body text-xs font-semibold text-[#555]">
-									<?php echo esc_html( $type_label ); ?>
-								</span>
-							<?php endif; ?>
+						</div>
+
+						<!-- Glass overlay — slides up on hover -->
+						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-full flex-col justify-between rounded-b-[20px] border-t border-white/10 p-6 pt-6 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:pointer-events-auto"
+						     style="height:65%;backdrop-filter:blur(20px) saturate(1.4);background:rgba(10,10,16,0.70);">
+
+							<div>
+								<?php if ( $type_label ) : ?>
+									<span class="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-xs font-semibold text-white/80">
+										<?php echo esc_html( $type_label ); ?>
+									</span>
+								<?php endif; ?>
+								<h3 class="mt-3 font-heading text-[20px] font-bold leading-snug text-white md:text-[22px]">
+									<?php the_title(); ?>
+								</h3>
+							</div>
+
+							<a href="<?php echo esc_url( $permalink ); ?>"
+							   class="inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-5 py-2.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-[#0d0d12]">
+								<?php esc_html_e( 'View Project', 'grosharp' ); ?>
+								<span aria-hidden="true">→</span>
+							</a>
+
 						</div>
 					</article>
 				<?php endwhile; ?>
@@ -116,33 +125,39 @@ $placeholder_projects = array(
 
 			<?php else : ?>
 				<?php foreach ( $placeholder_projects as $project ) : ?>
-					<article class="group cursor-pointer" data-gs-project-card>
-						<!-- Image -->
-						<a href="<?php echo esc_url( $project['url'] ); ?>" class="block overflow-hidden rounded-[20px]" tabindex="-1" aria-hidden="true">
-							<div class="relative aspect-[4/3] overflow-hidden" data-gs-project-img-wrap>
-								<div
-									class="h-full w-full"
-									style="background:<?php echo esc_attr( $project['gradient'] ); ?>;"
-									data-gs-project-img
-								></div>
-								<!-- Hover overlay -->
-								<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" data-gs-project-overlay>
-									<div class="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-white font-bold text-[#0d0d12] shadow-lg" aria-hidden="true" data-gs-project-arrow>
-										↗
-									</div>
-								</div>
-							</div>
-						</a>
-						<!-- Card info -->
-						<div class="mt-4 flex items-center justify-between gap-4">
-							<h3 class="font-heading text-[20px] font-bold leading-tight text-[#0d0d12] md:text-[22px]">
-								<a href="<?php echo esc_url( $project['url'] ); ?>" class="no-underline transition-colors duration-200 hover:text-[#654cff]">
-									<?php echo esc_html( $project['title'] ); ?>
-								</a>
+					<article class="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-[20px]" data-gs-project-card>
+
+						<!-- Background gradient -->
+						<div class="absolute inset-0 transition-transform duration-700 ease-out"
+						     style="background:<?php echo esc_attr( $project['gradient'] ); ?>;"
+						     data-gs-project-img></div>
+
+						<!-- Permanent bottom title (fades on hover) -->
+						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent px-6 pb-6 pt-24 transition-opacity duration-300 group-hover:opacity-0">
+							<h3 class="font-heading text-[22px] font-bold leading-tight text-white md:text-[24px]">
+								<?php echo esc_html( $project['title'] ); ?>
 							</h3>
-							<span class="flex-none rounded-full border border-black/15 px-4 py-1.5 font-body text-xs font-semibold text-[#555]">
-								<?php echo esc_html( $project['type'] ); ?>
-							</span>
+						</div>
+
+						<!-- Glass overlay — slides up on hover -->
+						<div class="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-full flex-col justify-between rounded-b-[20px] border-t border-white/10 p-6 pt-6 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:pointer-events-auto"
+						     style="height:65%;backdrop-filter:blur(20px) saturate(1.4);background:rgba(10,10,16,0.70);">
+
+							<div>
+								<span class="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-xs font-semibold text-white/80">
+									<?php echo esc_html( $project['type'] ); ?>
+								</span>
+								<h3 class="mt-3 font-heading text-[20px] font-bold leading-snug text-white md:text-[22px]">
+									<?php echo esc_html( $project['title'] ); ?>
+								</h3>
+							</div>
+
+							<a href="<?php echo esc_url( $project['url'] ); ?>"
+							   class="inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-5 py-2.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-[#0d0d12]">
+								<?php esc_html_e( 'View Project', 'grosharp' ); ?>
+								<span aria-hidden="true">→</span>
+							</a>
+
 						</div>
 					</article>
 				<?php endforeach; ?>

@@ -5,16 +5,18 @@
 	"version": "0.1.0",
 	"title": "Grosharp Services Grid",
 	"category": "grosharp",
-	"description": "Displays service posts in a themed grid.",
+	"description": "Displays service posts in an auto-scrolling horizontal card strip.",
 	"example": {},
 	"textdomain": "grosharp",
 	"attributes": {
-		"heading": { "type": "string", "default": "Services" },
-		"text": { "type": "string", "default": "Development, design, and marketing services for growth-ready brands." },
-		"count": { "type": "number", "default": 6 }
+		"eyebrow":  { "type": "string", "default": "Services" },
+		"heading":  { "type": "string", "default": "We help you design and build better digital products." },
+		"text":     { "type": "string", "default": "You need a partner who gets your business and covers everything. From branding to UI/UX design and web development, you can rely on us." },
+		"ctaUrl":   { "type": "string", "default": "/services/" },
+		"ctaLabel": { "type": "string", "default": "See All Services" },
+		"count":    { "type": "number", "default": 6 }
 	},
 	"supports": { "align": [ "wide", "full" ], "html": false },
 	"editorScript": "file:./index.js",
 	"render": "file:./render.php"
 }
-

@@ -9,9 +9,9 @@
 	"example": {},
 	"textdomain": "grosharp",
 	"attributes": {
-		"heading": { "type": "string", "default": "What clients say" },
-		"text": { "type": "string", "default": "Proof from teams that trusted Grosharp." },
-		"count": { "type": "number", "default": 3 }
+		"eyebrow": { "type": "string", "default": "Client Stories" },
+		"heading": { "type": "string", "default": "Words from the People We've Worked With" },
+		"count":   { "type": "number", "default": 6 }
 	},
 	"supports": { "align": [ "wide", "full" ], "html": false },
 	"editorScript": "file:./index.js",
