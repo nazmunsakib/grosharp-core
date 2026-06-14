@@ -53,8 +53,8 @@ $fallback = array(
 		'company'  => 'Foliocraft',
 		'rating'   => '5.0',
 		'initials' => 'FC',
-		'color'    => '#dbeafe',
-		'text'     => '#1d4ed8',
+		'color'    => '#eef2ff',
+		'text'     => '#3730a3',
 	),
 	array(
 		'headline' => __( '"Support tickets dropped 40% the week we launched. Fast, reliable, they listened."', 'grosharp' ),
@@ -64,8 +64,8 @@ $fallback = array(
 		'company'  => 'Meridian',
 		'rating'   => '5.0',
 		'initials' => 'ME',
-		'color'    => '#d1fae5',
-		'text'     => '#065f46',
+		'color'    => '#ede9ff',
+		'text'     => '#4f39c7',
 	),
 	array(
 		'headline' => __( '"Conversion rate jumped 60% after the redesign. The ROI was immediate."', 'grosharp' ),
@@ -75,8 +75,8 @@ $fallback = array(
 		'company'  => 'Vizerto',
 		'rating'   => '5.0',
 		'initials' => 'VZ',
-		'color'    => '#fef9c3',
-		'text'     => '#854d0e',
+		'color'    => '#f5f3ff',
+		'text'     => '#6d28d9',
 	),
 	array(
 		'headline' => __( '"Our new brand finally matches the quality of our product. Proud to show it off."', 'grosharp' ),
@@ -86,8 +86,8 @@ $fallback = array(
 		'company'  => 'Aria Studio',
 		'rating'   => '5.0',
 		'initials' => 'AS',
-		'color'    => '#fce7f3',
-		'text'     => '#9d174d',
+		'color'    => '#e0e7ff',
+		'text'     => '#4338ca',
 	),
 );
 
@@ -134,7 +134,7 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 	#<?php echo esc_attr( $block_id ); ?> .gs-testi-next.swiper-button-disabled { opacity: 0.35; cursor: not-allowed; }
 </style>
 
-<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-testimonials overflow-hidden bg-[#f5f5f5] py-24 md:py-32' ) ); ?>>
+<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-testimonials overflow-hidden bg-[#f4f3ff] py-24 md:py-32' ) ); ?>>
 
 	<!-- ── Section header ──────────────────────────────────────────────────── -->
 	<div class="gs-container">
@@ -145,7 +145,7 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
+			<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 

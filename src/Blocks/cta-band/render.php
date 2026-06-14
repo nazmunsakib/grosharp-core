@@ -27,7 +27,7 @@ $attributes = wp_parse_args(
 			</p>
 
 			<!-- Heading -->
-			<h2 class="font-heading text-[48px] font-semibold leading-[53px] tracking-[-0.02em] text-white">
+			<h2 class="font-heading text-[40px] font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-[52px] lg:text-[60px]">
 				<?php echo esc_html( $attributes['heading'] ); ?>
 			</h2>
 
