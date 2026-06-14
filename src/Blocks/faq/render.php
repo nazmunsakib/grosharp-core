@@ -62,7 +62,7 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 	}
 </style>
 
-<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-faq bg-[#fafaf9] py-24 md:py-32' ) ); ?>>
+<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-faq bg-[#fafaf9] py-[4rem]' ) ); ?>>
 	<div class="gs-container">
 
 		<div class="grid gap-16 lg:grid-cols-[1fr_1.8fr] lg:gap-24">
@@ -70,7 +70,7 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 			<!-- ── Left: header col ──────────────────────────────────────────── -->
 			<div class="gs-reveal lg:sticky lg:top-24 lg:self-start">
 
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
@@ -84,7 +84,7 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 				</p>
 
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#654cff] px-7 font-body text-sm font-semibold text-white no-underline shadow-[0_8px_24px_rgba(101,76,255,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(101,76,255,0.38)]">
+				   class="mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#654cff] px-7 font-body text-[16px] font-semibold text-white no-underline shadow-[0_8px_24px_rgba(101,76,255,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(101,76,255,0.38)]">
 					<?php echo esc_html( $cta_label ); ?>
 					<span aria-hidden="true">→</span>
 				</a>
@@ -102,7 +102,7 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 							<span class="gs-faq-icon flex h-8 w-8 flex-none items-center justify-center rounded-full border border-black/[0.08] bg-white font-body text-[18px] text-[#654cff] shadow-[0_2px_8px_rgba(101,76,255,0.08)] group-open:border-[#654cff]/20 group-open:bg-[#654cff]/[0.06]" aria-hidden="true">+</span>
 						</summary>
 						<div class="gs-faq-body mt-4 pr-14">
-							<p class="font-body text-[15px] leading-relaxed text-[#5c5d6d]">
+							<p class="font-body text-[16px] leading-relaxed text-[#5c5d6d]">
 								<?php echo esc_html( $item['answer'] ?? '' ); ?>
 							</p>
 						</div>

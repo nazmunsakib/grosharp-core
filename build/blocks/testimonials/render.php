@@ -53,8 +53,8 @@ $fallback = array(
 		'company'  => 'Foliocraft',
 		'rating'   => '5.0',
 		'initials' => 'FC',
-		'color'    => '#dbeafe',
-		'text'     => '#1d4ed8',
+		'color'    => '#eef2ff',
+		'text'     => '#3730a3',
 	),
 	array(
 		'headline' => __( '"Support tickets dropped 40% the week we launched. Fast, reliable, they listened."', 'grosharp' ),
@@ -64,8 +64,8 @@ $fallback = array(
 		'company'  => 'Meridian',
 		'rating'   => '5.0',
 		'initials' => 'ME',
-		'color'    => '#d1fae5',
-		'text'     => '#065f46',
+		'color'    => '#ede9ff',
+		'text'     => '#4f39c7',
 	),
 	array(
 		'headline' => __( '"Conversion rate jumped 60% after the redesign. The ROI was immediate."', 'grosharp' ),
@@ -75,8 +75,8 @@ $fallback = array(
 		'company'  => 'Vizerto',
 		'rating'   => '5.0',
 		'initials' => 'VZ',
-		'color'    => '#fef9c3',
-		'text'     => '#854d0e',
+		'color'    => '#f5f3ff',
+		'text'     => '#6d28d9',
 	),
 	array(
 		'headline' => __( '"Our new brand finally matches the quality of our product. Proud to show it off."', 'grosharp' ),
@@ -86,8 +86,8 @@ $fallback = array(
 		'company'  => 'Aria Studio',
 		'rating'   => '5.0',
 		'initials' => 'AS',
-		'color'    => '#fce7f3',
-		'text'     => '#9d174d',
+		'color'    => '#e0e7ff',
+		'text'     => '#4338ca',
 	),
 );
 
@@ -134,18 +134,18 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 	#<?php echo esc_attr( $block_id ); ?> .gs-testi-next.swiper-button-disabled { opacity: 0.35; cursor: not-allowed; }
 </style>
 
-<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-testimonials overflow-hidden bg-[#f5f5f5] py-24 md:py-32' ) ); ?>>
+<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-testimonials overflow-hidden bg-[#f4f3ff] py-[8rem]' ) ); ?>>
 
 	<!-- ── Section header ──────────────────────────────────────────────────── -->
 	<div class="gs-container">
 		<div class="mx-auto mb-14 max-w-2xl text-center md:mb-16">
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
+			<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
@@ -172,24 +172,24 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 										     class="h-full w-full object-cover" loading="lazy" />
 									</div>
 								<?php else : ?>
-									<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full font-heading text-sm font-bold"
+									<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full font-heading text-[16px] font-bold"
 									     style="background:<?php echo esc_attr( $slide['color'] ); ?>;color:<?php echo esc_attr( $slide['text'] ); ?>;">
 										<?php echo esc_html( $slide['initials'] ); ?>
 									</div>
 								<?php endif; ?>
 								<div>
-									<p class="font-body text-sm font-semibold text-[#0d0d12]">
+									<p class="font-body text-[16px] font-semibold text-[#0d0d12]">
 										<?php echo esc_html( $slide['company'] ); ?>
 									</p>
 									<?php if ( ! empty( $slide['role'] ) && ! empty( $slide['name'] ) ) : ?>
-										<p class="font-body text-xs text-[#9a9ab0]">
+										<p class="font-body text-[16px] text-[#9a9ab0]">
 											<?php echo esc_html( $slide['name'] . ' · ' . $slide['role'] ); ?>
 										</p>
 									<?php endif; ?>
 								</div>
 							</div>
 							<div class="flex flex-none items-center gap-1">
-								<span class="font-body text-sm font-bold text-[#0d0d12]">
+								<span class="font-body text-[16px] font-bold text-[#0d0d12]">
 									<?php echo esc_html( $slide['rating'] ); ?>
 								</span>
 								<span class="text-amber-400 text-base" aria-label="stars">★</span>

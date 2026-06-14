@@ -24,12 +24,12 @@ $query = new WP_Query(
 
 /* ── Pastel gradient fallbacks (rotated by post index) ─────────────────────── */
 $gradients = array(
-	'linear-gradient(145deg,#f0e9ff 0%,#ddd4ff 100%)',
-	'linear-gradient(145deg,#fef3e2 0%,#fde8c0 100%)',
-	'linear-gradient(145deg,#e8f4ff 0%,#cfe2ff 100%)',
-	'linear-gradient(145deg,#f0fdf4 0%,#d1fae5 100%)',
-	'linear-gradient(145deg,#fff1f2 0%,#ffe4e6 100%)',
-	'linear-gradient(145deg,#fafafa 0%,#e4e4e7 100%)',
+	'linear-gradient(145deg,#ede9ff 0%,#c4b5fd 100%)',
+	'linear-gradient(145deg,#f5f3ff 0%,#ddd6fe 100%)',
+	'linear-gradient(145deg,#eef2ff 0%,#c7d2fe 100%)',
+	'linear-gradient(145deg,#faf5ff 0%,#e9d5ff 100%)',
+	'linear-gradient(145deg,#f0f9ff 0%,#bae6fd 100%)',
+	'linear-gradient(145deg,#f8f7ff 0%,#e0e7ff 100%)',
 );
 
 /* ── Fallback post data ─────────────────────────────────────────────────────── */
@@ -69,7 +69,7 @@ $cat_colors = array(
 	'News'        => 'bg-[#fafafa] text-[#3f3f46]',
 );
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-latest-posts bg-white py-24 md:py-32' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-latest-posts bg-white py-[4rem]' ) ); ?>>
 	<div class="gs-container">
 
 		<!-- ── Section header ──────────────────────────────────────────────── -->
@@ -77,11 +77,11 @@ $cat_colors = array(
 
 			<!-- Left: eyebrow + heading -->
 			<div class="max-w-[560px]">
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
@@ -92,7 +92,7 @@ $cat_colors = array(
 					<?php echo esc_html( $subtext ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-black/15 px-7 font-body text-sm font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
 					<?php echo esc_html( $cta_label ); ?>
 					<span aria-hidden="true">→</span>
 				</a>
@@ -113,7 +113,7 @@ $cat_colors = array(
 					$thumb    = get_the_post_thumbnail_url( get_the_ID(), 'large' );
 					$date     = get_the_date( 'M j, Y' );
 					?>
-					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]" data-gs-post-card>
+					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.13)]" data-gs-post-card>
 
 						<!-- Image / gradient top -->
 						<a href="<?php the_permalink(); ?>" class="relative block aspect-[16/10] overflow-hidden no-underline" tabindex="-1" aria-hidden="true">
@@ -134,11 +134,11 @@ $cat_colors = array(
 							<!-- Category + date -->
 							<div class="mb-3.5 flex items-center gap-3">
 								<?php if ( $cat_name ) : ?>
-									<span class="rounded-full px-3 py-1 font-body text-xs font-semibold <?php echo esc_attr( $cat_cls ); ?>">
+									<span class="rounded-full px-3 py-1 font-body text-[16px] font-semibold <?php echo esc_attr( $cat_cls ); ?>">
 										<?php echo esc_html( $cat_name ); ?>
 									</span>
 								<?php endif; ?>
-								<span class="font-body text-xs text-[#9a9ab0]"><?php echo esc_html( $date ); ?></span>
+								<span class="font-body text-[16px] text-[#9a9ab0]"><?php echo esc_html( $date ); ?></span>
 							</div>
 
 							<!-- Title -->
@@ -149,13 +149,13 @@ $cat_colors = array(
 							</h3>
 
 							<!-- Excerpt -->
-							<p class="mt-3 line-clamp-2 flex-1 font-body text-[14px] leading-relaxed text-[#5c5d6d]">
+							<p class="mt-3 line-clamp-2 flex-1 font-body text-[16px] leading-relaxed text-[#5c5d6d]">
 								<?php echo esc_html( wp_trim_words( get_the_excerpt() ?: get_the_content(), 20, '…' ) ); ?>
 							</p>
 
 							<!-- Read more link -->
 							<a href="<?php the_permalink(); ?>"
-							   class="mt-5 inline-flex items-center gap-1.5 self-start font-body text-sm font-semibold text-[#654cff] no-underline transition-all duration-200 hover:gap-3">
+							   class="mt-5 inline-flex items-center gap-1.5 self-start font-body text-[16px] font-semibold text-[#654cff] no-underline transition-all duration-200 hover:gap-3">
 								<?php esc_html_e( 'Read article', 'grosharp' ); ?>
 								<span aria-hidden="true">→</span>
 							</a>
@@ -168,7 +168,7 @@ $cat_colors = array(
 				<?php foreach ( array_slice( $fallback_posts, 0, $count ) as $idx => $post ) :
 					$cat_cls = $cat_colors[ $post['category'] ] ?? 'bg-[#f5f5f5] text-[#3f3f46]';
 				?>
-					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]" data-gs-post-card>
+					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.13)]" data-gs-post-card>
 
 						<!-- Gradient top -->
 						<div class="relative aspect-[16/10] overflow-hidden">
@@ -179,21 +179,21 @@ $cat_colors = array(
 						<!-- Card body -->
 						<div class="flex flex-1 flex-col p-6 md:p-7">
 							<div class="mb-3.5 flex items-center gap-3">
-								<span class="rounded-full px-3 py-1 font-body text-xs font-semibold <?php echo esc_attr( $cat_cls ); ?>">
+								<span class="rounded-full px-3 py-1 font-body text-[16px] font-semibold <?php echo esc_attr( $cat_cls ); ?>">
 									<?php echo esc_html( $post['category'] ); ?>
 								</span>
-								<span class="font-body text-xs text-[#9a9ab0]"><?php echo esc_html( $post['date'] ); ?></span>
+								<span class="font-body text-[16px] text-[#9a9ab0]"><?php echo esc_html( $post['date'] ); ?></span>
 							</div>
 							<h3 class="font-heading text-[18px] font-bold leading-snug tracking-[-0.015em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[20px]">
 								<a href="<?php echo esc_url( $post['url'] ); ?>" class="no-underline">
 									<?php echo esc_html( $post['title'] ); ?>
 								</a>
 							</h3>
-							<p class="mt-3 line-clamp-2 flex-1 font-body text-[14px] leading-relaxed text-[#5c5d6d]">
+							<p class="mt-3 line-clamp-2 flex-1 font-body text-[16px] leading-relaxed text-[#5c5d6d]">
 								<?php echo esc_html( $post['excerpt'] ); ?>
 							</p>
 							<a href="<?php echo esc_url( $post['url'] ); ?>"
-							   class="mt-5 inline-flex items-center gap-1.5 self-start font-body text-sm font-semibold text-[#654cff] no-underline transition-all duration-200 hover:gap-3">
+							   class="mt-5 inline-flex items-center gap-1.5 self-start font-body text-[16px] font-semibold text-[#654cff] no-underline transition-all duration-200 hover:gap-3">
 								<?php esc_html_e( 'Read article', 'grosharp' ); ?>
 								<span aria-hidden="true">→</span>
 							</a>

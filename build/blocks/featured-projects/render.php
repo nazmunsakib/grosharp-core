@@ -5,9 +5,12 @@
  * @package GrosharpCore
  */
 
-$eyebrow = $attributes['eyebrow'] ?? __( '01 Work', 'grosharp' );
-$heading = $attributes['heading'] ?? __( 'Featured work.', 'grosharp' );
-$count   = absint( $attributes['count'] ?? 4 );
+$eyebrow   = $attributes['eyebrow']   ?? __( '01 Work', 'grosharp' );
+$heading   = $attributes['heading']   ?? __( 'Featured work.', 'grosharp' );
+$text      = $attributes['text']      ?? __( 'A selection of projects where strategy, design, and engineering came together to deliver real results.', 'grosharp' );
+$cta_label = $attributes['ctaLabel']  ?? __( 'All projects', 'grosharp' );
+$cta_url   = $attributes['ctaUrl']    ?? '/case-studies/';
+$count     = absint( $attributes['count'] ?? 4 );
 
 $query = new WP_Query(
 	array(
@@ -44,29 +47,33 @@ $placeholder_projects = array(
 	),
 );
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-projects bg-white py-24 md:py-32' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-projects bg-white py-[4rem]' ) ); ?>>
 	<div class="gs-container">
 
 		<!-- ── Section header ──────────────────────────────────────────────── -->
-		<div class="mb-14 flex items-end justify-between gap-8 md:mb-16">
+		<div class="mb-14 flex flex-col gap-10 md:mb-16 md:flex-row md:items-end md:justify-between">
 
-			<!-- Left: eyebrow + title -->
-			<div>
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-project-eyebrow>
+			<!-- Left: eyebrow + heading -->
+			<div class="max-w-[580px]">
+				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-project-eyebrow>
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]" data-gs-project-heading>
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]" data-gs-project-heading>
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
-			<!-- Right: CTA -->
-			<a href="/case-studies/"
-			   class="flex-none rounded-full bg-[#0d0d12] px-7 py-3.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-[#654cff] hover:shadow-[0_8px_24px_rgba(101,76,255,0.35)]"
-			   data-gs-project-cta>
-				All projects
-			</a>
+			<!-- Right: body text + CTA -->
+			<div class="flex max-w-[360px] flex-col items-start md:shrink-0 md:items-end md:pb-2">
+				<p class="font-body text-[20px] leading-[28px] text-[#5c5d6d]">
+					<?php echo esc_html( $text ); ?>
+				</p>
+				<a href="<?php echo esc_url( $cta_url ); ?>"
+				   class="mt-7 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+					<?php esc_html_e( 'See more projects', 'grosharp' ); ?>
+				</a>
+			</div>
 
 		</div>
 
@@ -107,9 +114,9 @@ $placeholder_projects = array(
 
 							<!-- "View Project" button -->
 							<div class="absolute inset-0 flex items-center justify-center">
-								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[15px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
+								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[16px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
 									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-sm" aria-hidden="true">→</span>
+									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-[16px]" aria-hidden="true">→</span>
 								</span>
 							</div>
 
@@ -121,7 +128,7 @@ $placeholder_projects = array(
 								<?php the_title(); ?>
 							</h3>
 							<?php if ( $type_label ) : ?>
-								<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold text-[#654cff]">
+								<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold text-[#654cff]">
 									<?php echo esc_html( $type_label ); ?>
 								</span>
 							<?php endif; ?>
@@ -149,9 +156,9 @@ $placeholder_projects = array(
 
 							<!-- "View Project" button -->
 							<div class="absolute inset-0 flex items-center justify-center">
-								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[15px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
+								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[16px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
 									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-sm" aria-hidden="true">→</span>
+									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-[16px]" aria-hidden="true">→</span>
 								</span>
 							</div>
 
@@ -162,7 +169,7 @@ $placeholder_projects = array(
 							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[24px]">
 								<?php echo esc_html( $project['title'] ); ?>
 							</h3>
-							<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold text-[#654cff]">
+							<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold text-[#654cff]">
 								<?php echo esc_html( $project['type'] ); ?>
 							</span>
 						</div>
@@ -172,5 +179,6 @@ $placeholder_projects = array(
 			<?php endif; ?>
 
 		</div>
+
 	</div>
 </section>

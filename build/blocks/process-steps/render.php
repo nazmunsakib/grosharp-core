@@ -59,23 +59,23 @@ $count = count( $steps );
 	}
 }
 </style>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-process py-8 px-[100px]' ) ); ?>>
-	<div class="rounded-[24px] bg-[#0d0d12] pt-[64px] pb-[80px]">
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-process bg-white py-[4rem]' ) ); ?>>
 	<div class="gs-container">
+	<div class="rounded-[28px] bg-[#f4f3ff] px-8 pt-[64px] pb-[72px] md:px-14">
 
 		<!-- ── Centered section header ─────────────────────────────────────── -->
 		<div class="mx-auto mb-16 max-w-2xl text-center" data-gs-step-header>
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/30 bg-[#654cff]/[0.12] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#a78bfa]" data-gs-eyebrow>
+			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-white">
+			<h2 class="mt-6 font-heading text-[36px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
-			<p class="mt-5 mb-[48px] font-body text-[20px] leading-[28px] text-white/50">
+			<p class="mt-5 mb-[48px] font-body text-[20px] leading-[28px] text-[#5c5d6d]">
 				<?php echo esc_html( $text ); ?>
 			</p>
 
@@ -90,17 +90,17 @@ $count = count( $steps );
 				$deliverables = ! empty( $step['deliverable'] ) ? explode( '·', $step['deliverable'] ) : array();
 			?>
 
-			<div class="relative flex flex-col px-6 <?php echo $is_last ? '' : 'border-r border-white/[0.08]'; ?>" data-gs-step>
+			<div class="relative flex flex-col px-6 <?php echo $is_last ? '' : 'border-r border-[#0d0d12]/[0.08]'; ?>" data-gs-step>
 
 				<!-- ── Timeline node ──────────────────────────────────────── -->
 				<div class="mb-8 flex items-center gap-4">
 					<!-- Number circle -->
-					<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-white/10 bg-white/[0.06] font-heading text-[13px] font-bold text-white">
+					<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-[#654cff]/25 bg-[#654cff]/[0.07] font-heading text-[16px] font-bold text-[#654cff]">
 						<?php echo esc_html( $num ); ?>
 					</div>
 					<!-- Connector line to next -->
 					<?php if ( ! $is_last ) : ?>
-					<div class="gs-process-connector h-px flex-1 bg-white/[0.08]"></div>
+					<div class="gs-process-connector h-px flex-1 bg-[#0d0d12]/[0.08]"></div>
 					<?php else : ?>
 					<div class="flex-1"></div>
 					<?php endif; ?>
@@ -109,32 +109,32 @@ $count = count( $steps );
 				<!-- ── Step content ───────────────────────────────────────── -->
 				<div class="flex-1">
 
-					<p class="mb-2 font-body text-[11px] font-semibold uppercase tracking-widest text-white/30">
+					<p class="mb-2 font-body text-[16px] font-semibold uppercase tracking-widest text-[#5c5d6d]/60">
 						<?php echo esc_html( $step['duration'] ?? '' ); ?>
 					</p>
 
-					<h3 class="font-heading text-[20px] font-bold leading-tight tracking-[-0.02em] text-white">
+					<h3 class="font-heading text-[20px] font-bold leading-tight tracking-[-0.02em] text-[#0d0d12]">
 						<?php echo esc_html( $step['title'] ?? '' ); ?>
 					</h3>
 
 					<?php if ( ! empty( $step['label'] ) ) : ?>
-					<p class="mt-1 font-body text-[13px] italic text-[#654cff]">
+					<p class="mt-1 font-body text-[16px] italic text-[#654cff]">
 						<?php echo esc_html( $step['label'] ); ?>
 					</p>
 					<?php endif; ?>
 
-					<p class="mt-4 font-body text-[14px] leading-[1.75] text-white/50">
+					<p class="mt-4 font-body text-[16px] leading-[1.75] text-[#5c5d6d]">
 						<?php echo esc_html( $step['text'] ?? '' ); ?>
 					</p>
 
 					<?php if ( $deliverables ) : ?>
-					<div class="mt-5 border-t border-white/[0.07] pt-5">
-						<p class="mb-3 font-body text-[10px] font-semibold uppercase tracking-widest text-white/25">
+					<div class="mt-5 border-t border-[#0d0d12]/[0.07] pt-5">
+						<p class="mb-3 font-body text-[16px] font-semibold uppercase tracking-widest text-[#5c5d6d]/50">
 							<?php esc_html_e( 'Deliverables', 'grosharp' ); ?>
 						</p>
 						<div class="flex flex-wrap gap-2">
 							<?php foreach ( $deliverables as $item ) : ?>
-							<span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-body text-[11px] text-white/40">
+							<span class="rounded-full border border-[#654cff]/15 bg-[#654cff]/[0.05] px-3 py-1 font-body text-[16px] text-[#654cff]">
 								<?php echo esc_html( trim( $item ) ); ?>
 							</span>
 							<?php endforeach; ?>

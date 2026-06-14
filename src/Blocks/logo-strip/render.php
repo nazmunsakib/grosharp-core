@@ -32,7 +32,7 @@ $render_logo = static function ( array $logo ): void {
 	<?php
 };
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-logo-strip py-10 md:py-14' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-logo-strip py-[2rem]' ) ); ?>>
 	<div class="gs-container">
 		<div
 			class="gs-reveal overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]"

@@ -134,13 +134,13 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 	#<?php echo esc_attr( $block_id ); ?> .gs-testi-next.swiper-button-disabled { opacity: 0.35; cursor: not-allowed; }
 </style>
 
-<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-testimonials overflow-hidden bg-[#f4f3ff] py-24 md:py-32' ) ); ?>>
+<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-testimonials overflow-hidden bg-[#f4f3ff] py-[8rem]' ) ); ?>>
 
 	<!-- ── Section header ──────────────────────────────────────────────────── -->
 	<div class="gs-container">
 		<div class="mx-auto mb-14 max-w-2xl text-center md:mb-16">
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
@@ -172,24 +172,24 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 										     class="h-full w-full object-cover" loading="lazy" />
 									</div>
 								<?php else : ?>
-									<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full font-heading text-sm font-bold"
+									<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full font-heading text-[16px] font-bold"
 									     style="background:<?php echo esc_attr( $slide['color'] ); ?>;color:<?php echo esc_attr( $slide['text'] ); ?>;">
 										<?php echo esc_html( $slide['initials'] ); ?>
 									</div>
 								<?php endif; ?>
 								<div>
-									<p class="font-body text-sm font-semibold text-[#0d0d12]">
+									<p class="font-body text-[16px] font-semibold text-[#0d0d12]">
 										<?php echo esc_html( $slide['company'] ); ?>
 									</p>
 									<?php if ( ! empty( $slide['role'] ) && ! empty( $slide['name'] ) ) : ?>
-										<p class="font-body text-xs text-[#9a9ab0]">
+										<p class="font-body text-[16px] text-[#9a9ab0]">
 											<?php echo esc_html( $slide['name'] . ' · ' . $slide['role'] ); ?>
 										</p>
 									<?php endif; ?>
 								</div>
 							</div>
 							<div class="flex flex-none items-center gap-1">
-								<span class="font-body text-sm font-bold text-[#0d0d12]">
+								<span class="font-body text-[16px] font-bold text-[#0d0d12]">
 									<?php echo esc_html( $slide['rating'] ); ?>
 								</span>
 								<span class="text-amber-400 text-base" aria-label="stars">★</span>

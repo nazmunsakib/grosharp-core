@@ -63,13 +63,13 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		),
 	);
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-pricing bg-white py-24 md:py-32' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-pricing bg-white py-[4rem]' ) ); ?>>
 	<div class="gs-container">
 
 		<!-- ── Section header ──────────────────────────────────────────────────── -->
 		<div class="gs-reveal mx-auto mb-16 max-w-2xl text-center md:mb-20">
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
@@ -94,7 +94,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 				<!-- Featured card — violet background -->
 				<article class="gs-reveal relative flex flex-col rounded-[24px] bg-[#654cff] p-8 md:p-10">
 					<!-- "Most popular" badge -->
-					<div class="mb-6 inline-flex self-start items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-[11px] font-bold uppercase tracking-widest text-white/90">
+					<div class="mb-6 inline-flex self-start items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-[16px] font-bold uppercase tracking-widest text-white/90">
 						<span class="h-1.5 w-1.5 rounded-full bg-[#C9A96E]" aria-hidden="true"></span>
 						<?php esc_html_e( 'Most Popular', 'grosharp' ); ?>
 					</div>
@@ -108,13 +108,13 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 							<?php echo esc_html( $item['price'] ?? '' ); ?>
 						</span>
 						<?php if ( ! empty( $item['period'] ) ) : ?>
-							<span class="mb-1 font-body text-sm text-white/60">
+							<span class="mb-1 font-body text-[16px] text-white/60">
 								/ <?php echo esc_html( $item['period'] ); ?>
 							</span>
 						<?php endif; ?>
 					</div>
 
-					<p class="mt-4 font-body text-[15px] leading-relaxed text-white/75">
+					<p class="mt-4 font-body text-[16px] leading-relaxed text-white/75">
 						<?php echo esc_html( $item['desc'] ?? '' ); ?>
 					</p>
 
@@ -122,8 +122,8 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 					<?php if ( ! empty( $item['features'] ) ) : ?>
 					<ul class="mt-8 space-y-3">
 						<?php foreach ( $item['features'] as $feature ) : ?>
-						<li class="flex items-start gap-3 font-body text-[14px] text-white/85">
-							<span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-white/20 text-white text-[11px] font-bold" aria-hidden="true">✓</span>
+						<li class="flex items-start gap-3 font-body text-[16px] text-white/85">
+							<span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-white/20 text-white text-[16px] font-bold" aria-hidden="true">✓</span>
 							<?php echo esc_html( $feature ); ?>
 						</li>
 						<?php endforeach; ?>
@@ -132,9 +132,9 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 
 					<!-- CTA -->
 					<a href="<?php echo esc_url( $item['cta_url'] ?? '/contact/' ); ?>"
-					   class="mt-auto pt-10 inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-white py-3 pl-7 pr-3 font-body text-[15px] font-semibold text-[#654cff] no-underline shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.20)]">
+					   class="mt-auto pt-10 inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-white py-3 pl-7 pr-3 font-body text-[16px] font-semibold text-[#654cff] no-underline shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.20)]">
 						<?php echo esc_html( $item['cta_label'] ?? __( 'Get started', 'grosharp' ) ); ?>
-						<span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#654cff] text-[13px] text-white" aria-hidden="true">→</span>
+						<span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#654cff] text-[16px] text-white" aria-hidden="true">→</span>
 					</a>
 
 				</article>
@@ -152,13 +152,13 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 							<?php echo esc_html( $item['price'] ?? '' ); ?>
 						</span>
 						<?php if ( ! empty( $item['period'] ) ) : ?>
-							<span class="mb-1 font-body text-sm text-[#9a9ab0]">
+							<span class="mb-1 font-body text-[16px] text-[#9a9ab0]">
 								/ <?php echo esc_html( $item['period'] ); ?>
 							</span>
 						<?php endif; ?>
 					</div>
 
-					<p class="mt-4 font-body text-[15px] leading-relaxed text-[#5c5d6d]">
+					<p class="mt-4 font-body text-[16px] leading-relaxed text-[#5c5d6d]">
 						<?php echo esc_html( $item['desc'] ?? '' ); ?>
 					</p>
 
@@ -169,8 +169,8 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 					<?php if ( ! empty( $item['features'] ) ) : ?>
 					<ul class="space-y-3">
 						<?php foreach ( $item['features'] as $feature ) : ?>
-						<li class="flex items-start gap-3 font-body text-[14px] text-[#5c5d6d]">
-							<span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#654cff]/10 text-[#654cff] text-[11px] font-bold" aria-hidden="true">✓</span>
+						<li class="flex items-start gap-3 font-body text-[16px] text-[#5c5d6d]">
+							<span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#654cff]/10 text-[#654cff] text-[16px] font-bold" aria-hidden="true">✓</span>
 							<?php echo esc_html( $feature ); ?>
 						</li>
 						<?php endforeach; ?>
@@ -179,7 +179,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 
 					<!-- CTA -->
 					<a href="<?php echo esc_url( $item['cta_url'] ?? '/contact/' ); ?>"
-					   class="mt-auto pt-10 inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full border border-black/15 bg-transparent py-3 px-7 font-body text-[15px] font-semibold text-[#0d0d12] no-underline transition-all duration-200 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+					   class="mt-auto pt-10 inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full border border-black/15 bg-transparent py-3 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-200 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
 						<?php echo esc_html( $item['cta_label'] ?? __( 'Get started', 'grosharp' ) ); ?>
 					</a>
 
@@ -190,7 +190,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		</div>
 
 		<!-- ── Trust note ──────────────────────────────────────────────────────── -->
-		<p class="gs-reveal mt-12 text-center font-body text-sm text-[#9a9ab0]">
+		<p class="gs-reveal mt-12 text-center font-body text-[16px] text-[#9a9ab0]">
 			<?php esc_html_e( 'All plans include a free 30-minute strategy call. No lock-in contracts. Cancel or pause any time.', 'grosharp' ); ?>
 		</p>
 

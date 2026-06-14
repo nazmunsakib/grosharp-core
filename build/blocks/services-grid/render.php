@@ -5,123 +5,146 @@
  * @package GrosharpCore
  */
 
-$eyebrow = $attributes['eyebrow'] ?? __( 'Services', 'grosharp' );
-$heading = $attributes['heading'] ?? __( 'We help you design and build better digital products.', 'grosharp' );
-$text    = $attributes['text'] ?? __( 'You need a partner who gets your business and covers everything. From branding to UI/UX design and web development, you can rely on us.', 'grosharp' );
-$cta_url = $attributes['ctaUrl'] ?? '/services/';
-$cta_label = $attributes['ctaLabel'] ?? __( 'See All Services', 'grosharp' );
+$eyebrow   = $attributes['eyebrow']   ?? __( 'Services', 'grosharp' );
+$heading   = $attributes['heading']   ?? __( 'We help you design and build better digital products.', 'grosharp' );
+$text      = $attributes['text']      ?? __( 'You need a partner who gets your business and covers everything. From branding to UI/UX design and web development, you can rely on us.', 'grosharp' );
+$cta_url   = $attributes['ctaUrl']    ?? '/services/';
+$cta_label = $attributes['ctaLabel']  ?? __( 'See All Services', 'grosharp' );
 
-$query = new WP_Query(
-	array(
-		'post_type'      => 'grosharp_service',
-		'posts_per_page' => absint( $attributes['count'] ?? 6 ),
-		'orderby'        => 'menu_order title',
-		'order'          => 'ASC',
-		'post_status'    => 'publish',
-	)
-);
+/* ─── Inline SVG icon library (fallback) ──────────────────────────────────── */
+if ( ! function_exists( 'grosharp_service_icon' ) ) :
+function grosharp_service_icon( string $key ): string {
+	$icons = array(
+		'branding' => '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="24" r="11"/><circle cx="31" cy="24" r="11"/></svg>',
+		'design'   => '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="7" width="36" height="27" rx="3"/><line x1="6" y1="17" x2="42" y2="17"/><line x1="15" y1="7" x2="15" y2="17"/><rect x="16" y="38" width="16" height="4" rx="2"/><line x1="24" y1="34" x2="24" y2="38"/></svg>',
+		'code'     => '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17,16 7,24 17,32"/><polyline points="31,16 41,24 31,32"/><line x1="28" y1="12" x2="20" y2="36"/></svg>',
+		'seo'      => '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="24" y1="6" x2="24" y2="42"/><line x1="6" y1="24" x2="42" y2="24"/><line x1="10.3" y1="10.3" x2="37.7" y2="37.7"/><line x1="37.7" y1="10.3" x2="10.3" y2="37.7"/></svg>',
+		'ecomm'    => '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 13h4l3 16h18l3-12H16"/><circle cx="20" cy="34" r="2"/><circle cx="33" cy="34" r="2"/><path d="M9 13l-2-6H4"/></svg>',
+		'auto'     => '<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M37 26a13 13 0 01-13 13 13 13 0 01-13-13"/><path d="M11 22a13 13 0 0113-13 13 13 0 0113 13"/><polyline points="37,20 37,26 31,26"/><polyline points="11,28 11,22 17,22"/></svg>',
+	);
+	return $icons[ $key ] ?? $icons['code'];
+}
+endif;
 
-/* ── Fallback card data ────────────────────────────────────────────────────── */
+/* Default icon keys to cycle through */
+$icon_keys = array( 'branding', 'design', 'code', 'seo', 'ecomm', 'auto' );
+
+/* ─── Hardcoded fallback service data ────────────────────────────────────── */
 $fallback = array(
+	array(
+		'title'       => __( 'Branding & Identity', 'grosharp' ),
+		'description' => __( 'Identities and interfaces that turn visitors into believers from first glance.', 'grosharp' ),
+		'number'      => '01',
+		'icon_key'    => 'branding',
+		'url'         => '/services/',
+	),
+	array(
+		'title'       => __( 'UI/UX Design', 'grosharp' ),
+		'description' => __( 'User flows, wireframes, and prototypes that remove friction and drive conversions.', 'grosharp' ),
+		'number'      => '02',
+		'icon_key'    => 'design',
+		'url'         => '/services/',
+	),
 	array(
 		'title'       => __( 'WordPress Development', 'grosharp' ),
 		'description' => __( 'Custom WordPress sites engineered for speed, scalability, and clean content editing.', 'grosharp' ),
-		'pillar'      => __( 'Development', 'grosharp' ),
+		'number'      => '03',
+		'icon_key'    => 'code',
 		'url'         => '/services/',
-		'gradient'    => 'linear-gradient(145deg,#0c1445 0%,#1e3a8a 100%)',
 	),
 	array(
-		'title'       => __( 'Custom Web Apps', 'grosharp' ),
-		'description' => __( 'React and full-stack applications that solve real business problems beautifully.', 'grosharp' ),
-		'pillar'      => __( 'Development', 'grosharp' ),
-		'url'         => '/services/',
-		'gradient'    => 'linear-gradient(145deg,#042f2e 0%,#134e4a 100%)',
-	),
-	array(
-		'title'       => __( 'Brand & UI Design', 'grosharp' ),
-		'description' => __( 'Identities and interfaces that turn visitors into believers from first glance.', 'grosharp' ),
-		'pillar'      => __( 'Design', 'grosharp' ),
-		'url'         => '/services/',
-		'gradient'    => 'linear-gradient(145deg,#1e0a3c 0%,#4c1d95 100%)',
-	),
-	array(
-		'title'       => __( 'UX & Product Design', 'grosharp' ),
-		'description' => __( 'User flows, wireframes, and prototypes that remove friction and drive conversions.', 'grosharp' ),
-		'pillar'      => __( 'Design', 'grosharp' ),
-		'url'         => '/services/',
-		'gradient'    => 'linear-gradient(145deg,#431407 0%,#9a3412 100%)',
-	),
-	array(
-		'title'       => __( 'SEO & Content Strategy', 'grosharp' ),
+		'title'       => __( 'SEO & Digital Marketing', 'grosharp' ),
 		'description' => __( 'Organic strategies that build lasting authority, qualified traffic, and revenue.', 'grosharp' ),
-		'pillar'      => __( 'Marketing', 'grosharp' ),
+		'number'      => '04',
+		'icon_key'    => 'seo',
 		'url'         => '/services/',
-		'gradient'    => 'linear-gradient(145deg,#052e16 0%,#166534 100%)',
 	),
 	array(
-		'title'       => __( 'Growth Campaigns', 'grosharp' ),
-		'description' => __( 'Paid media, conversion funnels, and retention systems that compound results.', 'grosharp' ),
-		'pillar'      => __( 'Marketing', 'grosharp' ),
+		'title'       => __( 'WooCommerce & Ecommerce', 'grosharp' ),
+		'description' => __( 'Full-featured online stores built to convert, scale, and retain customers.', 'grosharp' ),
+		'number'      => '05',
+		'icon_key'    => 'ecomm',
 		'url'         => '/services/',
-		'gradient'    => 'linear-gradient(145deg,#450a0a 0%,#991b1b 100%)',
 	),
 );
 
-/* ── Pillar badge colours ─────────────────────────────────────────────────── */
-$pillar_colors = array(
-	'Development' => 'bg-blue-500/20 text-blue-300 border-blue-500/20',
-	'Design'      => 'bg-violet-500/20 text-violet-300 border-violet-500/20',
-	'Marketing'   => 'bg-emerald-500/20 text-emerald-300 border-emerald-500/20',
-);
-
-/* ── Build card list ─────────────────────────────────────────────────────── */
+/* ─── Build card list: editor attrs → WP_Query → hardcoded fallback ─────── */
 $cards = array();
 
-if ( $query->have_posts() ) {
-	while ( $query->have_posts() ) {
-		$query->the_post();
-		$pillar_terms = get_the_terms( get_the_ID(), 'service_pillar' );
-		$pillar       = ( is_array( $pillar_terms ) && ! empty( $pillar_terms ) ) ? $pillar_terms[0]->name : '';
-		$thumb_url    = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+/* 1. Manual items from block editor */
+$manual = isset( $attributes['services'] ) && is_array( $attributes['services'] ) && ! empty( $attributes['services'] )
+	? $attributes['services']
+	: array();
 
+if ( ! empty( $manual ) ) {
+	foreach ( $manual as $i => $item ) {
 		$cards[] = array(
-			'title'       => get_the_title(),
-			'description' => wp_strip_all_tags( get_the_excerpt() ),
-			'pillar'      => $pillar,
-			'url'         => get_permalink(),
-			'thumb'       => $thumb_url ?: '',
-			'gradient'    => '',
+			'title'       => $item['title']       ?? '',
+			'description' => $item['description'] ?? '',
+			'number'      => $item['number']      ?? str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ),
+			'icon_key'    => $icon_keys[ $i % count( $icon_keys ) ],
+			'icon_url'    => $item['iconUrl']     ?? '',
+			'url'         => $item['url']         ?? '/services/',
 		);
 	}
-	wp_reset_postdata();
 } else {
-	$cards = $fallback;
+	/* 2. WP_Query from grosharp_service post type */
+	$query = new WP_Query(
+		array(
+			'post_type'      => 'grosharp_service',
+			'posts_per_page' => absint( $attributes['count'] ?? 6 ),
+			'orderby'        => 'menu_order title',
+			'order'          => 'ASC',
+			'post_status'    => 'publish',
+		)
+	);
+
+	if ( $query->have_posts() ) {
+		$i = 0;
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$icon_url = get_post_meta( get_the_ID(), '_service_icon_url', true );
+			$cards[]  = array(
+				'title'       => get_the_title(),
+				'description' => wp_strip_all_tags( get_the_excerpt() ),
+				'number'      => str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ),
+				'icon_key'    => $icon_keys[ $i % count( $icon_keys ) ],
+				'icon_url'    => $icon_url ?: '',
+				'url'         => get_permalink(),
+			);
+			$i++;
+		}
+		wp_reset_postdata();
+	} else {
+		/* 3. Hardcoded fallback */
+		$cards = $fallback;
+	}
 }
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-services overflow-hidden bg-white' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-services overflow-hidden bg-white py-[4rem]' ) ); ?>>
 
 	<!-- ── Section header ─────────────────────────────────────────────────── -->
-	<div class="gs-container pb-14 pt-24 md:pb-16 md:pt-28">
+	<div class="gs-container pb-10">
 		<div class="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
 
 			<!-- Left: eyebrow + heading -->
 			<div class="max-w-[580px]">
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
-			<!-- Right: body + CTA -->
+			<!-- Right: body text + CTA -->
 			<div class="max-w-[360px] md:shrink-0 md:pb-2 md:text-right">
 				<p class="font-body text-[20px] leading-[28px] text-[#5c5d6d]">
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-7 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-sm font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-7 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
 					<?php echo esc_html( $cta_label ); ?>
 				</a>
 			</div>
@@ -129,74 +152,81 @@ if ( $query->have_posts() ) {
 		</div>
 	</div>
 
-	<!-- ── Horizontal marquee strip ───────────────────────────────────────── -->
-	<!--
-		PHP renders each card exactly once. JavaScript (initServicesScroll) clones
-		the cards until there is enough content to fill 3× the viewport width, then
-		runs the GSAP seamless loop. No visible duplicates in the HTML source.
-	-->
-	<div class="relative pb-24 md:pb-28" data-gs-services-marquee data-card-count="<?php echo count( $cards ); ?>">
-		<div class="flex gap-4 will-change-transform" data-gs-services-track
-		     style="padding-left:clamp(1.25rem,calc((100vw - 1280px)/2 + 1.5rem),6rem);padding-right:clamp(1.25rem,calc((100vw - 1280px)/2 + 1.5rem),6rem);">
+	<!-- ── 2-row service grid ────────────────────────────────────────────── -->
+	<div class="gs-container">
+		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+			<!-- ── Stat card (col 1, row 1) ───────────────────────────────── -->
+			<div class="relative overflow-hidden rounded-[24px] bg-white" style="min-height:320px;" data-gs-service-card>
+				<div class="flex h-full flex-col justify-center p-8">
+					<p class="font-heading text-[88px] font-bold leading-none tracking-[-0.04em] text-[#0d0d12]">
+						98<span class="text-[48px] align-top mt-3 inline-block text-[#654cff]">%</span>
+					</p>
+					<p class="mt-4 font-heading text-[22px] font-bold leading-tight tracking-[-0.02em] text-[#0d0d12]">
+						<?php esc_html_e( 'Client Satisfaction Rate', 'grosharp' ); ?>
+					</p>
+					<p class="mt-3 font-body text-[16px] leading-relaxed text-[#5c5d6d]">
+						<?php esc_html_e( 'Based on post-project surveys across all engagements since 2021.', 'grosharp' ); ?>
+					</p>
+				</div>
+			</div>
 
 			<?php foreach ( $cards as $card ) : ?>
-				<?php $pillar_cls = $pillar_colors[ $card['pillar'] ] ?? 'bg-white/10 text-white/60 border-white/10'; ?>
-				<article class="group relative flex-none cursor-pointer overflow-hidden rounded-[24px]"
-				         style="width:max(260px,calc(25vw - 36px));height:600px;">
 
-					<!-- Background: thumbnail or gradient -->
-					<?php if ( $card['thumb'] ) : ?>
-						<img
-							src="<?php echo esc_url( $card['thumb'] ); ?>"
-							alt="<?php echo esc_attr( $card['title'] ); ?>"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-							loading="lazy"
-						/>
-					<?php else : ?>
-						<div class="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
-						     style="background:<?php echo esc_attr( $card['gradient'] ); ?>;"></div>
-					<?php endif; ?>
+				<article class="group relative overflow-hidden rounded-[24px] bg-[#0d0d12]" style="min-height:320px;" data-gs-service-card>
 
-					<!-- Permanent bottom title gradient -->
-					<div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/85 via-black/25 to-transparent px-6 pb-7 pt-24 transition-opacity duration-300 group-hover:opacity-0">
-						<h3 class="font-heading text-[36px] font-bold leading-[44px] text-white">
-							<?php echo esc_html( $card['title'] ); ?>
-						</h3>
+					<!-- Full-card link -->
+					<a href="<?php echo esc_url( $card['url'] ?? '/services/' ); ?>"
+					   class="absolute inset-0 z-10 rounded-[24px]"
+					   tabindex="0"
+					   aria-label="<?php echo esc_attr( $card['title'] ?? '' ); ?>"></a>
+
+					<!-- Card content -->
+					<div class="relative z-20 flex h-full flex-col items-start justify-center p-8 pointer-events-none">
+
+						<!-- Icon -->
+						<div class="gs-service-icon mb-6 inline-block text-white transition-colors duration-300 group-hover:text-[#654cff]">
+							<?php if ( ! empty( $card['icon_url'] ) ) : ?>
+								<img src="<?php echo esc_url( $card['icon_url'] ); ?>"
+								     alt=""
+								     class="h-16 w-16 object-contain"
+								     loading="lazy"
+								     aria-hidden="true" />
+							<?php else : ?>
+								<?php echo grosharp_service_icon( $card['icon_key'] ?? 'code' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php endif; ?>
+						</div>
+
+						<!-- Title + description -->
+						<div>
+							<h3 class="font-heading text-[22px] font-bold leading-tight tracking-[-0.02em] text-white">
+								<?php echo esc_html( $card['title'] ?? '' ); ?>
+							</h3>
+							<?php if ( ! empty( $card['description'] ) ) : ?>
+								<p class="mt-3 font-body text-[16px] leading-relaxed text-white/75">
+									<?php echo esc_html( $card['description'] ); ?>
+								</p>
+							<?php endif; ?>
+						</div>
+
 					</div>
 
-					<!-- Arrow button -->
-					<a href="<?php echo esc_url( $card['url'] ); ?>"
-					   class="absolute right-5 top-5 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white font-bold text-[#0d0d12] no-underline shadow-md transition-transform duration-300 group-hover:scale-110">
-						↗
-					</a>
+					<!-- Number watermark (absolute, bottom-right) -->
+					<div class="gs-service-number absolute bottom-2 right-4 select-none font-heading text-[100px] font-bold leading-none text-white/20 transition-colors duration-500 group-hover:text-[#654cff]/50"
+					     aria-hidden="true">
+						<?php echo esc_html( $card['number'] ?? '01' ); ?>
+					</div>
 
-					<!-- ── Glass overlay (slides up on hover) ──────────────── -->
-					<div class="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-full flex-col justify-between rounded-b-[24px] border-t border-white/10 p-6 pt-7 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:pointer-events-auto"
-					     style="height:68%;backdrop-filter:blur(20px) saturate(1.5);background:rgba(10,10,16,0.68);">
+					<!-- Hover: violet border ring -->
+					<div class="pointer-events-none absolute inset-0 rounded-[24px] border border-transparent transition-colors duration-300 group-hover:border-[#654cff]/40" aria-hidden="true"></div>
 
-						<div>
-							<?php if ( $card['pillar'] ) : ?>
-								<span class="inline-block rounded-full border px-3 py-1 font-body text-xs font-semibold <?php echo esc_attr( $pillar_cls ); ?>">
-									<?php echo esc_html( $card['pillar'] ); ?>
-								</span>
-							<?php endif; ?>
-							<h3 class="mt-3 font-heading text-[36px] font-bold leading-[44px] text-white">
-								<?php echo esc_html( $card['title'] ); ?>
-							</h3>
-							<p class="mt-2.5 font-body text-[13.5px] leading-relaxed text-white/65">
-								<?php echo esc_html( $card['description'] ); ?>
-							</p>
-						</div>
+					<!-- Hover: subtle violet glow at bottom -->
+					<div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 rounded-b-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+					     style="background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(101,76,255,0.14), transparent);"
+					     aria-hidden="true"></div>
 
-							<a href="<?php echo esc_url( $card['url'] ); ?>"
-							   class="inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-5 py-2.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-[#0d0d12]"
-							   tabindex="<?php echo $pass > 0 ? '-1' : '0'; ?>">
-								<?php esc_html_e( 'See Details', 'grosharp' ); ?>
-								<span aria-hidden="true">→</span>
-							</a>
+				</article>
 
-						</div>
-					</article>
 			<?php endforeach; ?>
 
 		</div>
