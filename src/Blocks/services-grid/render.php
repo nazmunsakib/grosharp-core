@@ -110,7 +110,7 @@ if ( $query->have_posts() ) {
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
@@ -142,7 +142,7 @@ if ( $query->have_posts() ) {
 			<?php foreach ( $cards as $card ) : ?>
 				<?php $pillar_cls = $pillar_colors[ $card['pillar'] ] ?? 'bg-white/10 text-white/60 border-white/10'; ?>
 				<article class="group relative flex-none cursor-pointer overflow-hidden rounded-[24px]"
-				         style="width:max(260px,calc(25vw - 36px));height:600px;">
+				         style="width:max(260px,calc(25vw - 36px));height:500px;">
 
 					<!-- Background: thumbnail or gradient -->
 					<?php if ( $card['thumb'] ) : ?>
@@ -190,7 +190,7 @@ if ( $query->have_posts() ) {
 
 							<a href="<?php echo esc_url( $card['url'] ); ?>"
 							   class="inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-5 py-2.5 font-body text-sm font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-[#0d0d12]"
-							   tabindex="<?php echo $pass > 0 ? '-1' : '0'; ?>">
+							   tabindex="0">
 								<?php esc_html_e( 'See Details', 'grosharp' ); ?>
 								<span aria-hidden="true">→</span>
 							</a>

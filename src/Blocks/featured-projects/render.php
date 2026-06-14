@@ -56,7 +56,7 @@ $placeholder_projects = array(
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]" data-gs-project-heading>
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]" data-gs-project-heading>
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>

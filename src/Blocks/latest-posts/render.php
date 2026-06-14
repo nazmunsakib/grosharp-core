@@ -24,12 +24,12 @@ $query = new WP_Query(
 
 /* ── Pastel gradient fallbacks (rotated by post index) ─────────────────────── */
 $gradients = array(
-	'linear-gradient(145deg,#f0e9ff 0%,#ddd4ff 100%)',
-	'linear-gradient(145deg,#fef3e2 0%,#fde8c0 100%)',
-	'linear-gradient(145deg,#e8f4ff 0%,#cfe2ff 100%)',
-	'linear-gradient(145deg,#f0fdf4 0%,#d1fae5 100%)',
-	'linear-gradient(145deg,#fff1f2 0%,#ffe4e6 100%)',
-	'linear-gradient(145deg,#fafafa 0%,#e4e4e7 100%)',
+	'linear-gradient(145deg,#ede9ff 0%,#c4b5fd 100%)',
+	'linear-gradient(145deg,#f5f3ff 0%,#ddd6fe 100%)',
+	'linear-gradient(145deg,#eef2ff 0%,#c7d2fe 100%)',
+	'linear-gradient(145deg,#faf5ff 0%,#e9d5ff 100%)',
+	'linear-gradient(145deg,#f0f9ff 0%,#bae6fd 100%)',
+	'linear-gradient(145deg,#f8f7ff 0%,#e0e7ff 100%)',
 );
 
 /* ── Fallback post data ─────────────────────────────────────────────────────── */
@@ -81,7 +81,7 @@ $cat_colors = array(
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-[#0d0d12]">
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
@@ -113,7 +113,7 @@ $cat_colors = array(
 					$thumb    = get_the_post_thumbnail_url( get_the_ID(), 'large' );
 					$date     = get_the_date( 'M j, Y' );
 					?>
-					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]" data-gs-post-card>
+					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.13)]" data-gs-post-card>
 
 						<!-- Image / gradient top -->
 						<a href="<?php the_permalink(); ?>" class="relative block aspect-[16/10] overflow-hidden no-underline" tabindex="-1" aria-hidden="true">
@@ -168,7 +168,7 @@ $cat_colors = array(
 				<?php foreach ( array_slice( $fallback_posts, 0, $count ) as $idx => $post ) :
 					$cat_cls = $cat_colors[ $post['category'] ] ?? 'bg-[#f5f5f5] text-[#3f3f46]';
 				?>
-					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]" data-gs-post-card>
+					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.13)]" data-gs-post-card>
 
 						<!-- Gradient top -->
 						<div class="relative aspect-[16/10] overflow-hidden">

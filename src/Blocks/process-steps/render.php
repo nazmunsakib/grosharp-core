@@ -59,7 +59,7 @@ $count = count( $steps );
 	}
 }
 </style>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-process py-8 px-[100px]' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-process px-4 py-8 md:px-10 lg:px-[72px]' ) ); ?>>
 	<div class="rounded-[24px] bg-[#0d0d12] pt-[64px] pb-[80px]">
 	<div class="gs-container">
 
@@ -71,7 +71,7 @@ $count = count( $steps );
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[48px] font-bold leading-[53px] tracking-[-0.025em] text-white">
+			<h2 class="mt-6 font-heading text-[36px] font-bold leading-[1.1] tracking-[-0.025em] text-white md:text-[48px]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
@@ -118,12 +118,12 @@ $count = count( $steps );
 					</h3>
 
 					<?php if ( ! empty( $step['label'] ) ) : ?>
-					<p class="mt-1 font-body text-[13px] italic text-[#654cff]">
+					<p class="mt-1 font-body text-[13px] italic text-[#a78bfa]">
 						<?php echo esc_html( $step['label'] ); ?>
 					</p>
 					<?php endif; ?>
 
-					<p class="mt-4 font-body text-[14px] leading-[1.75] text-white/50">
+					<p class="mt-4 font-body text-[14px] leading-[1.75] text-white/65">
 						<?php echo esc_html( $step['text'] ?? '' ); ?>
 					</p>
 
@@ -134,7 +134,7 @@ $count = count( $steps );
 						</p>
 						<div class="flex flex-wrap gap-2">
 							<?php foreach ( $deliverables as $item ) : ?>
-							<span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-body text-[11px] text-white/40">
+							<span class="rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 font-body text-[11px] text-white/60">
 								<?php echo esc_html( trim( $item ) ); ?>
 							</span>
 							<?php endforeach; ?>

@@ -24,15 +24,15 @@ final class Settings {
 	 */
 	public static function defaults(): array {
 		return array(
-			'primary_color' => '#2563EB',
-			'accent_color'  => '#22C55E',
-			'dark_color'    => '#0B1020',
+			'primary_color' => '#654cff',
+			'accent_color'  => '#C9A96E',
+			'dark_color'    => '#09090F',
 			'ink_color'     => '#111827',
 			'muted_color'   => '#6B7280',
-			'surface_color' => '#FFFFFF',
-			'soft_color'    => '#F5F7FB',
-			'heading_font'  => 'Inter Display',
-			'body_font'     => 'Switzer',
+			'surface_color' => '#FAFAF9',
+			'soft_color'    => '#F4F3FF',
+			'heading_font'  => 'Plus Jakarta Sans',
+			'body_font'     => 'DM Sans',
 			'logo_id'       => 0,
 			'company_name'  => 'Grosharp',
 			'tagline'       => 'Development, design, and marketing for sharper digital growth.',
