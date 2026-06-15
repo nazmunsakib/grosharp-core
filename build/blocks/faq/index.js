@@ -1,1 +1,184 @@
-(()=>{"use strict";var e={n:a=>{var n=a&&a.__esModule?()=>a.default:()=>a;return e.d(n,{a:n}),n},d:(a,n)=>{for(var t in n)e.o(n,t)&&!e.o(a,t)&&Object.defineProperty(a,t,{enumerable:!0,get:n[t]})},o:(e,a)=>Object.prototype.hasOwnProperty.call(e,a)};const a=window.wp.blocks,n=window.wp.i18n,t=window.wp.blockEditor,l=window.wp.components,r=window.wp.serverSideRender;var o=e.n(r);const i=window.ReactJSXRuntime;function s(e,a){try{const n=JSON.parse(e);return Array.isArray(n)?n:a}catch(e){return a}}function d({attributes:e,blockName:a,fields:r,setAttributes:d}){const c=(0,t.useBlockProps)();return(0,i.jsxs)("div",{...c,children:[(0,i.jsx)(t.InspectorControls,{children:(0,i.jsx)(l.PanelBody,{title:(0,n.__)("Content","grosharp"),initialOpen:!0,children:r.map((a=>function(e,a,r){const o=a[e.name];if("media"===e.type){const s=e.idName?a[e.idName]:void 0;return(0,i.jsxs)("div",{className:"grosharp-editor-media-field",children:[(0,i.jsx)("p",{className:"components-base-control__label",children:e.label}),(0,i.jsx)(t.MediaUploadCheck,{children:(0,i.jsx)(t.MediaUpload,{allowedTypes:e.allowedTypes||["image"],value:s||0,onSelect:a=>{r({[e.name]:a?.url||"",...e.idName?{[e.idName]:a?.id||0}:{},...e.altName?{[e.altName]:a?.alt||a?.title||""}:{}})},render:({open:e})=>(0,i.jsx)(l.Button,{variant:"secondary",onClick:e,children:o?(0,n.__)("Replace image","grosharp"):(0,n.__)("Select image","grosharp")})})}),o?(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)("img",{src:o,alt:"",style:{display:"block",marginTop:"12px",maxWidth:"100%"}}),(0,i.jsx)(l.Button,{isDestructive:!0,variant:"link",onClick:()=>r({[e.name]:"",...e.idName?{[e.idName]:0}:{}}),children:(0,n.__)("Remove image","grosharp")})]}):null]},e.name)}return"textarea"===e.type?(0,i.jsx)(l.TextareaControl,{label:e.label,value:o||"",onChange:a=>r({[e.name]:a})},e.name):"range"===e.type?(0,i.jsx)(l.RangeControl,{label:e.label,value:o||e.defaultValue||1,min:e.min||1,max:e.max||12,onChange:a=>r({[e.name]:a})},e.name):"json"===e.type?(0,i.jsx)(l.TextareaControl,{label:e.label,help:(0,n.__)("Enter JSON array data. Styling is controlled globally by the theme.","grosharp"),value:JSON.stringify(o||e.defaultValue||[],null,2),onChange:a=>r({[e.name]:s(a,o||e.defaultValue||[])})},e.name):(0,i.jsx)(l.TextControl,{label:e.label,value:o||"",onChange:a=>r({[e.name]:a})},e.name)}(a,e,d)))})}),(0,i.jsx)(o(),{block:a,attributes:e})]})}const c=JSON.parse('{"UU":"grosharp/faq"}'),m=[{name:"heading",label:(0,n.__)("Heading","grosharp")},{name:"text",label:(0,n.__)("Text","grosharp"),type:"textarea"},{name:"items",label:(0,n.__)("FAQ items","grosharp"),type:"json"}];(0,a.registerBlockType)(c.UU,{edit:function(e){return(0,i.jsx)(d,{...e,blockName:c.UU,fields:m})}})})();
+(function () {
+	'use strict';
+
+	var el               = window.wp.element.createElement;
+	var useState         = window.wp.element.useState;
+	var __               = window.wp.i18n.__;
+	var registerBlockType = window.wp.blocks.registerBlockType;
+	var InspectorControls = window.wp.blockEditor.InspectorControls;
+	var useBlockProps    = window.wp.blockEditor.useBlockProps;
+	var PanelBody        = window.wp.components.PanelBody;
+	var TextControl      = window.wp.components.TextControl;
+	var TextareaControl  = window.wp.components.TextareaControl;
+	var Button           = window.wp.components.Button;
+	var SSR              = window.wp.serverSideRender;
+	var ServerSideRender = ( SSR && SSR.default ) ? SSR.default : SSR;
+
+	registerBlockType( 'grosharp/faq', {
+		edit: function ( props ) {
+			var attributes    = props.attributes;
+			var setAttributes = props.setAttributes;
+			var blockProps    = useBlockProps();
+			var items         = Array.isArray( attributes.items ) ? attributes.items : [];
+
+			// Track which items are expanded. Default: all collapsed.
+			var expandedState = useState( {} );
+			var expanded      = expandedState[ 0 ];
+			var setExpanded   = expandedState[ 1 ];
+
+			function toggleExpanded( index ) {
+				setExpanded( Object.assign( {}, expanded, { [ index ]: ! expanded[ index ] } ) );
+			}
+
+			function updateItem( index, key, value ) {
+				var next = items.map( function ( item, i ) {
+					return i === index ? Object.assign( {}, item, { [ key ]: value } ) : item;
+				} );
+				setAttributes( { items: next } );
+			}
+
+			function addItem() {
+				setAttributes( { items: items.concat( [ { question: '', answer: '' } ] ) } );
+			}
+
+			function removeItem( index ) {
+				setAttributes( { items: items.filter( function ( _, i ) { return i !== index; } ) } );
+			}
+
+			function moveItem( index, direction ) {
+				var next   = items.slice();
+				var target = index + direction;
+				if ( target < 0 || target >= next.length ) return;
+				var tmp        = next[ index ];
+				next[ index ]  = next[ target ];
+				next[ target ] = tmp;
+				setAttributes( { items: next } );
+			}
+
+			var cardStyle = {
+				border: '1px solid #e2e2e2',
+				borderRadius: '8px',
+				padding: '12px 14px',
+				marginBottom: '10px',
+				background: '#fff',
+				boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+			};
+
+			return el(
+				'div',
+				blockProps,
+
+				// ── Sidebar ───────────────────────────────────────────────
+				el(
+					InspectorControls,
+					null,
+
+					// Section settings
+					el(
+						PanelBody,
+						{ title: __( 'Section', 'grosharp' ), initialOpen: false },
+						el( TextControl, {
+							label: __( 'Heading', 'grosharp' ),
+							value: attributes.heading || '',
+							onChange: function ( v ) { setAttributes( { heading: v } ); },
+						} ),
+						el( TextareaControl, {
+							label: __( 'Subtext', 'grosharp' ),
+							value: attributes.text || '',
+							onChange: function ( v ) { setAttributes( { text: v } ); },
+						} )
+					),
+
+					// Repeater panel
+					el(
+						PanelBody,
+						{ title: __( 'FAQ Items', 'grosharp' ) + ' (' + items.length + ')', initialOpen: true },
+
+						items.map( function ( item, index ) {
+							var isOpen    = !! expanded[ index ];
+							var preview   = item.question ? item.question : __( '(no question yet)', 'grosharp' );
+
+							return el(
+								'div',
+								{ key: String( index ), style: cardStyle },
+
+								// ── Clickable header row ──────────────────────────
+								el(
+									'div',
+									{
+										style: {
+											display: 'flex',
+											justifyContent: 'space-between',
+											alignItems: 'center',
+											cursor: 'pointer',
+											userSelect: 'none',
+											gap: '8px',
+										},
+										onClick: function () { toggleExpanded( index ); },
+									},
+
+									// Left: chevron + question preview
+									el(
+										'div',
+										{ style: { display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 } },
+										el(
+											'span',
+											{ style: { fontSize: '11px', color: '#654cff', transition: 'transform 0.2s', transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', flexShrink: 0 } },
+											'▶'
+										),
+										el(
+											'span',
+											{ style: { fontSize: '12px', fontWeight: '600', color: '#1e1e1e', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } },
+											preview
+										)
+									),
+
+									// Right: reorder + remove (stop propagation so they don't toggle)
+									el(
+										'div',
+										{ style: { display: 'flex', gap: '2px', alignItems: 'center', flexShrink: 0 }, onClick: function ( e ) { e.stopPropagation(); } },
+										el( Button, { variant: 'tertiary', isSmall: true, disabled: index === 0, onClick: function () { moveItem( index, -1 ); }, title: __( 'Move up', 'grosharp' ) }, '↑' ),
+										el( Button, { variant: 'tertiary', isSmall: true, disabled: index === items.length - 1, onClick: function () { moveItem( index, 1 ); }, title: __( 'Move down', 'grosharp' ) }, '↓' ),
+										el( Button, { isDestructive: true, variant: 'tertiary', isSmall: true, onClick: function () { removeItem( index ); }, title: __( 'Remove', 'grosharp' ) }, '✕' )
+									)
+								),
+
+								// ── Expandable body ───────────────────────────────
+								isOpen && el(
+									'div',
+									{ style: { marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #f0f0f0' } },
+									el( TextControl, {
+										label: __( 'Question', 'grosharp' ),
+										value: item.question || '',
+										placeholder: __( 'e.g. How long does a project take?', 'grosharp' ),
+										onChange: function ( v ) { updateItem( index, 'question', v ); },
+									} ),
+									el( TextareaControl, {
+										label: __( 'Answer', 'grosharp' ),
+										value: item.answer || '',
+										rows: 3,
+										placeholder: __( 'Write a clear, concise answer…', 'grosharp' ),
+										onChange: function ( v ) { updateItem( index, 'answer', v ); },
+									} )
+								)
+							);
+						} ),
+
+						el(
+							Button,
+							{
+								variant: 'secondary',
+								onClick: addItem,
+								style: { width: '100%', justifyContent: 'center', marginTop: '6px' },
+							},
+							'+ ' + __( 'Add FAQ', 'grosharp' )
+						)
+					)
+				),
+
+				// ── Front-end preview ─────────────────────────────────────
+				el( ServerSideRender, { block: 'grosharp/faq', attributes: attributes } )
+			);
+		},
+	} );
+} )();

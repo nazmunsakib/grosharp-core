@@ -19,7 +19,8 @@
 		"secondaryUrl": { "type": "string", "default": "/case-studies/" },
 		"imageId": { "type": "number", "default": 0 },
 		"imageUrl": { "type": "string", "default": "" },
-		"imageAlt": { "type": "string", "default": "Grosharp growth dashboard preview" }
+		"imageAlt": { "type": "string", "default": "Grosharp growth dashboard preview" },
+		"videoUrl": { "type": "string", "default": "" }
 	},
 	"supports": {
 		"align": [ "wide", "full" ],

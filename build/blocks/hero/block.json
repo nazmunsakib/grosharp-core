@@ -1,69 +1,34 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "grosharp/hero",
-  "version": "0.1.0",
-  "title": "Grosharp Hero",
-  "category": "grosharp",
-  "description": "A conversion-focused agency hero section.",
-  "example": {},
-  "textdomain": "grosharp",
-  "attributes": {
-    "badge": {
-      "type": "string",
-      "default": "New"
-    },
-    "eyebrow": {
-      "type": "string",
-      "default": "Digital growth systems for ambitious brands"
-    },
-    "heading": {
-      "type": "string",
-      "default": "Design, build, and grow your digital presence."
-    },
-    "text": {
-      "type": "string",
-      "default": "Grosharp brings development, design, and marketing together to launch sharper websites, stronger brands, and smarter growth campaigns."
-    },
-    "primaryLabel": {
-      "type": "string",
-      "default": "Start your growth project"
-    },
-    "primaryUrl": {
-      "type": "string",
-      "default": "/contact/"
-    },
-    "secondaryLabel": {
-      "type": "string",
-      "default": "See case studies"
-    },
-    "secondaryUrl": {
-      "type": "string",
-      "default": "/case-studies/"
-    },
-    "imageId": {
-      "type": "number",
-      "default": 0
-    },
-    "imageUrl": {
-      "type": "string",
-      "default": ""
-    },
-    "imageAlt": {
-      "type": "string",
-      "default": "Grosharp growth dashboard preview"
-    }
-  },
-  "supports": {
-    "align": [
-      "wide",
-      "full"
-    ],
-    "html": false,
-    "color": false,
-    "typography": false,
-    "spacing": false
-  },
-  "editorScript": "file:./index.js",
-  "render": "file:./render.php"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/hero",
+	"version": "0.1.0",
+	"title": "Grosharp Hero",
+	"category": "grosharp",
+	"description": "A conversion-focused agency hero section.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"badge": { "type": "string", "default": "New" },
+		"eyebrow": { "type": "string", "default": "Digital growth systems for ambitious brands" },
+		"heading": { "type": "string", "default": "Design, build, and grow your digital presence." },
+		"text": { "type": "string", "default": "Grosharp brings development, design, and marketing together to launch sharper websites, stronger brands, and smarter growth campaigns." },
+		"primaryLabel": { "type": "string", "default": "Start your growth project" },
+		"primaryUrl": { "type": "string", "default": "/contact/" },
+		"secondaryLabel": { "type": "string", "default": "See case studies" },
+		"secondaryUrl": { "type": "string", "default": "/case-studies/" },
+		"imageId": { "type": "number", "default": 0 },
+		"imageUrl": { "type": "string", "default": "" },
+		"imageAlt": { "type": "string", "default": "Grosharp growth dashboard preview" },
+		"videoUrl": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
 }

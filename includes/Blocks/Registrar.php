@@ -30,6 +30,7 @@ final class Registrar {
 		'testimonials',
 		'pricing',
 		'faq',
+		'contact',
 		'cta-band',
 		'latest-posts',
 	);

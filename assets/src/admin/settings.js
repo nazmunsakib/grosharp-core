@@ -41,6 +41,76 @@
 		);
 	}
 
+	/** Open WP media frame and call onSelect({id, url}) */
+	function openMediaPicker(onSelect) {
+		if (typeof wp === 'undefined' || !wp.media) return;
+		var frame = wp.media({
+			title: __('Select Logo', 'grosharp'),
+			button: { text: __('Use this image', 'grosharp') },
+			multiple: false,
+			library: { type: 'image' }
+		});
+		frame.on('select', function () {
+			var attachment = frame.state().get('selection').first().toJSON();
+			onSelect({ id: attachment.id, url: attachment.url });
+		});
+		frame.open();
+	}
+
+	/** Logo picker UI */
+	function LogoPicker(props) {
+		var settings = props.settings;
+		var setSettings = props.setSettings;
+		var logoId = settings.logo_id || 0;
+		var logoUrl = settings._logo_preview_url || '';
+
+		function handleSelect(att) {
+			var next = Object.assign({}, settings);
+			next.logo_id = att.id;
+			next._logo_preview_url = att.url;
+			setSettings(next);
+		}
+
+		function handleRemove() {
+			var next = Object.assign({}, settings);
+			next.logo_id = 0;
+			next._logo_preview_url = '';
+			setSettings(next);
+		}
+
+		return createElement(
+			'div',
+			{ className: 'grosharp-logo-picker' },
+			createElement('p', { className: 'grosharp-field-label' }, __('Site Logo', 'grosharp')),
+			logoId
+				? createElement(
+					'div',
+					{ className: 'grosharp-logo-preview' },
+					logoUrl
+						? createElement('img', { src: logoUrl, alt: 'Logo', style: { maxHeight: '60px', display: 'block', marginBottom: '8px', borderRadius: '6px', border: '1px solid #e0e0e0', padding: '4px', background: '#fff' } })
+						: createElement('p', { style: { color: '#666', fontSize: '13px' } }, __('Logo ID: ', 'grosharp') + logoId),
+					createElement(
+						'div',
+						{ style: { display: 'flex', gap: '8px' } },
+						createElement(Button, { variant: 'secondary', isSmall: true, onClick: function () { openMediaPicker(handleSelect); } }, __('Change Logo', 'grosharp')),
+						createElement(Button, { variant: 'tertiary', isSmall: true, isDestructive: true, onClick: handleRemove }, __('Remove', 'grosharp'))
+					)
+				)
+				: createElement(Button, { variant: 'secondary', onClick: function () { openMediaPicker(handleSelect); } }, __('Upload / Select Logo', 'grosharp'))
+		);
+	}
+
+	/** Social URL row */
+	function socialField(settings, setSettings, key, label, placeholder) {
+		return createElement(TextControl, {
+			label: label,
+			value: settings[key] || '',
+			placeholder: placeholder || '',
+			type: 'url',
+			onChange: field(settings, setSettings, key)
+		});
+	}
+
 	function App() {
 		var state = useState(Object.assign({}, defaults, config.settings || {}));
 		var settings = state[0];
@@ -53,14 +123,17 @@
 		var setNotice = noticeState[1];
 
 		function save() {
+			// Strip internal preview keys before saving
 			var payload = {};
-			payload[optionName] = settings;
+			var clean = Object.assign({}, settings);
+			delete clean._logo_preview_url;
+			payload[optionName] = clean;
 			setSaving(true);
 			setNotice('');
 
 			apiFetch({ path: '/wp/v2/settings', method: 'POST', data: payload })
 				.then(function () {
-					setNotice(__('Settings saved. Brand colors will update on the frontend through theme CSS variables.', 'grosharp'));
+					setNotice(__('Settings saved. Changes will appear on the frontend immediately.', 'grosharp'));
 				})
 				.catch(function () {
 					setNotice(__('Settings could not be saved. Please check your permissions and try again.', 'grosharp'));
@@ -87,9 +160,12 @@
 					{ name: 'brand', title: __('Brand', 'grosharp') },
 					{ name: 'typography', title: __('Typography', 'grosharp') },
 					{ name: 'company', title: __('Company', 'grosharp') },
+					{ name: 'social', title: __('Social Media', 'grosharp') },
 					{ name: 'cta', title: __('CTA/Footer', 'grosharp') }
 				]
 			}, function (tab) {
+
+				// ── Brand ──────────────────────────────────────────────────────
 				if ('brand' === tab.name) {
 					return createElement(Card, null,
 						createElement(CardHeader, null, __('Brand Colors', 'grosharp')),
@@ -104,6 +180,7 @@
 					);
 				}
 
+				// ── Typography ─────────────────────────────────────────────────
 				if ('typography' === tab.name) {
 					return createElement(Card, null,
 						createElement(CardHeader, null, __('Typography', 'grosharp')),
@@ -116,6 +193,7 @@
 									{ label: 'Space Grotesk', value: 'Space Grotesk' },
 									{ label: 'Sora', value: 'Sora' },
 									{ label: 'Manrope', value: 'Manrope' },
+									{ label: 'Plus Jakarta Sans', value: 'Plus Jakarta Sans' },
 									{ label: 'Inter', value: 'Inter' }
 								],
 								onChange: field(settings, setSettings, 'heading_font')
@@ -125,6 +203,7 @@
 								value: settings.body_font,
 								options: [
 									{ label: 'Switzer', value: 'Switzer' },
+									{ label: 'DM Sans', value: 'DM Sans' },
 									{ label: 'Inter', value: 'Inter' },
 									{ label: 'Manrope', value: 'Manrope' },
 									{ label: 'Plus Jakarta Sans', value: 'Plus Jakarta Sans' },
@@ -136,25 +215,59 @@
 					);
 				}
 
+				// ── Company ────────────────────────────────────────────────────
 				if ('company' === tab.name) {
-					return createElement(Card, null,
-						createElement(CardHeader, null, __('Company Info', 'grosharp')),
-						createElement(CardBody, null,
-							createElement(TextControl, { label: __('Company name', 'grosharp'), value: settings.company_name || '', onChange: field(settings, setSettings, 'company_name') }),
-							createElement(TextControl, { label: __('Tagline', 'grosharp'), value: settings.tagline || '', onChange: field(settings, setSettings, 'tagline') }),
-							createElement(TextControl, { label: __('Email', 'grosharp'), value: settings.email || '', onChange: field(settings, setSettings, 'email') }),
-							createElement(TextControl, { label: __('Phone', 'grosharp'), value: settings.phone || '', onChange: field(settings, setSettings, 'phone') }),
-							createElement(TextareaControl, { label: __('Address', 'grosharp'), value: settings.address || '', onChange: field(settings, setSettings, 'address') })
+					return createElement(
+						'div',
+						null,
+						// Logo card
+						createElement(Card, { style: { marginBottom: '16px' } },
+							createElement(CardHeader, null, __('Logo', 'grosharp')),
+							createElement(CardBody, null,
+								createElement(LogoPicker, { settings: settings, setSettings: setSettings }),
+								createElement('p', { style: { marginTop: '10px', color: '#666', fontSize: '12px' } },
+									__('This logo is also used as the site logo in the header. Recommended: PNG or SVG, transparent background.', 'grosharp')
+								)
+							)
+						),
+						// Company info card
+						createElement(Card, null,
+							createElement(CardHeader, null, __('Company Info', 'grosharp')),
+							createElement(CardBody, null,
+								createElement(TextControl, { label: __('Company name', 'grosharp'), value: settings.company_name || '', onChange: field(settings, setSettings, 'company_name') }),
+								createElement(TextControl, { label: __('Tagline', 'grosharp'), value: settings.tagline || '', onChange: field(settings, setSettings, 'tagline') }),
+								createElement(TextControl, { label: __('Email', 'grosharp'), value: settings.email || '', type: 'email', onChange: field(settings, setSettings, 'email') }),
+								createElement(TextControl, { label: __('Phone', 'grosharp'), value: settings.phone || '', type: 'tel', onChange: field(settings, setSettings, 'phone') }),
+								createElement(TextareaControl, { label: __('Address', 'grosharp'), value: settings.address || '', onChange: field(settings, setSettings, 'address') })
+							)
 						)
 					);
 				}
 
+				// ── Social Media ───────────────────────────────────────────────
+				if ('social' === tab.name) {
+					return createElement(Card, null,
+						createElement(CardHeader, null, __('Social Media URLs', 'grosharp')),
+						createElement(CardBody, null,
+							createElement('p', { style: { color: '#666', fontSize: '13px', marginBottom: '16px' } },
+								__('These URLs are used in the Contact section and footer social icons automatically.', 'grosharp')
+							),
+							socialField(settings, setSettings, 'social_whatsapp', __('WhatsApp URL', 'grosharp'), 'https://wa.me/8801234567890'),
+							socialField(settings, setSettings, 'social_linkedin', __('LinkedIn URL', 'grosharp'), 'https://linkedin.com/company/grosharp'),
+							socialField(settings, setSettings, 'social_instagram', __('Instagram URL', 'grosharp'), 'https://instagram.com/grosharp'),
+							socialField(settings, setSettings, 'social_x', __('X (Twitter) URL', 'grosharp'), 'https://x.com/grosharp'),
+							socialField(settings, setSettings, 'social_dribbble', __('Dribbble URL', 'grosharp'), 'https://dribbble.com/grosharp')
+						)
+					);
+				}
+
+				// ── CTA / Footer ───────────────────────────────────────────────
 				return createElement(Card, null,
 					createElement(CardHeader, null, __('CTA and Footer', 'grosharp')),
 					createElement(CardBody, null,
 						createElement(TextControl, { label: __('Default CTA label', 'grosharp'), value: settings.cta_label || '', onChange: field(settings, setSettings, 'cta_label') }),
 						createElement(TextControl, { label: __('Default CTA URL', 'grosharp'), value: settings.cta_url || '', onChange: field(settings, setSettings, 'cta_url') }),
-						createElement(TextareaControl, { label: __('Footer text', 'grosharp'), value: settings.footer_text || '', onChange: field(settings, setSettings, 'footer_text') })
+						createElement(TextareaControl, { label: __('Footer tagline text', 'grosharp'), value: settings.footer_text || '', onChange: field(settings, setSettings, 'footer_text') })
 					)
 				);
 			})

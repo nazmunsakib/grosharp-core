@@ -39,10 +39,15 @@ final class Settings {
 			'email'         => '',
 			'phone'         => '',
 			'address'       => '',
-			'cta_label'     => 'Start a Project',
-			'cta_url'       => '/contact/',
-			'footer_text'   => 'Development, design, and marketing for brands that want sharper digital growth.',
-			'social_links'  => array(),
+			'cta_label'        => 'Start a Project',
+			'cta_url'          => '/contact/',
+			'footer_text'      => 'Development, design, and marketing for brands that want sharper digital growth.',
+			'social_whatsapp'  => '',
+			'social_linkedin'  => '',
+			'social_instagram' => '',
+			'social_x'         => '',
+			'social_dribbble'  => '',
+			'social_links'     => array(),
 		);
 	}
 
@@ -103,6 +108,16 @@ final class Settings {
 		$clean['cta_label']    = sanitize_text_field( $value['cta_label'] ?? $defaults['cta_label'] );
 		$clean['cta_url']      = esc_url_raw( $value['cta_url'] ?? $defaults['cta_url'] );
 		$clean['footer_text']  = sanitize_text_field( $value['footer_text'] ?? $defaults['footer_text'] );
+
+		foreach ( array( 'social_whatsapp', 'social_linkedin', 'social_instagram', 'social_x', 'social_dribbble' ) as $key ) {
+			$clean[ $key ] = esc_url_raw( $value[ $key ] ?? '' );
+		}
+
+		// Sync logo_id → WP custom_logo theme mod so wp:site-logo picks it up.
+		$logo_id = absint( $value['logo_id'] ?? 0 );
+		if ( $logo_id && $logo_id !== (int) get_theme_mod( 'custom_logo' ) ) {
+			set_theme_mod( 'custom_logo', $logo_id );
+		}
 
 		$clean['social_links'] = array();
 		if ( isset( $value['social_links'] ) && is_array( $value['social_links'] ) ) {

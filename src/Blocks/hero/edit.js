@@ -13,12 +13,13 @@ const fields = [
 	{ name: 'secondaryUrl', label: __( 'Secondary button URL', 'grosharp' ) },
 	{
 		name: 'imageUrl',
-		label: __( 'Dashboard image', 'grosharp' ),
+		label: __( 'Mockup / hero image', 'grosharp' ),
 		type: 'media',
 		idName: 'imageId',
 		altName: 'imageAlt',
 	},
-	{ name: 'imageAlt', label: __( 'Dashboard image alt text', 'grosharp' ) },
+	{ name: 'imageAlt', label: __( 'Image alt text', 'grosharp' ) },
+	{ name: 'videoUrl', label: __( 'YouTube video URL (optional)', 'grosharp' ) },
 ];
 
 export default function Edit( props ) {

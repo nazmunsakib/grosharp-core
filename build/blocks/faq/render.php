@@ -5,11 +5,11 @@
  * @package GrosharpCore
  */
 
-$eyebrow = $attributes['eyebrow'] ?? __( 'FAQs', 'grosharp' );
-$heading = $attributes['heading'] ?? __( 'Questions we hear most.', 'grosharp' );
-$text    = $attributes['text']    ?? __( "Can't find an answer? Drop us a line — we respond within one business day.", 'grosharp' );
-$cta_label = $attributes['ctaLabel'] ?? __( 'Ask us anything', 'grosharp' );
-$cta_url   = $attributes['ctaUrl']   ?? '/contact/';
+$eyebrow   = $attributes['eyebrow']   ?? __( 'FAQs', 'grosharp' );
+$heading   = $attributes['heading']   ?? __( 'Your Questions, Answered', 'grosharp' );
+$text      = $attributes['text']      ?? __( "Helping you understand our process and offerings at GroSharp.", 'grosharp' );
+$cta_label = $attributes['ctaLabel']  ?? __( 'Ask us anything', 'grosharp' );
+$cta_url   = $attributes['ctaUrl']    ?? '/contact/';
 
 $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! empty( $attributes['items'] )
 	? $attributes['items']
@@ -20,7 +20,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		),
 		array(
 			'question' => __( 'How long does a typical project take?', 'grosharp' ),
-			'answer'   => __( 'A focused website project (Discovery Sprint) runs 4–6 weeks from kickoff to launch. Larger brand and platform builds typically take 10–14 weeks. We share a clear milestone map before any work begins so you always know where things stand.', 'grosharp' ),
+			'answer'   => __( 'A focused website project runs 4–6 weeks from kickoff to launch. Larger brand and platform builds typically take 10–14 weeks. We share a clear milestone map before any work begins so you always know where things stand.', 'grosharp' ),
 		),
 		array(
 			'question' => __( 'Do you work with clients internationally?', 'grosharp' ),
@@ -28,7 +28,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		),
 		array(
 			'question' => __( 'Can you redesign our existing website?', 'grosharp' ),
-			'answer'   => __( 'Absolutely. Redesigns make up a significant portion of our work. We start with a full audit of your current site — performance, UX, content, SEO — before touching design. That way every decision is grounded in data, not just aesthetics.', 'grosharp' ),
+			'answer'   => __( 'Absolutely. Redesigns make up a significant portion of our work. We start with a full audit of your current site — performance, UX, content, SEO — before touching design. Every decision is grounded in data, not just aesthetics.', 'grosharp' ),
 		),
 		array(
 			'question' => __( 'What platforms do you build on?', 'grosharp' ),
@@ -36,15 +36,15 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		),
 		array(
 			'question' => __( 'Do you provide ongoing support after launch?', 'grosharp' ),
-			'answer'   => __( 'All projects include a 30-day post-launch support window. After that, many clients continue with our Growth Partner retainer, which gives them ongoing design, development, and marketing support on a monthly basis — no long-term contract required.', 'grosharp' ),
+			'answer'   => __( 'All projects include a 30-day post-launch support window. After that, many clients continue with our Growth Partner retainer for ongoing design, development, and marketing support — no long-term contract required.', 'grosharp' ),
 		),
 		array(
 			'question' => __( 'How does pricing work?', 'grosharp' ),
-			'answer'   => __( 'Project work is scoped and priced per engagement — starting from $2,500 for a Discovery Sprint. Retainers start at $2,500/month. We will send you a clear proposal with line items before any agreement is signed. No hidden fees, no surprise invoices.', 'grosharp' ),
+			'answer'   => __( 'Project work is scoped and priced per engagement. We send you a clear proposal with line items before any agreement is signed. No hidden fees, no surprise invoices.', 'grosharp' ),
 		),
 		array(
 			'question' => __( 'How do we get started?', 'grosharp' ),
-			'answer'   => __( 'Hit "Start a Project" at the top of this page or visit our contact page. We will schedule a free 30-minute strategy call to learn about your goals, current situation, and timeline — then send a tailored proposal within 48 hours.', 'grosharp' ),
+			'answer'   => __( 'Hit "Start a Project" at the top of this page or visit our contact page. We will schedule a free 30-minute strategy call, then send a tailored proposal within 48 hours.', 'grosharp' ),
 		),
 	);
 
@@ -53,63 +53,110 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 <style>
 	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item summary { list-style: none; cursor: pointer; }
 	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item summary::-webkit-details-marker { display: none; }
-	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item[open] .gs-faq-icon { transform: rotate(45deg); }
-	#<?php echo esc_attr( $block_id ); ?> .gs-faq-icon { transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); }
-	#<?php echo esc_attr( $block_id ); ?> .gs-faq-body { animation: gs-faq-open 0.25s ease; }
-	@keyframes gs-faq-open {
-		from { opacity: 0; transform: translateY(-6px); }
-		to   { opacity: 1; transform: translateY(0);    }
-	}
+	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item[open] .gs-faq-icon { transform: rotate(45deg); background: #654cff; border-color: #654cff; color: #fff; }
+	#<?php echo esc_attr( $block_id ); ?> .gs-faq-icon { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.25s, color 0.25s; }
+	/* Smooth height animation via overflow + grid trick */
+	#<?php echo esc_attr( $block_id ); ?> .gs-faq-inner { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1); }
+	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item[open] .gs-faq-inner { grid-template-rows: 1fr; }
+	#<?php echo esc_attr( $block_id ); ?> .gs-faq-inner > div { overflow: hidden; }
 </style>
 
-<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-faq bg-[#fafaf9] py-[4rem]' ) ); ?>>
+<section id="<?php echo esc_attr( $block_id ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-faq bg-white py-[4rem]' ) ); ?>>
 	<div class="gs-container">
 
-		<div class="grid gap-16 lg:grid-cols-[1fr_1.8fr] lg:gap-24">
+		<!-- ── Centered section header ──────────────────────────────────────── -->
+		<div class="mx-auto mb-14 max-w-2xl text-center gs-reveal">
 
-			<!-- ── Left: header col ──────────────────────────────────────────── -->
-			<div class="gs-reveal lg:sticky lg:top-24 lg:self-start">
+			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+				<?php echo esc_html( $eyebrow ); ?>
+			</p>
 
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
-					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
-					<?php echo esc_html( $eyebrow ); ?>
-				</p>
+			<h2 class="mt-6 font-heading text-[36px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
+				<?php echo esc_html( $heading ); ?>
+			</h2>
 
-				<h2 class="mt-6 font-heading text-[36px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[44px]">
-					<?php echo esc_html( $heading ); ?>
-				</h2>
-
-				<p class="mt-5 font-body text-[16px] leading-relaxed text-[#5c5d6d]">
-					<?php echo esc_html( $text ); ?>
-				</p>
-
-				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[#654cff] px-7 font-body text-[16px] font-semibold text-white no-underline shadow-[0_8px_24px_rgba(101,76,255,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(101,76,255,0.38)]">
-					<?php echo esc_html( $cta_label ); ?>
-					<span aria-hidden="true">→</span>
-				</a>
-
-			</div>
-
-			<!-- ── Right: accordion col ──────────────────────────────────────── -->
-			<div class="gs-reveal divide-y divide-black/[0.07]">
-				<?php foreach ( $items as $index => $item ) : ?>
-					<details class="gs-faq-item group py-6 first:pt-0">
-						<summary class="flex items-center justify-between gap-6">
-							<span class="font-heading text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[#0d0d12] transition-colors duration-200 group-open:text-[#654cff] md:text-[18px]">
-								<?php echo esc_html( $item['question'] ?? '' ); ?>
-							</span>
-							<span class="gs-faq-icon flex h-8 w-8 flex-none items-center justify-center rounded-full border border-black/[0.08] bg-white font-body text-[18px] text-[#654cff] shadow-[0_2px_8px_rgba(101,76,255,0.08)] group-open:border-[#654cff]/20 group-open:bg-[#654cff]/[0.06]" aria-hidden="true">+</span>
-						</summary>
-						<div class="gs-faq-body mt-4 pr-14">
-							<p class="font-body text-[16px] leading-relaxed text-[#5c5d6d]">
-								<?php echo esc_html( $item['answer'] ?? '' ); ?>
-							</p>
-						</div>
-					</details>
-				<?php endforeach; ?>
-			</div>
+			<p class="mt-5 font-body text-[18px] leading-relaxed text-[#5c5d6d]">
+				<?php echo esc_html( $text ); ?>
+			</p>
 
 		</div>
+
+		<!-- ── 2-column FAQ grid ────────────────────────────────────────────── -->
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-start">
+
+			<?php foreach ( $items as $index => $item ) : ?>
+				<details class="gs-faq-item group rounded-[18px] border border-black/[0.07] bg-[#fafaf9] px-7 py-6 transition-colors duration-300 open:border-[#654cff]/20 open:bg-white open:shadow-[0_8px_32px_rgba(101,76,255,0.08)]">
+					<summary class="flex items-center justify-between gap-6 select-none">
+						<span class="font-heading text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[#0d0d12] transition-colors duration-200 group-open:text-[#654cff] md:text-[18px]">
+							<?php echo esc_html( $item['question'] ?? '' ); ?>
+						</span>
+						<span class="gs-faq-icon flex h-9 w-9 flex-none items-center justify-center rounded-full border border-black/[0.10] bg-white font-body text-[20px] font-light leading-none text-[#0d0d12] shadow-[0_2px_8px_rgba(0,0,0,0.06)]" aria-hidden="true">+</span>
+					</summary>
+					<div class="gs-faq-inner">
+						<div>
+							<div class="pt-4 pr-12 pb-1">
+								<p class="font-body text-[16px] leading-relaxed text-[#5c5d6d]">
+									<?php echo esc_html( $item['answer'] ?? '' ); ?>
+								</p>
+							</div>
+						</div>
+					</div>
+				</details>
+			<?php endforeach; ?>
+
+		</div>
+
+		<!-- ── Bottom CTA ───────────────────────────────────────────────────── -->
+		<div class="mt-12 text-center">
+			<p class="font-body text-[16px] text-[#5c5d6d]">
+				<?php esc_html_e( "Can't find an answer?", 'grosharp' ); ?>
+				<a href="<?php echo esc_url( $cta_url ); ?>"
+				   class="ml-1 font-semibold text-[#654cff] no-underline hover:underline">
+					<?php echo esc_html( $cta_label ); ?> →
+				</a>
+			</p>
+		</div>
+
 	</div>
 </section>
+<script>
+(function(){
+	var section = document.getElementById('<?php echo esc_js( $block_id ); ?>');
+	if (!section) return;
+
+	section.querySelectorAll('.gs-faq-item').forEach(function(details){
+		var inner = details.querySelector('.gs-faq-inner');
+		if (!inner) return;
+
+		details.addEventListener('click', function(e){
+			// Only act on summary clicks
+			if (!e.target.closest('summary')) return;
+
+			if (details.open) {
+				// ── CLOSING ──────────────────────────────────────────────────
+				e.preventDefault();
+				inner.style.gridTemplateRows = '0fr';
+
+				function onClose(ev) {
+					// Guard: only fire for the grid-template-rows transition on this element.
+					// transitionend bubbles, so child transitions (icon colour etc.) would
+					// otherwise trigger this handler prematurely.
+					if (ev.target !== inner || ev.propertyName !== 'grid-template-rows') return;
+					inner.removeEventListener('transitionend', onClose);
+					details.removeAttribute('open');
+					// CRITICAL: clear inline style so the CSS [open] rule can win next time
+					inner.style.gridTemplateRows = '';
+				}
+				inner.addEventListener('transitionend', onClose);
+
+			} else {
+				// ── OPENING ───────────────────────────────────────────────────
+				// Clear any leftover inline style BEFORE the browser adds [open],
+				// otherwise the CSS transition from 0fr → 1fr never fires.
+				inner.style.gridTemplateRows = '';
+			}
+		});
+	});
+})();
+</script>

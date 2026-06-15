@@ -8,10 +8,8 @@
 $items = isset( $attributes['items'] ) && is_array( $attributes['items'] )
 	? $attributes['items']
 	: array(
-		array( 'value' => '32+',   'label' => __( 'Projects shipped',   'grosharp' ) ),
-		array( 'value' => '4.9/5', 'label' => __( 'Client rating',      'grosharp' ) ),
-		array( 'value' => '3×',    'label' => __( 'Average growth',      'grosharp' ) ),
-		array( 'value' => '100%',  'label' => __( 'On-time delivery',    'grosharp' ) ),
+		array( 'value' => '4.9/5', 'label' => __( 'Client rating',   'grosharp' ) ),
+		array( 'value' => '100%',  'label' => __( 'On-time delivery', 'grosharp' ) ),
 	);
 
 /**
@@ -34,7 +32,7 @@ endif;
 			gap-px + bg-white/[0.08] on the grid creates 1px white-tinted gaps between cells.
 			Each cell uses bg-[#0d0d12] to fill its area, making the gaps the only visible dividers.
 		-->
-		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/[0.08] lg:grid-cols-4">
+		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/[0.08]">
 			<?php foreach ( $items as $item ) :
 				$raw              = $item['value'] ?? '';
 				[ $pfx, $num, $sfx ] = grosharp_parse_stat( $raw );

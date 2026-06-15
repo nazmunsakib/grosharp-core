@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/contact",
+	"version": "0.1.0",
+	"title": "Grosharp Contact",
+	"category": "grosharp",
+	"description": "Contact channels section — WhatsApp, Email, LinkedIn, Instagram, X, Dribbble.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow":        { "type": "string", "default": "Get in touch" },
+		"heading":        { "type": "string", "default": "Let's build something great together." },
+		"text":           { "type": "string", "default": "Have a project in mind or just want to say hello? Reach us on any channel — we reply within 24 hours." },
+		"badge":          { "type": "string", "default": "Typically replies within 24 h" },
+		"whatsappLabel":  { "type": "string", "default": "+880 1234 567 890" },
+		"whatsappUrl":    { "type": "string", "default": "https://wa.me/8801234567890" },
+		"emailLabel":     { "type": "string", "default": "hello@grosharp.com" },
+		"emailUrl":       { "type": "string", "default": "mailto:hello@grosharp.com" },
+		"linkedinLabel":  { "type": "string", "default": "linkedin.com/company/grosharp" },
+		"linkedinUrl":    { "type": "string", "default": "https://linkedin.com/company/grosharp" },
+		"instagramLabel": { "type": "string", "default": "@grosharp" },
+		"instagramUrl":   { "type": "string", "default": "https://instagram.com/grosharp" },
+		"xLabel":         { "type": "string", "default": "@grosharp" },
+		"xUrl":           { "type": "string", "default": "https://x.com/grosharp" },
+		"dribbbleLabel":  { "type": "string", "default": "dribbble.com/grosharp" },
+		"dribbbleUrl":    { "type": "string", "default": "https://dribbble.com/grosharp" }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
