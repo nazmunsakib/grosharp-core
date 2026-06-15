@@ -72,7 +72,7 @@ $attributes = wp_parse_args(
 				<span class="rounded-full bg-[#0d0d12] px-3 py-2 text-[16px] font-bold uppercase tracking-wide text-white"><?php echo esc_html( $attributes['badge'] ); ?></span>
 				<?php echo esc_html( $attributes['eyebrow'] ); ?>
 			</p>
-			<h1 class="mx-auto max-w-[980px] font-heading text-[75px] font-semibold leading-[1.06] tracking-[-0.02em] text-[#0d0d12]">
+			<h1 class="mx-auto max-w-[980px] font-heading text-[clamp(2.25rem,7vw,4.6875rem)] font-extrabold leading-[1.06] tracking-[-0.02em] text-[#0d0d12]">
 				<?php echo esc_html( $attributes['heading'] ); ?>
 			</h1>
 			<p class="mx-auto mt-8 max-w-[820px] font-body text-lg font-medium leading-[1.5] text-[#5c5d6d] md:text-[21px]">
