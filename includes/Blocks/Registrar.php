@@ -37,6 +37,8 @@ final class Registrar {
 		'about-story',
 		'about-values',
 		'page-hero',
+		'work-grid',
+		'work-featured',
 	);
 
 	/**

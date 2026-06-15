@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/work-featured",
+	"version": "0.1.0",
+	"title": "Grosharp Work Featured",
+	"category": "grosharp",
+	"description": "Editorial 2-col case study spotlight with result stats.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow":     { "type": "string",  "default": "Featured Case Study" },
+		"featuredId":  { "type": "number",  "default": 0 },
+		"stat1Value":  { "type": "string",  "default": "+340%" },
+		"stat1Label":  { "type": "string",  "default": "Organic traffic" },
+		"stat2Value":  { "type": "string",  "default": "4.9/5" },
+		"stat2Label":  { "type": "string",  "default": "Client rating" },
+		"stat3Value":  { "type": "string",  "default": "3×" },
+		"stat3Label":  { "type": "string",  "default": "Revenue growth" }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

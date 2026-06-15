@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/work-grid",
+	"version": "0.1.0",
+	"title": "Grosharp Work Grid",
+	"category": "grosharp",
+	"description": "Filterable project grid with project_type taxonomy tabs.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow":    { "type": "string", "default": "Our Work" },
+		"heading":    { "type": "string", "default": "Every project, a story." },
+		"text":       { "type": "string", "default": "Browse our full portfolio — filtered by discipline." },
+		"count":      { "type": "number", "default": 0 },
+		"showFilter": { "type": "boolean", "default": true }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

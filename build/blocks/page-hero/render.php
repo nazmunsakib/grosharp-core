@@ -1,7 +1,6 @@
 <?php
 /**
  * Page Hero block — general-purpose editorial hero.
- * Used on: About, Work, Contact, Services pages.
  *
  * @package GrosharpCore
  */
@@ -17,31 +16,30 @@ $image2_alt     = $attributes['image2Alt']     ?? '';
 
 $image_count = ( $image1_url ? 1 : 0 ) + ( $image2_url ? 1 : 0 );
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-page-hero' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-page-hero bg-white pt-24 pb-12 md:pt-[clamp(5rem,10vw,8rem)] md:pb-[clamp(3rem,6vw,5rem)]' ) ); ?>>
 	<div class="gs-container">
 
-		<!-- Text area -->
-		<div class="ph-text-area">
+		<div class="max-w-[860px]">
 
 			<?php if ( $eyebrow ) : ?>
-				<p class="ph-eyebrow" data-ph-eyebrow>
+				<p class="font-body text-[0.75rem] font-medium tracking-[0.06em] uppercase text-brand-muted mb-4 opacity-0" data-ph-eyebrow>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
 			<?php endif; ?>
 
 			<?php if ( $heading || $heading_accent ) : ?>
-				<h1 class="ph-heading" data-ph-heading>
+				<h1 class="font-heading text-[clamp(2rem,5.5vw,4.6875rem)] font-extrabold tracking-[-0.04em] leading-[1.05] mb-5 md:mb-7 block" data-ph-heading>
 					<?php if ( $heading ) : ?>
-						<span class="ph-heading-dark"><?php echo esc_html( $heading ); ?></span>
+						<span class="ph-heading-dark inline text-brand-dark"><?php echo esc_html( $heading ); ?> </span>
 					<?php endif; ?>
 					<?php if ( $heading_accent ) : ?>
-						<span class="ph-heading-accent"><?php echo esc_html( $heading_accent ); ?></span>
+						<span class="ph-heading-accent inline text-[#b0b5c3]"><?php echo esc_html( $heading_accent ); ?></span>
 					<?php endif; ?>
 				</h1>
 			<?php endif; ?>
 
 			<?php if ( $text ) : ?>
-				<p class="ph-sub" data-ph-sub>
+				<p class="font-body text-[0.9375rem] md:text-[clamp(1rem,1.6vw,1.125rem)] leading-[1.7] text-brand-ink max-w-[52ch] opacity-0" data-ph-sub>
 					<?php echo esc_html( $text ); ?>
 				</p>
 			<?php endif; ?>
@@ -49,28 +47,28 @@ $image_count = ( $image1_url ? 1 : 0 ) + ( $image2_url ? 1 : 0 );
 		</div>
 
 		<?php if ( $image_count > 0 ) : ?>
-			<div class="ph-media ph-media--<?php echo esc_attr( $image_count === 1 ? 'single' : 'double' ); ?>" data-ph-media>
+			<div class="mt-8 md:mt-[clamp(2.5rem,5vw,4rem)]">
 
-				<?php if ( $image1_url ) : ?>
-					<figure class="ph-media-item" data-ph-img>
-						<img
-							src="<?php echo esc_url( $image1_url ); ?>"
-							alt="<?php echo esc_attr( $image1_alt ); ?>"
-							loading="lazy"
-							decoding="async"
-						/>
+				<?php if ( $image_count === 1 ) : ?>
+					<figure class="rounded-xl md:rounded-2xl overflow-hidden m-0" data-ph-img>
+						<img src="<?php echo esc_url( $image1_url ); ?>" alt="<?php echo esc_attr( $image1_alt ); ?>"
+						     class="w-full object-cover block" style="height: clamp(200px, 45vw, 560px);"
+						     loading="lazy" decoding="async" />
 					</figure>
-				<?php endif; ?>
 
-				<?php if ( $image2_url ) : ?>
-					<figure class="ph-media-item" data-ph-img>
-						<img
-							src="<?php echo esc_url( $image2_url ); ?>"
-							alt="<?php echo esc_attr( $image2_alt ); ?>"
-							loading="lazy"
-							decoding="async"
-						/>
-					</figure>
+				<?php else : ?>
+					<div class="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-[3fr_2fr]">
+						<figure class="rounded-xl md:rounded-2xl overflow-hidden m-0" data-ph-img>
+							<img src="<?php echo esc_url( $image1_url ); ?>" alt="<?php echo esc_attr( $image1_alt ); ?>"
+							     class="w-full object-cover block" style="height: clamp(180px, 32vw, 460px);"
+							     loading="lazy" decoding="async" />
+						</figure>
+						<figure class="rounded-xl md:rounded-2xl overflow-hidden m-0" data-ph-img>
+							<img src="<?php echo esc_url( $image2_url ); ?>" alt="<?php echo esc_attr( $image2_alt ); ?>"
+							     class="w-full object-cover block" style="height: clamp(180px, 32vw, 460px);"
+							     loading="lazy" decoding="async" />
+						</figure>
+					</div>
 				<?php endif; ?>
 
 			</div>

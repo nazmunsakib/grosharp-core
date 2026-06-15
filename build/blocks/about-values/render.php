@@ -30,38 +30,40 @@ $values = array(
 	),
 );
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-about-values' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-about-values bg-[#f4f3ff] py-14 lg:py-20' ) ); ?>>
 	<div class="gs-container">
 
 		<!-- Section header -->
-		<div class="about-values-header">
-			<p class="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-body text-[13px] font-semibold uppercase tracking-widest" data-gs-eyebrow>
-				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+		<div class="max-w-[640px] mb-10 lg:mb-16">
+			<p class="inline-flex items-center gap-2 rounded-full border border-[rgba(101,76,255,0.2)] bg-[rgba(101,76,255,0.07)] px-4 py-1.5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.09em] text-brand-violet mb-4 md:mb-5" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
-			<h2 class="about-values-heading mt-5">
+			<h2 class="font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark mt-0 mb-3 md:mb-4">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
-			<p class="about-values-sub mt-4">
+			<p class="font-body text-[0.9375rem] md:text-[1.0625rem] leading-[1.7] text-brand-ink m-0">
 				<?php echo esc_html( $text ); ?>
 			</p>
 		</div>
 
 		<!-- Values grid -->
-		<div class="about-values-grid">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
 			<?php foreach ( $values as $value ) : ?>
-				<div class="about-value-card" data-gs-value-card>
+				<div class="relative overflow-hidden rounded-2xl md:rounded-panel border border-[rgba(101,76,255,0.12)] bg-white p-6 md:p-10 transition-all duration-300 hover:border-[rgba(101,76,255,0.35)] hover:shadow-[0_12px_40px_rgba(101,76,255,0.1)] hover:-translate-y-[3px]" data-gs-value-card>
 
-					<span class="about-value-number" aria-hidden="true"><?php echo esc_html( $value['number'] ); ?></span>
+					<span class="pointer-events-none select-none absolute -top-2 right-3 font-heading text-[5rem] md:text-[7rem] font-black leading-none tracking-[-0.05em] text-[rgba(101,76,255,0.05)]" aria-hidden="true">
+						<?php echo esc_html( $value['number'] ); ?>
+					</span>
 
-					<div class="about-value-icon">
+					<div class="about-value-icon inline-flex items-center justify-center w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-[12px] md:rounded-[14px] bg-[rgba(101,76,255,0.08)] border border-[rgba(101,76,255,0.15)] text-brand-violet">
 						<?php echo $value['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 
-					<h3 class="about-value-title mt-5">
+					<h3 class="font-heading text-[1.125rem] md:text-[1.25rem] font-bold tracking-[-0.02em] text-brand-dark leading-[1.25] mt-4 md:mt-5 mb-0">
 						<?php echo esc_html( $value['title'] ); ?>
 					</h3>
-					<p class="about-value-desc mt-3">
+					<p class="font-body text-[0.875rem] md:text-[0.9375rem] leading-[1.75] text-brand-ink mt-2 md:mt-3 mb-0">
 						<?php echo esc_html( $value['desc'] ); ?>
 					</p>
 
