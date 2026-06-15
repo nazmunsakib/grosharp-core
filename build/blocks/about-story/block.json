@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/about-story",
+	"version": "0.1.0",
+	"title": "About Story",
+	"category": "grosharp",
+	"description": "Two-column editorial — pulled quote left, narrative paragraphs right.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "Our Story" },
+		"quote":   { "type": "string", "default": "Great digital work isn't built on templates. It's crafted on understanding." },
+		"p1":      { "type": "string", "default": "GroSharp was founded with one belief — that most digital agencies were choosing volume over craft. Every project looked the same, felt the same, and performed the same way: adequately." },
+		"p2":      { "type": "string", "default": "We decided to work differently. We keep our client roster intentionally small. Every engagement gets our full attention — not a junior team handoff, not a repurposed template, but thinking built around your business from the ground up." },
+		"p3":      { "type": "string", "default": "Today, GroSharp works with brands across 12+ countries, from early-stage startups to established companies going through a rebrand. The goal is always the same: ship work we're proud of, that performs the way our clients need it to." }
+	},
+	"supports": { "align": ["wide","full"], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

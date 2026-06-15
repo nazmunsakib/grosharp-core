@@ -1,0 +1,1 @@
+(wp.blocks.registerBlockType||function(){})('grosharp/about-hero',{edit:function(){return wp.element.createElement('p',{style:{padding:'2rem',background:'#0d0d12',color:'#fff'}},'About Hero (server rendered)');},save:function(){return null;}});

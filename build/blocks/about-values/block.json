@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/about-values",
+	"version": "0.1.0",
+	"title": "About Values",
+	"category": "grosharp",
+	"description": "Three core values in a bold grid.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "What We Stand For" },
+		"heading": { "type": "string", "default": "Values that guide every decision." },
+		"text":    { "type": "string", "default": "Not a list of buzzwords. The actual principles that shape how we work, who we work with, and what we ship." },
+		"value1Title": { "type": "string", "default": "Craft over speed" },
+		"value1Desc":  { "type": "string", "default": "We'd rather take the time to get it right than ship something that's just good enough. Every pixel, every line of code, every word earns its place — or it doesn't make it through." },
+		"value2Title": { "type": "string", "default": "Partnership, not transactions" },
+		"value2Desc":  { "type": "string", "default": "We work best with clients who see us as long-term partners. We're invested in your outcomes — not just in delivering a file and moving on. Your growth is how we measure our own." },
+		"value3Title": { "type": "string", "default": "Purposeful simplicity" },
+		"value3Desc":  { "type": "string", "default": "Every element on every page earns its place. We remove the noise so your message lands clearly. The best design is the kind visitors don't notice — they just feel at ease and convert." }
+	},
+	"supports": { "align": ["wide","full"], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

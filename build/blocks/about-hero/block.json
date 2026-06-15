@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/about-hero",
+	"version": "0.1.0",
+	"title": "About Hero",
+	"category": "grosharp",
+	"description": "About page hero — dark, full-bleed opening with stat strip.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow":        { "type": "string", "default": "About GroSharp" },
+		"heading":        { "type": "string", "default": "We build digital products that define brands." },
+		"text":           { "type": "string", "default": "GroSharp is a premium digital agency specialising in UI/UX design, WordPress development, and digital growth — built for ambitious brands that refuse to settle for ordinary." },
+		"primaryLabel":   { "type": "string", "default": "Start a Project" },
+		"primaryUrl":     { "type": "string", "default": "/contact/" },
+		"secondaryLabel": { "type": "string", "default": "See Our Work" },
+		"secondaryUrl":   { "type": "string", "default": "/case-studies/" }
+	},
+	"supports": { "align": ["wide","full"], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

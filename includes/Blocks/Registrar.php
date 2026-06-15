@@ -33,6 +33,10 @@ final class Registrar {
 		'contact',
 		'cta-band',
 		'latest-posts',
+		'about-hero',
+		'about-story',
+		'about-values',
+		'page-hero',
 	);
 
 	/**

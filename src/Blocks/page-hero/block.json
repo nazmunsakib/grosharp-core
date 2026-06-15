@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/page-hero",
+	"version": "0.1.0",
+	"title": "Grosharp Page Hero",
+	"category": "grosharp",
+	"description": "General-purpose editorial page hero for About, Work, Contact, Services, etc.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow":       { "type": "string", "default": "About Us" },
+		"heading":       { "type": "string", "default": "We build digital products" },
+		"headingAccent": { "type": "string", "default": "that define brands." },
+		"text":          { "type": "string", "default": "A small, focused team that trades volume for depth. We partner with ambitious brands to craft websites, identities, and digital products worth noticing." },
+		"image1Id":      { "type": "number", "default": 0 },
+		"image1Url":     { "type": "string", "default": "" },
+		"image1Alt":     { "type": "string", "default": "" },
+		"image2Id":      { "type": "number", "default": 0 },
+		"image2Url":     { "type": "string", "default": "" },
+		"image2Alt":     { "type": "string", "default": "" }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html":       false,
+		"color":      false,
+		"typography": false,
+		"spacing":    false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
