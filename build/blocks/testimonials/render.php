@@ -35,59 +35,64 @@ $query = new WP_Query(
 /* ── Fallback slides ────────────────────────────────────────────────────────── */
 $fallback = array(
 	array(
-		'headline' => __( '"The team delivered beyond what we imagined. Results came faster than expected."', 'grosharp' ),
-		'body'     => __( 'Within two months of launch our inbound lead volume doubled. Grosharp brought ideas we never would have thought of, then executed them flawlessly.', 'grosharp' ),
-		'name'     => 'Sarah Okeke',
-		'role'     => 'CEO',
-		'company'  => 'Elevance',
-		'rating'   => '5.0',
-		'initials' => 'EL',
-		'color'    => '#e9e5ff',
-		'text'     => '#4f39c7',
+		'headline'    => __( '"The team delivered beyond what we imagined. Results came faster than expected."', 'grosharp' ),
+		'name'        => 'Sarah Okeke',
+		'role'        => 'CEO',
+		'company'     => 'Elevance',
+		'designation' => 'CEO · Elevance',
+		'rating'      => '5.0',
+		'avatar_url'  => '',
+		'initials'    => 'SO',
+		'color'       => '#e9e5ff',
+		'text'        => '#4f39c7',
 	),
 	array(
-		'headline' => __( '"Six months later, organic traffic is up 148%. Couldn\'t be happier."', 'grosharp' ),
-		'body'     => __( 'We hired Grosharp for SEO and ended up getting a full content strategy that changed how we think about our brand. Game changing.', 'grosharp' ),
-		'name'     => 'James Whitfield',
-		'role'     => 'Head of Marketing',
-		'company'  => 'Foliocraft',
-		'rating'   => '5.0',
-		'initials' => 'FC',
-		'color'    => '#eef2ff',
-		'text'     => '#3730a3',
+		'headline'    => __( '"Six months later, organic traffic is up 148%. Couldn\'t be happier."', 'grosharp' ),
+		'name'        => 'James Whitfield',
+		'role'        => 'Head of Marketing',
+		'company'     => 'Foliocraft',
+		'designation' => 'Head of Marketing · Foliocraft',
+		'rating'      => '5.0',
+		'avatar_url'  => '',
+		'initials'    => 'JW',
+		'color'       => '#eef2ff',
+		'text'        => '#3730a3',
 	),
 	array(
-		'headline' => __( '"Support tickets dropped 40% the week we launched. Fast, reliable, they listened."', 'grosharp' ),
-		'body'     => __( 'The new client portal Grosharp built replaced a tool we had been struggling with for years. Launch week changed everything for our support team.', 'grosharp' ),
-		'name'     => 'Priya Nair',
-		'role'     => 'Product Manager',
-		'company'  => 'Meridian',
-		'rating'   => '5.0',
-		'initials' => 'ME',
-		'color'    => '#ede9ff',
-		'text'     => '#4f39c7',
+		'headline'    => __( '"Support tickets dropped 40% the week we launched. Fast, reliable, they listened."', 'grosharp' ),
+		'name'        => 'Priya Nair',
+		'role'        => 'Product Manager',
+		'company'     => 'Meridian',
+		'designation' => 'Product Manager · Meridian',
+		'rating'      => '5.0',
+		'avatar_url'  => '',
+		'initials'    => 'PN',
+		'color'       => '#ede9ff',
+		'text'        => '#4f39c7',
 	),
 	array(
-		'headline' => __( '"Conversion rate jumped 60% after the redesign. The ROI was immediate."', 'grosharp' ),
-		'body'     => __( 'We expected a visual refresh and got a complete rethinking of our user journey. The data speaks for itself — we\'ve never seen numbers like this.', 'grosharp' ),
-		'name'     => 'Daniel Cross',
-		'role'     => 'Founder',
-		'company'  => 'Vizerto',
-		'rating'   => '5.0',
-		'initials' => 'VZ',
-		'color'    => '#f5f3ff',
-		'text'     => '#6d28d9',
+		'headline'    => __( '"Conversion rate jumped 60% after the redesign. The ROI was immediate."', 'grosharp' ),
+		'name'        => 'Daniel Cross',
+		'role'        => 'Founder',
+		'company'     => 'Vizerto',
+		'designation' => 'Founder · Vizerto',
+		'rating'      => '5.0',
+		'avatar_url'  => '',
+		'initials'    => 'DC',
+		'color'       => '#f5f3ff',
+		'text'        => '#6d28d9',
 	),
 	array(
-		'headline' => __( '"Our new brand finally matches the quality of our product. Proud to show it off."', 'grosharp' ),
-		'body'     => __( 'The Grosharp team took the time to understand what makes us different before opening Figma. That showed in every single design decision they made.', 'grosharp' ),
-		'name'     => 'Anika Mensah',
-		'role'     => 'CMO',
-		'company'  => 'Aria Studio',
-		'rating'   => '5.0',
-		'initials' => 'AS',
-		'color'    => '#e0e7ff',
-		'text'     => '#4338ca',
+		'headline'    => __( '"Our new brand finally matches the quality of our product. Proud to show it off."', 'grosharp' ),
+		'name'        => 'Anika Mensah',
+		'role'        => 'CMO',
+		'company'     => 'Aria Studio',
+		'designation' => 'CMO · Aria Studio',
+		'rating'      => '5.0',
+		'avatar_url'  => '',
+		'initials'    => 'AM',
+		'color'       => '#e0e7ff',
+		'text'        => '#4338ca',
 	),
 );
 
@@ -122,31 +127,49 @@ if ( $query->have_posts() ) {
 	$i = 0;
 	while ( $query->have_posts() ) {
 		$query->the_post();
-		$fb       = $fallback[ $i % count( $fallback ) ];
-		$name     = get_the_title();
-		$palette  = $avatar_palette[ $i % count( $avatar_palette ) ];
-		$logo_url = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
-		$content  = get_the_content();
-		$excerpt  = get_the_excerpt();
+		$pid     = get_the_ID();
+		$fb      = $fallback[ $i % count( $fallback ) ];
+		$palette = $avatar_palette[ $i % count( $avatar_palette ) ];
+
+		/* ACF fields — with post title / content fallbacks */
+		$name        = '';
+		$designation = '';
+		$review      = '';
+		$avatar_url  = '';
+		$rating      = '5.0';
+
+		if ( function_exists( 'get_field' ) ) {
+			$name        = (string) ( get_field( 'testimonial_client_name', $pid ) ?: get_the_title() );
+			$designation = (string) ( get_field( 'testimonial_designation',  $pid ) ?: '' );
+			$review      = (string) ( get_field( 'testimonial_review',       $pid ) ?: wp_strip_all_tags( get_the_content() ) );
+			$rating      = (string) ( get_field( 'testimonial_rating',       $pid ) ?: '5.0' );
+			$avatar_data = get_field( 'testimonial_avatar', $pid );
+			if ( ! empty( $avatar_data['url'] ) ) {
+				$avatar_url = $avatar_data['sizes']['thumbnail'] ?? $avatar_data['url'];
+			}
+		} else {
+			$name   = get_the_title();
+			$review = wp_strip_all_tags( get_the_content() );
+		}
+
+		if ( ! $name )   { $name   = $fb['name']; }
+		if ( ! $review ) { $review = $fb['body']; }
+
 		$slides[] = array(
-			'headline' => $excerpt ? '"' . wp_strip_all_tags( $excerpt ) . '"' : $fb['headline'],
-			'body'     => $content ? wp_strip_all_tags( $content ) : $fb['body'],
-			'name'     => $name,
-			'company'  => get_post_meta( get_the_ID(), 'testimonial_company', true ) ?: $fb['company'],
-			'role'     => get_post_meta( get_the_ID(), 'testimonial_role', true ) ?: $fb['role'],
-			'rating'   => get_post_meta( get_the_ID(), 'testimonial_rating', true ) ?: '5.0',
-			'logo_url' => $logo_url ?: '',
-			'initials' => $get_initials( $name ),
-			'color'    => $palette['color'],
-			'text'     => $palette['text'],
+			'headline'    => $review ? '"' . $review . '"' : $fb['headline'],
+			'name'        => $name,
+			'designation' => $designation ?: ( $fb['role'] . ' · ' . $fb['company'] ),
+			'rating'      => $rating,
+			'avatar_url'  => $avatar_url,
+			'initials'    => $get_initials( $name ),
+			'color'       => $palette['color'],
+			'text'        => $palette['text'],
 		);
 		$i++;
 	}
 	wp_reset_postdata();
 } else {
-	foreach ( $fallback as $fb ) {
-		$slides[] = $fb;
-	}
+	$slides = $fallback;
 }
 
 $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6 );
@@ -188,51 +211,59 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 				<div class="swiper-slide" style="max-width:540px;">
 					<article class="flex h-full flex-col rounded-[24px] bg-white p-8 md:p-10">
 
-						<!-- Top: logo + company name   |   rating -->
-						<div class="mb-8 flex items-center justify-between gap-4">
-							<div class="flex items-center gap-3">
-								<?php if ( ! empty( $slide['logo_url'] ) ) : ?>
-									<div class="h-12 w-12 flex-none overflow-hidden rounded-full border border-black/[0.07]">
-										<img src="<?php echo esc_url( $slide['logo_url'] ); ?>"
-										     alt="<?php echo esc_attr( $slide['company'] ); ?>"
-										     class="h-full w-full object-cover" loading="lazy" />
-									</div>
+						<!-- Rating row -->
+						<div class="mb-6 flex items-center gap-1">
+							<?php
+							$rating_val  = floatval( $slide['rating'] ?? 5 );
+							$full_stars  = floor( $rating_val );
+							$half_star   = ( $rating_val - $full_stars ) >= 0.5;
+							for ( $s = 0; $s < 5; $s++ ) :
+								if ( $s < $full_stars ) : ?>
+									<span class="text-amber-400" style="font-size:1.125rem;">★</span>
+								<?php elseif ( $s === $full_stars && $half_star ) : ?>
+									<span class="text-amber-400" style="font-size:1.125rem;">½</span>
 								<?php else : ?>
-									<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full font-heading text-[16px] font-bold"
-									     style="background:<?php echo esc_attr( $slide['color'] ); ?>;color:<?php echo esc_attr( $slide['text'] ); ?>;">
-										<?php echo esc_html( $slide['initials'] ); ?>
-									</div>
-								<?php endif; ?>
-								<div>
-									<p class="font-body text-[16px] font-semibold text-[#0d0d12]">
-										<?php echo esc_html( $slide['company'] ); ?>
-									</p>
-									<?php if ( ! empty( $slide['role'] ) && ! empty( $slide['name'] ) ) : ?>
-										<p class="font-body text-[16px] text-[#9a9ab0]">
-											<?php echo esc_html( $slide['name'] . ' · ' . $slide['role'] ); ?>
-										</p>
-									<?php endif; ?>
-								</div>
-							</div>
-							<div class="flex flex-none items-center gap-1">
-								<span class="font-body text-[16px] font-bold text-[#0d0d12]">
-									<?php echo esc_html( $slide['rating'] ); ?>
-								</span>
-								<span class="text-amber-400 text-base" aria-label="stars">★</span>
-							</div>
+									<span class="text-black/15" style="font-size:1.125rem;">★</span>
+								<?php endif;
+							endfor; ?>
+							<span class="ml-1 font-body text-[13px] font-semibold text-[#9a9ab0]">
+								<?php echo esc_html( $slide['rating'] ); ?>
+							</span>
 						</div>
 
-						<!-- Bold short quote (headline) -->
-						<p class="font-heading text-[20px] font-bold leading-[1.3] tracking-[-0.015em] text-[#0d0d12] md:text-[22px]">
+						<!-- Review quote -->
+						<p class="grow font-heading text-[19px] font-bold leading-[1.35] tracking-[-0.015em] text-[#0d0d12] md:text-[21px]">
 							<?php echo esc_html( $slide['headline'] ); ?>
 						</p>
 
-						<!-- Body text -->
-						<?php if ( ! empty( $slide['body'] ) ) : ?>
-							<p class="mt-4 grow font-body text-[14.5px] leading-relaxed text-[#5c5d6d]">
-								<?php echo esc_html( $slide['body'] ); ?>
-							</p>
-						<?php endif; ?>
+						<!-- Client info row -->
+						<div class="mt-8 flex items-center gap-3 border-t border-black/[0.06] pt-6">
+
+							<?php if ( ! empty( $slide['avatar_url'] ) ) : ?>
+								<div class="h-11 w-11 flex-none overflow-hidden rounded-full border border-black/[0.07]">
+									<img src="<?php echo esc_url( $slide['avatar_url'] ); ?>"
+									     alt="<?php echo esc_attr( $slide['name'] ); ?>"
+									     class="h-full w-full object-cover" loading="lazy" />
+								</div>
+							<?php else : ?>
+								<div class="flex h-11 w-11 flex-none items-center justify-center rounded-full font-heading text-[14px] font-bold"
+								     style="background:<?php echo esc_attr( $slide['color'] ); ?>;color:<?php echo esc_attr( $slide['text'] ); ?>;">
+									<?php echo esc_html( $slide['initials'] ); ?>
+								</div>
+							<?php endif; ?>
+
+							<div>
+								<p class="font-body text-[15px] font-semibold leading-tight text-[#0d0d12]">
+									<?php echo esc_html( $slide['name'] ); ?>
+								</p>
+								<?php if ( ! empty( $slide['designation'] ) ) : ?>
+									<p class="font-body text-[13px] leading-tight text-[#9a9ab0]">
+										<?php echo esc_html( $slide['designation'] ); ?>
+									</p>
+								<?php endif; ?>
+							</div>
+
+						</div>
 
 					</article>
 				</div>
