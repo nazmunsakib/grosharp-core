@@ -57,11 +57,11 @@ $count = count( $steps );
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
 
-				<h2 class="mt-5 font-heading text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#0d0d12]">
+				<h2 class="mt-5 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 
-				<p class="mt-4 font-body text-[1rem] leading-[1.75] text-[#5c5d6d] max-w-[52ch] mx-auto">
+				<p class="mt-4 font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d] max-w-[52ch] mx-auto">
 					<?php echo esc_html( $text ); ?>
 				</p>
 

@@ -59,7 +59,7 @@ $placeholder_projects = array(
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]" data-gs-project-heading>
+				<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]" data-gs-project-heading>
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
@@ -70,8 +70,9 @@ $placeholder_projects = array(
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-7 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-7 inline-flex min-h-[48px] items-center gap-3 rounded-full border border-black/15 px-7 font-body text-[0.9375rem] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
 					<?php esc_html_e( 'See more projects', 'grosharp' ); ?>
+					<span aria-hidden="true">→</span>
 				</a>
 			</div>
 

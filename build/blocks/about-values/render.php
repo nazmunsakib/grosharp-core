@@ -39,10 +39,10 @@ $values = array(
 				<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
-			<h2 class="font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark mt-0 mb-3 md:mb-4">
+			<h2 class="font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12] mt-0 mb-3 md:mb-4">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
-			<p class="font-body text-[0.9375rem] md:text-[1.0625rem] leading-[1.7] text-brand-ink m-0">
+			<p class="font-body text-[1.25rem] leading-[1.7] text-brand-ink m-0">
 				<?php echo esc_html( $text ); ?>
 			</p>
 		</div>

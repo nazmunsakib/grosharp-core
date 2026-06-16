@@ -145,7 +145,7 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
+			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 

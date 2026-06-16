@@ -52,11 +52,11 @@ $arrow_svg = '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-h
 					<span class="wg-eyebrow-dot w-1.5 h-1.5 rounded-full bg-brand-violet flex-shrink-0" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="wg-heading font-heading text-[clamp(1.625rem,3.5vw,2.75rem)] font-extrabold tracking-[-0.035em] leading-[1.08] text-brand-dark m-0 mb-2">
+				<h2 class="wg-heading font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12] m-0 mb-2">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 				<?php if ( $text ) : ?>
-					<p class="wg-sub font-body text-[0.9375rem] md:text-base text-brand-ink leading-[1.65] m-0 max-w-[480px]">
+					<p class="wg-sub font-body text-[1.25rem] text-brand-ink leading-[1.7] m-0 max-w-[480px]">
 						<?php echo esc_html( $text ); ?>
 					</p>
 				<?php endif; ?>

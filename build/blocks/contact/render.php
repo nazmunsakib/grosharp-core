@@ -123,11 +123,11 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 					<?php echo esc_html( $attributes['eyebrow'] ); ?>
 				</p>
 
-				<h2 class="mt-7 font-heading text-[38px] font-bold leading-[1.08] tracking-[-0.025em] text-[#0d0d12] md:text-[48px] lg:text-[54px]">
+				<h2 class="mt-7 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
 					<?php echo esc_html( $attributes['heading'] ); ?>
 				</h2>
 
-				<p class="mt-6 font-body text-[18px] leading-relaxed text-[#5c5d6d]">
+				<p class="mt-6 font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d]">
 					<?php echo esc_html( $attributes['text'] ); ?>
 				</p>
 

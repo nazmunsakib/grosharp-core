@@ -137,19 +137,20 @@ if ( ! empty( $manual ) ) {
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
+				<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
 			<!-- Right: body text + CTA -->
 			<div class="max-w-[360px] md:shrink-0 md:pb-2 md:text-right">
-				<p class="font-body text-[1rem] leading-[1.7] text-[#5c5d6d]">
+				<p class="font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d]">
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-6 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[0.9375rem] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-6 inline-flex min-h-[48px] items-center gap-3 rounded-full border border-black/15 px-7 font-body text-[0.9375rem] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
 					<?php echo esc_html( $cta_label ); ?>
+					<span aria-hidden="true">→</span>
 				</a>
 			</div>
 

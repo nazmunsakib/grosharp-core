@@ -74,11 +74,11 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
+			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
-			<p class="mt-5 font-body text-lg leading-relaxed text-[#5c5d6d]">
+			<p class="mt-5 font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d]">
 				<?php echo esc_html( $text ); ?>
 			</p>
 
