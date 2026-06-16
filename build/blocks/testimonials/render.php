@@ -91,6 +91,30 @@ $fallback = array(
 	),
 );
 
+/* ── Avatar palette (cycles by index) ───────────────────────────────────────── */
+$avatar_palette = array(
+	array( 'color' => '#654cff', 'text' => '#ffffff' ),
+	array( 'color' => '#0d0d12', 'text' => '#ffffff' ),
+	array( 'color' => '#e8f0fe', 'text' => '#654cff' ),
+	array( 'color' => '#fff4e6', 'text' => '#b45309' ),
+	array( 'color' => '#e6fff4', 'text' => '#047857' ),
+	array( 'color' => '#fce8ff', 'text' => '#9333ea' ),
+);
+
+/**
+ * Derive up-to-two-letter initials from a name.
+ *
+ * @param string $name Full name.
+ * @return string
+ */
+$get_initials = static function( string $name ): string {
+	$parts = array_filter( explode( ' ', trim( $name ) ) );
+	if ( count( $parts ) >= 2 ) {
+		return mb_strtoupper( mb_substr( $parts[0], 0, 1 ) . mb_substr( end( $parts ), 0, 1 ) );
+	}
+	return mb_strtoupper( mb_substr( $name, 0, 2 ) );
+};
+
 /* ── Build slides array ─────────────────────────────────────────────────────── */
 $slides = array();
 
@@ -98,21 +122,23 @@ if ( $query->have_posts() ) {
 	$i = 0;
 	while ( $query->have_posts() ) {
 		$query->the_post();
-		$fb         = $fallback[ $i % count( $fallback ) ];
-		$logo_url   = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
-		$content    = get_the_content();
-		$excerpt    = get_the_excerpt();
-		$slides[]   = array(
+		$fb       = $fallback[ $i % count( $fallback ) ];
+		$name     = get_the_title();
+		$palette  = $avatar_palette[ $i % count( $avatar_palette ) ];
+		$logo_url = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
+		$content  = get_the_content();
+		$excerpt  = get_the_excerpt();
+		$slides[] = array(
 			'headline' => $excerpt ? '"' . wp_strip_all_tags( $excerpt ) . '"' : $fb['headline'],
 			'body'     => $content ? wp_strip_all_tags( $content ) : $fb['body'],
-			'name'     => get_the_title(),
-			'company'  => get_post_meta( get_the_ID(), '_testimonial_company', true ) ?: $fb['company'],
-			'role'     => get_post_meta( get_the_ID(), '_testimonial_role', true ) ?: $fb['role'],
-			'rating'   => get_post_meta( get_the_ID(), '_testimonial_rating', true ) ?: '5.0',
+			'name'     => $name,
+			'company'  => get_post_meta( get_the_ID(), 'testimonial_company', true ) ?: $fb['company'],
+			'role'     => get_post_meta( get_the_ID(), 'testimonial_role', true ) ?: $fb['role'],
+			'rating'   => get_post_meta( get_the_ID(), 'testimonial_rating', true ) ?: '5.0',
 			'logo_url' => $logo_url ?: '',
-			'initials' => $fb['initials'],
-			'color'    => $fb['color'],
-			'text'     => $fb['text'],
+			'initials' => $get_initials( $name ),
+			'color'    => $palette['color'],
+			'text'     => $palette['text'],
 		);
 		$i++;
 	}
