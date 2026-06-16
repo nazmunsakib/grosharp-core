@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/service-showcase",
+	"version": "0.1.0",
+	"title": "Grosharp Service Showcase",
+	"category": "grosharp",
+	"description": "Alternating two-column service rows — dynamically pulled from the Service post type with meta fields for key features, detail text, and CTA.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"count": { "type": "number", "default": -1 }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,1 +1,126 @@
-(()=>{"use strict";var e={n:a=>{var n=a&&a.__esModule?()=>a.default:()=>a;return e.d(n,{a:n}),n},d:(a,n)=>{for(var t in n)e.o(n,t)&&!e.o(a,t)&&Object.defineProperty(a,t,{enumerable:!0,get:n[t]})},o:(e,a)=>Object.prototype.hasOwnProperty.call(e,a)};const a=window.wp.blocks,n=window.wp.i18n,t=window.wp.blockEditor,l=window.wp.components,r=window.wp.serverSideRender;var o=e.n(r);const s=window.ReactJSXRuntime;function i(e,a){try{const n=JSON.parse(e);return Array.isArray(n)?n:a}catch(e){return a}}function d({attributes:e,blockName:a,fields:r,setAttributes:d}){const c=(0,t.useBlockProps)();return(0,s.jsxs)("div",{...c,children:[(0,s.jsx)(t.InspectorControls,{children:(0,s.jsx)(l.PanelBody,{title:(0,n.__)("Content","grosharp"),initialOpen:!0,children:r.map((a=>function(e,a,r){const o=a[e.name];if("media"===e.type){const i=e.idName?a[e.idName]:void 0;return(0,s.jsxs)("div",{className:"grosharp-editor-media-field",children:[(0,s.jsx)("p",{className:"components-base-control__label",children:e.label}),(0,s.jsx)(t.MediaUploadCheck,{children:(0,s.jsx)(t.MediaUpload,{allowedTypes:e.allowedTypes||["image"],value:i||0,onSelect:a=>{r({[e.name]:a?.url||"",...e.idName?{[e.idName]:a?.id||0}:{},...e.altName?{[e.altName]:a?.alt||a?.title||""}:{}})},render:({open:e})=>(0,s.jsx)(l.Button,{variant:"secondary",onClick:e,children:o?(0,n.__)("Replace image","grosharp"):(0,n.__)("Select image","grosharp")})})}),o?(0,s.jsxs)(s.Fragment,{children:[(0,s.jsx)("img",{src:o,alt:"",style:{display:"block",marginTop:"12px",maxWidth:"100%"}}),(0,s.jsx)(l.Button,{isDestructive:!0,variant:"link",onClick:()=>r({[e.name]:"",...e.idName?{[e.idName]:0}:{}}),children:(0,n.__)("Remove image","grosharp")})]}):null]},e.name)}return"textarea"===e.type?(0,s.jsx)(l.TextareaControl,{label:e.label,value:o||"",onChange:a=>r({[e.name]:a})},e.name):"range"===e.type?(0,s.jsx)(l.RangeControl,{label:e.label,value:o||e.defaultValue||1,min:e.min||1,max:e.max||12,onChange:a=>r({[e.name]:a})},e.name):"json"===e.type?(0,s.jsx)(l.TextareaControl,{label:e.label,help:(0,n.__)("Enter JSON array data. Styling is controlled globally by the theme.","grosharp"),value:JSON.stringify(o||e.defaultValue||[],null,2),onChange:a=>r({[e.name]:i(a,o||e.defaultValue||[])})},e.name):(0,s.jsx)(l.TextControl,{label:e.label,value:o||"",onChange:a=>r({[e.name]:a})},e.name)}(a,e,d)))})}),(0,s.jsx)(o(),{block:a,attributes:e})]})}const c=JSON.parse('{"UU":"grosharp/process-steps"}'),p=[{name:"heading",label:(0,n.__)("Heading","grosharp")},{name:"text",label:(0,n.__)("Text","grosharp"),type:"textarea"},{name:"steps",label:(0,n.__)("Steps","grosharp"),type:"json"}];(0,a.registerBlockType)(c.UU,{edit:function(e){return(0,s.jsx)(d,{...e,blockName:c.UU,fields:p})}})})();
+(()=>{
+"use strict";
+
+const { registerBlockType }           = window.wp.blocks;
+const { __ }                          = window.wp.i18n;
+const { useBlockProps, InspectorControls } = window.wp.blockEditor;
+const { PanelBody, TextControl, TextareaControl, Button } = window.wp.components;
+const el         = window.wp.element.createElement;
+const SSR        = window.wp.serverSideRender && window.wp.serverSideRender.default
+                     ? window.wp.serverSideRender.default
+                     : window.wp.serverSideRender;
+
+const BLOCK_NAME = 'grosharp/process-steps';
+const MAX_STEPS  = 4;
+
+function Edit({ attributes, setAttributes }) {
+	const { eyebrow, heading, text, steps } = attributes;
+	const blockProps = useBlockProps();
+
+	const updateStep = (index, field, value) => {
+		const updated = steps.map((step, i) =>
+			i === index ? { ...step, [field]: value } : step
+		);
+		setAttributes({ steps: updated });
+	};
+
+	const addStep = () => {
+		if (steps.length >= MAX_STEPS) return;
+		setAttributes({ steps: [...steps, { title: '', text: '' }] });
+	};
+
+	const removeStep = (index) => {
+		if (steps.length <= 1) return;
+		setAttributes({ steps: steps.filter((_, i) => i !== index) });
+	};
+
+	return el('div', blockProps,
+
+		// ── Inspector sidebar ──────────────────────────────────────────────
+		el(InspectorControls, null,
+
+			// Section header panel
+			el(PanelBody, { title: __('Section Header', 'grosharp'), initialOpen: true },
+				el(TextControl, {
+					label:    __('Eyebrow', 'grosharp'),
+					value:    eyebrow || '',
+					onChange: (val) => setAttributes({ eyebrow: val }),
+				}),
+				el(TextControl, {
+					label:    __('Heading', 'grosharp'),
+					value:    heading || '',
+					onChange: (val) => setAttributes({ heading: val }),
+				}),
+				el(TextareaControl, {
+					label:    __('Subtext', 'grosharp'),
+					value:    text || '',
+					onChange: (val) => setAttributes({ text: val }),
+				})
+			),
+
+			// Steps repeater panel
+			el(PanelBody, { title: `${__('Steps', 'grosharp')} (${steps.length}/${MAX_STEPS})`, initialOpen: true },
+
+				...steps.map((step, index) =>
+					el('div', {
+						key: index,
+						style: {
+							borderLeft:   '3px solid #654cff',
+							paddingLeft:  '12px',
+							marginBottom: '20px',
+							paddingBottom: '12px',
+							borderBottom: index < steps.length - 1 ? '1px solid #e8e8e8' : 'none',
+						},
+					},
+						// Step label + remove button row
+						el('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' } },
+							el('strong', { style: { color: '#654cff', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' } },
+								`${__('Step', 'grosharp')} ${index + 1}`
+							),
+							steps.length > 1
+								? el(Button, {
+										isDestructive: true,
+										variant: 'link',
+										style: { fontSize: '12px' },
+										onClick: () => removeStep(index),
+									},
+									__('Remove', 'grosharp')
+								  )
+								: null
+						),
+						el(TextControl, {
+							label:    __('Title', 'grosharp'),
+							value:    step.title || '',
+							onChange: (val) => updateStep(index, 'title', val),
+						}),
+						el(TextareaControl, {
+							label:    __('Description', 'grosharp'),
+							value:    step.text || '',
+							onChange: (val) => updateStep(index, 'text', val),
+							rows:     3,
+						})
+					)
+				),
+
+				// Add step button
+				el(Button, {
+					variant:  'secondary',
+					onClick:  addStep,
+					disabled: steps.length >= MAX_STEPS,
+					style:    { width: '100%', justifyContent: 'center' },
+				},
+					steps.length >= MAX_STEPS
+						? __('Maximum 4 steps reached', 'grosharp')
+						: __('+ Add Step', 'grosharp')
+				)
+			)
+		),
+
+		// ── Live preview ───────────────────────────────────────────────────
+		el(SSR, { block: BLOCK_NAME, attributes: attributes })
+	);
+}
+
+registerBlockType(BLOCK_NAME, { edit: Edit });
+
+})();

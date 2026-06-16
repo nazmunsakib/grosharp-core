@@ -5,6 +5,27 @@
  * @package GrosharpCore
  */
 
+// When placed globally in the footer template, skip rendering on excluded pages.
+if ( ! empty( $attributes['isGlobal'] ) ) {
+	if ( is_front_page() ) {
+		return;
+	}
+	if ( is_page() ) {
+		$_q = get_queried_object();
+		if ( $_q instanceof WP_Post && in_array( $_q->post_name, array( 'contact', 'contact-us', 'contacts' ), true ) ) {
+			return;
+		}
+	}
+}
+
+// Prevent double-rendering: if a cta-band already rendered on this request
+// (e.g. legacy inline block in post content + global footer instance), skip.
+static $gs_cta_rendered = false;
+if ( $gs_cta_rendered ) {
+	return;
+}
+$gs_cta_rendered = true;
+
 $attributes = wp_parse_args(
 	$attributes,
 	array(

@@ -39,6 +39,7 @@ final class Registrar {
 		'page-hero',
 		'work-grid',
 		'work-featured',
+		'service-showcase',
 	);
 
 	/**

@@ -1,47 +1,28 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "grosharp/process-steps",
-  "version": "0.1.0",
-  "title": "Grosharp Process Steps",
-  "category": "grosharp",
-  "description": "A structured process section.",
-  "example": {},
-  "textdomain": "grosharp",
-  "attributes": {
-    "heading": {
-      "type": "string",
-      "default": "Process"
-    },
-    "text": {
-      "type": "string",
-      "default": "A focused workflow from strategy to launch."
-    },
-    "steps": {
-      "type": "array",
-      "default": [
-        {
-          "title": "Discover",
-          "text": "Map the business goal, audience, and opportunity."
-        },
-        {
-          "title": "Design",
-          "text": "Shape a clear experience and visual direction."
-        },
-        {
-          "title": "Build",
-          "text": "Develop the site, content system, and launch foundation."
-        }
-      ]
-    }
-  },
-  "supports": {
-    "align": [
-      "wide",
-      "full"
-    ],
-    "html": false
-  },
-  "editorScript": "file:./index.js",
-  "render": "file:./render.php"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/process-steps",
+	"version": "0.1.0",
+	"title": "Grosharp Process Steps",
+	"category": "grosharp",
+	"description": "A structured process section with up to 4 editable steps.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "How We Work" },
+		"heading": { "type": "string", "default": "A focused workflow from brief to results" },
+		"text":    { "type": "string", "default": "Every engagement follows a clear, repeatable process that keeps you informed and confident at every milestone." },
+		"steps": {
+			"type": "array",
+			"default": [
+				{ "title": "Discover",       "text": "Deep-dive sessions to understand your business, audience, and goals. We eliminate assumptions and ground every decision in real insight." },
+				{ "title": "Strategy",       "text": "We craft a focused blueprint — information architecture, design direction, content hierarchy, and a marketing foundation tailored to your goals." },
+				{ "title": "Design & Build", "text": "Design and development in short feedback cycles, sharing progress early and often. Quality assurance runs in parallel, not at the end." },
+				{ "title": "Launch & Grow",  "text": "Deploy, measure, and scale. We handle launch, performance checks, and analytics — then stay close to push growth forward." }
+			]
+		}
+	},
+	"supports": { "align": [ "wide", "full" ], "html": false },
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
 }

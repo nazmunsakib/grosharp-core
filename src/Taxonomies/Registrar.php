@@ -43,7 +43,7 @@ final class Registrar {
 
 		register_taxonomy(
 			'industry',
-			array( 'grosharp_project', 'grosharp_service' ),
+			array( 'grosharp_project' ),
 			array(
 				'labels'       => array(
 					'name'          => __( 'Industries', 'grosharp' ),
@@ -56,35 +56,6 @@ final class Registrar {
 			)
 		);
 
-		register_taxonomy(
-			'service_category',
-			array( 'grosharp_service' ),
-			array(
-				'labels'       => array(
-					'name'          => __( 'Service Categories', 'grosharp' ),
-					'singular_name' => __( 'Service Category', 'grosharp' ),
-				),
-				'hierarchical' => true,
-				'public'       => true,
-				'rewrite'      => array( 'slug' => 'service-category' ),
-				'show_in_rest' => true,
-			)
-		);
-
-		register_taxonomy(
-			'service_pillar',
-			array( 'grosharp_service', 'grosharp_project' ),
-			array(
-				'labels'       => array(
-					'name'          => __( 'Service Pillars', 'grosharp' ),
-					'singular_name' => __( 'Service Pillar', 'grosharp' ),
-				),
-				'hierarchical' => true,
-				'public'       => true,
-				'rewrite'      => array( 'slug' => 'service-pillar' ),
-				'show_in_rest' => true,
-			)
-		);
 	}
 }
 

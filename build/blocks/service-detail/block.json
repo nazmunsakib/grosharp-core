@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/service-detail",
+	"version": "0.1.0",
+	"title": "Grosharp Service Detail",
+	"category": "grosharp",
+	"description": "Single service content section: post intro text, key features checklist, stats row, detail text, and full-width thumbnail. Reads from current service post + ACF fields.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

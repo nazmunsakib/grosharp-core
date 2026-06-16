@@ -66,3 +66,22 @@ add_action(
 		\GrosharpCore\Plugin::instance()->boot();
 	}
 );
+
+/**
+ * Tell ACF where to load and save field group JSON for this plugin.
+ * All field groups in /acf-json/ will be synced automatically.
+ */
+add_filter(
+	'acf/settings/load_json',
+	static function ( array $paths ): array {
+		$paths[] = GROSHARP_CORE_DIR . 'acf-json';
+		return $paths;
+	}
+);
+
+add_filter(
+	'acf/settings/save_json',
+	static function (): string {
+		return GROSHARP_CORE_DIR . 'acf-json';
+	}
+);

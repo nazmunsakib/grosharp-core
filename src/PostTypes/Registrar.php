@@ -63,19 +63,68 @@ final class Registrar {
 		register_post_type(
 			'grosharp_service',
 			array(
-				'labels'       => array(
+				'labels'          => array(
 					'name'          => __( 'Services', 'grosharp' ),
 					'singular_name' => __( 'Service', 'grosharp' ),
 					'add_new_item'  => __( 'Add New Service', 'grosharp' ),
 					'edit_item'     => __( 'Edit Service', 'grosharp' ),
 				),
-				'public'       => true,
-				'has_archive'  => 'services',
-				'menu_icon'    => 'dashicons-hammer',
-				'menu_position'=> 21,
-				'rewrite'      => array( 'slug' => 'services' ),
-				'show_in_rest' => true,
-				'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes' ),
+				'public'          => true,
+				'has_archive'     => 'services',
+				'menu_icon'       => 'dashicons-hammer',
+				'menu_position'   => 21,
+				'rewrite'         => array( 'slug' => 'services' ),
+				'show_in_rest'    => true,
+				'supports'        => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes' ),
+			// Default block template — every section editable per service.
+			// template_lock: false so users can add/remove/rearrange freely.
+			'template'        => array(
+				// Hero — edit eyebrow, heading, description, images in the block
+				array( 'grosharp/page-hero', array( 'align' => 'full' ) ),
+				// Service content — constrained to 860px, padded
+				array(
+					'core/group',
+					array(
+						'className' => 'gs-container',
+					'layout'    => array( 'type' => 'default' ),
+					'style'     => array(
+						'spacing' => array(
+							'padding' => array( 'top' => '4rem', 'bottom' => '4rem' ),
+						),
+					),
+					),
+					array(
+						array(
+							'core/paragraph',
+							array( 'placeholder' => __( 'Write a brief intro about this service…', 'grosharp' ) ),
+						),
+						array(
+							'core/heading',
+							array( 'level' => 2, 'content' => __( "What's Included", 'grosharp' ) ),
+						),
+						array(
+							'core/list',
+							array(
+								'values' => '<li>' . __( 'Feature one', 'grosharp' ) . '</li>'
+									. '<li>' . __( 'Feature two', 'grosharp' ) . '</li>'
+									. '<li>' . __( 'Feature three', 'grosharp' ) . '</li>',
+							),
+						),
+						array(
+							'core/heading',
+							array( 'level' => 2, 'content' => __( 'Our Approach', 'grosharp' ) ),
+						),
+						array(
+							'core/paragraph',
+							array( 'placeholder' => __( 'Describe your process or methodology…', 'grosharp' ) ),
+						),
+						array( 'core/image', array() ),
+					),
+				),
+				array( 'grosharp/process-steps', array( 'align' => 'wide' ) ),
+				array( 'grosharp/faq',           array( 'align' => 'wide' ) ),
+			),
+			'template_lock'   => false,
 			)
 		);
 	}

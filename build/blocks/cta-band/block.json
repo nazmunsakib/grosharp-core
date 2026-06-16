@@ -9,6 +9,10 @@
   "example": {},
   "textdomain": "grosharp",
   "attributes": {
+    "isGlobal": {
+      "type": "boolean",
+      "default": false
+    },
     "heading": {
       "type": "string",
       "default": "Ready to build sharper digital growth?"

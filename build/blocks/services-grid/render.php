@@ -11,6 +11,9 @@ $text      = $attributes['text']      ?? __( 'You need a partner who gets your b
 $cta_url   = $attributes['ctaUrl']    ?? '/services/';
 $cta_label = $attributes['ctaLabel']  ?? __( 'See All Services', 'grosharp' );
 
+// Hide section header when explicitly set, or when on the services archive (page-hero already provides it).
+$hide_header = ! empty( $attributes['hideHeader'] ) || is_post_type_archive( 'grosharp_service' );
+
 /* ─── Inline SVG icon library (fallback) ──────────────────────────────────── */
 if ( ! function_exists( 'grosharp_service_icon' ) ) :
 function grosharp_service_icon( string $key ): string {
@@ -123,34 +126,36 @@ if ( ! empty( $manual ) ) {
 ?>
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-services overflow-hidden bg-white py-[4rem]' ) ); ?>>
 
-	<!-- ── Section header ─────────────────────────────────────────────────── -->
+	<!-- ── Section header (hidden on services archive — page-hero already handles it) ── -->
+	<?php if ( ! $hide_header ) : ?>
 	<div class="gs-container pb-10">
 		<div class="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
 
 			<!-- Left: eyebrow + heading -->
 			<div class="max-w-[580px]">
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
+				<p class="inline-flex items-center gap-2 rounded-full border border-[rgba(101,76,255,0.2)] bg-[rgba(101,76,255,0.07)] px-4 py-1.5 font-body text-[0.875rem] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
 					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]">
+				<h2 class="mt-6 font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
 			<!-- Right: body text + CTA -->
 			<div class="max-w-[360px] md:shrink-0 md:pb-2 md:text-right">
-				<p class="font-body text-[20px] leading-[28px] text-[#5c5d6d]">
+				<p class="font-body text-[1rem] leading-[1.7] text-[#5c5d6d]">
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-7 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-6 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[0.9375rem] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
 					<?php echo esc_html( $cta_label ); ?>
 				</a>
 			</div>
 
 		</div>
 	</div>
+	<?php endif; ?>
 
 	<!-- ── 2-row service grid ────────────────────────────────────────────── -->
 	<div class="gs-container">
@@ -212,13 +217,13 @@ if ( ! empty( $manual ) ) {
 					</div>
 
 					<!-- Number watermark (absolute, bottom-right) -->
-					<div class="gs-service-number absolute bottom-2 right-4 select-none font-heading text-[100px] font-bold leading-none text-white/20 transition-colors duration-500 group-hover:text-[#654cff]/50"
+					<div class="gs-service-number absolute bottom-2 right-4 select-none font-heading text-[100px] font-bold leading-none text-white/20 transition-colors duration-500 group-hover:text-[rgba(101,76,255,0.5)]"
 					     aria-hidden="true">
 						<?php echo esc_html( $card['number'] ?? '01' ); ?>
 					</div>
 
 					<!-- Hover: violet border ring -->
-					<div class="pointer-events-none absolute inset-0 rounded-[24px] border border-transparent transition-colors duration-300 group-hover:border-[#654cff]/40" aria-hidden="true"></div>
+					<div class="pointer-events-none absolute inset-0 rounded-[24px] border border-transparent transition-colors duration-300 group-hover:border-[rgba(101,76,255,0.4)]" aria-hidden="true"></div>
 
 					<!-- Hover: subtle violet glow at bottom -->
 					<div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 rounded-b-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
