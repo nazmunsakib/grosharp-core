@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/post-hero",
+	"version": "0.1.0",
+	"title": "Grosharp Post Hero",
+	"category": "grosharp",
+	"description": "Dynamic hero for any CPT single page. Auto-populates from the current post: title (h1), excerpt (short description), and featured image. Drop into any single-{post-type}.html template.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"eyebrowTaxonomy": {
+			"type": "string",
+			"default": ""
+		},
+		"eyebrowFallback": {
+			"type": "string",
+			"default": ""
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"briefMetaKey": {
+			"type": "string",
+			"default": ""
+		},
+		"techStackMetaKey": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

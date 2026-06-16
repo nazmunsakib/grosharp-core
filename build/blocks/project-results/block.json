@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/project-results",
+	"version": "0.1.0",
+	"title": "Grosharp Project Results",
+	"category": "grosharp",
+	"description": "Outcome stats for the project. Reads from the project_results ACF repeater (result_value + result_label). Includes count-up animation.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

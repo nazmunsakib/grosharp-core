@@ -14,7 +14,6 @@ $image1_alt     = $attributes['image1Alt']     ?? '';
 $image2_url     = $attributes['image2Url']     ?? '';
 $image2_alt     = $attributes['image2Alt']     ?? '';
 
-
 $image_count = ( $image1_url ? 1 : 0 ) + ( $image2_url ? 1 : 0 );
 ?>
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-page-hero bg-white pt-24 pb-12 md:pt-[clamp(5rem,10vw,8rem)] md:pb-[clamp(3rem,6vw,5rem)]' ) ); ?>>

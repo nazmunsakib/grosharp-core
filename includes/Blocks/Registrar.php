@@ -40,6 +40,12 @@ final class Registrar {
 		'work-grid',
 		'work-featured',
 		'service-showcase',
+		'service-detail',
+		'post-hero',
+		'project-detail',
+		'project-gallery',
+		'project-results',
+		'project-next',
 	);
 
 	/**

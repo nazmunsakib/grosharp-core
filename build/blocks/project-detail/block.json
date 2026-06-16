@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/project-detail",
+	"version": "0.1.0",
+	"title": "Grosharp Project Detail",
+	"category": "grosharp",
+	"description": "Challenge and Solution editorial rows. Reads project_challenge and project_solution from ACF fields.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
