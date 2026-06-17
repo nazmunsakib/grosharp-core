@@ -1,1 +1,149 @@
-(()=>{"use strict";var e={n:a=>{var n=a&&a.__esModule?()=>a.default:()=>a;return e.d(n,{a:n}),n},d:(a,n)=>{for(var t in n)e.o(n,t)&&!e.o(a,t)&&Object.defineProperty(a,t,{enumerable:!0,get:n[t]})},o:(e,a)=>Object.prototype.hasOwnProperty.call(e,a)};const a=window.wp.blocks,n=window.wp.i18n,t=window.wp.blockEditor,l=window.wp.components,r=window.wp.serverSideRender;var o=e.n(r);const i=window.ReactJSXRuntime;function s(e,a){try{const n=JSON.parse(e);return Array.isArray(n)?n:a}catch(e){return a}}function d({attributes:e,blockName:a,fields:r,setAttributes:d}){const c=(0,t.useBlockProps)();return(0,i.jsxs)("div",{...c,children:[(0,i.jsx)(t.InspectorControls,{children:(0,i.jsx)(l.PanelBody,{title:(0,n.__)("Content","grosharp"),initialOpen:!0,children:r.map((a=>function(e,a,r){const o=a[e.name];if("media"===e.type){const s=e.idName?a[e.idName]:void 0;return(0,i.jsxs)("div",{className:"grosharp-editor-media-field",children:[(0,i.jsx)("p",{className:"components-base-control__label",children:e.label}),(0,i.jsx)(t.MediaUploadCheck,{children:(0,i.jsx)(t.MediaUpload,{allowedTypes:e.allowedTypes||["image"],value:s||0,onSelect:a=>{r({[e.name]:a?.url||"",...e.idName?{[e.idName]:a?.id||0}:{},...e.altName?{[e.altName]:a?.alt||a?.title||""}:{}})},render:({open:e})=>(0,i.jsx)(l.Button,{variant:"secondary",onClick:e,children:o?(0,n.__)("Replace image","grosharp"):(0,n.__)("Select image","grosharp")})})}),o?(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)("img",{src:o,alt:"",style:{display:"block",marginTop:"12px",maxWidth:"100%"}}),(0,i.jsx)(l.Button,{isDestructive:!0,variant:"link",onClick:()=>r({[e.name]:"",...e.idName?{[e.idName]:0}:{}}),children:(0,n.__)("Remove image","grosharp")})]}):null]},e.name)}return"textarea"===e.type?(0,i.jsx)(l.TextareaControl,{label:e.label,value:o||"",onChange:a=>r({[e.name]:a})},e.name):"range"===e.type?(0,i.jsx)(l.RangeControl,{label:e.label,value:o||e.defaultValue||1,min:e.min||1,max:e.max||12,onChange:a=>r({[e.name]:a})},e.name):"json"===e.type?(0,i.jsx)(l.TextareaControl,{label:e.label,help:(0,n.__)("Enter JSON array data. Styling is controlled globally by the theme.","grosharp"),value:JSON.stringify(o||e.defaultValue||[],null,2),onChange:a=>r({[e.name]:s(a,o||e.defaultValue||[])})},e.name):(0,i.jsx)(l.TextControl,{label:e.label,value:o||"",onChange:a=>r({[e.name]:a})},e.name)}(a,e,d)))})}),(0,i.jsx)(o(),{block:a,attributes:e})]})}const c=JSON.parse('{"UU":"grosharp/pricing"}'),m=[{name:"heading",label:(0,n.__)("Heading","grosharp")},{name:"text",label:(0,n.__)("Text","grosharp"),type:"textarea"},{name:"items",label:(0,n.__)("Packages","grosharp"),type:"json"}];(0,a.registerBlockType)(c.UU,{edit:function(e){return(0,i.jsx)(d,{...e,blockName:c.UU,fields:m})}})})();
+/******/ (() => { // webpackBootstrap
+/******/ "use strict";
+var __webpack_exports__ = {};
+
+// src/Blocks/pricing/index.js
+const { registerBlockType } = wp.blocks;
+const { __ } = wp.i18n;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
+const { Button, PanelBody, TextControl, TextareaControl, ToggleControl } = wp.components;
+const ServerSideRender = wp.serverSideRender;
+
+const metadata = {"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"grosharp/pricing","version":"0.2.0","title":"Grosharp Pricing","category":"grosharp","description":"Pricing table with repeatable plan cards — title, description, price, period, benefits list, CTA, and featured toggle.","example":{},"textdomain":"grosharp","attributes":{"eyebrow":{"type":"string","default":"Engagement Models"},"heading":{"type":"string","default":"The right model for your growth stage."},"text":{"type":"string","default":"Whether you need a one-time launch or a long-term growth partner, we have a model that fits. All engagements include direct access to our senior team."},"items":{"type":"array","default":[{"title":"Discovery Sprint","desc":"A focused project to launch or refresh your digital presence fast. Ideal for new brands and funded startups ready to ship.","price":"From $2,500","period":"one-time","features":["Brand audit & positioning","Up to 7-page website","Mobile-first responsive build","On-page SEO setup","30-day post-launch support"],"cta_label":"Get started","cta_url":"/contact/","featured":false},{"title":"Growth Partner","desc":"An ongoing design, development, and marketing retainer. We become your in-house digital team without the overhead.","price":"From $2,500","period":"per month","features":["Unlimited design requests","20 hrs dev per month","Monthly SEO & content","Analytics & reporting dashboard","Priority Slack access","Quarterly strategy session"],"cta_label":"Start growing","cta_url":"/contact/","featured":true},{"title":"Scale Package","desc":"A fully scoped engagement for established brands undergoing a complete digital transformation or platform rebuild.","price":"Custom","period":"scoped per project","features":["Full brand identity system","Custom web platform","Full-funnel marketing build","Dedicated team pod","Ongoing growth retainer option"],"cta_label":"Talk to us","cta_url":"/contact/","featured":false}]}},"supports":{"align":["wide","full"],"html":false},"editorScript":"file:./index.js","render":"file:./render.php"};
+
+const DEFAULT_ITEM = {
+	title: 'New Plan',
+	desc: '',
+	price: '$0',
+	period: 'per month',
+	features: ['Feature one'],
+	cta_label: 'Get started',
+	cta_url: '/contact/',
+	featured: false,
+};
+
+function PricingCardPanel({ item, index, total, onChange, onRemove, onMove }) {
+	const set = (key, value) => onChange({ ...item, [key]: value });
+
+	const setFeature = (fi, value) => {
+		const features = [...(item.features || [])];
+		features[fi] = value;
+		set('features', features);
+	};
+	const addFeature    = () => set('features', [...(item.features || []), '']);
+	const removeFeature = (fi) => set('features', (item.features || []).filter((_, i) => i !== fi));
+
+	return wp.element.createElement(PanelBody, {
+		title: item.title || __('Untitled Plan', 'grosharp'),
+		initialOpen: index === 0
+	},
+		/* Reorder / remove */
+		wp.element.createElement('div', { style: { display: 'flex', gap: '6px', marginBottom: '14px' } },
+			wp.element.createElement(Button, { variant: 'secondary', size: 'small', disabled: index === 0, onClick: () => onMove(index, index - 1), icon: 'arrow-up-alt2', label: __('Move up', 'grosharp') }),
+			wp.element.createElement(Button, { variant: 'secondary', size: 'small', disabled: index === total - 1, onClick: () => onMove(index, index + 1), icon: 'arrow-down-alt2', label: __('Move down', 'grosharp') }),
+			wp.element.createElement(Button, { variant: 'secondary', size: 'small', isDestructive: true, onClick: onRemove, style: { marginLeft: 'auto' } }, __('Remove', 'grosharp'))
+		),
+
+		/* Title */
+		wp.element.createElement(TextControl, { label: __('Plan Title', 'grosharp'), value: item.title || '', onChange: (v) => set('title', v) }),
+
+		/* Description */
+		wp.element.createElement(TextareaControl, { label: __('Short Description', 'grosharp'), value: item.desc || '', onChange: (v) => set('desc', v), rows: 2 }),
+
+		/* Price + period */
+		wp.element.createElement('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' } },
+			wp.element.createElement(TextControl, { label: __('Price', 'grosharp'), value: item.price || '', onChange: (v) => set('price', v), placeholder: 'From $2,500' }),
+			wp.element.createElement(TextControl, { label: __('Period / Suffix', 'grosharp'), value: item.period || '', onChange: (v) => set('period', v), placeholder: 'per month' })
+		),
+
+		/* Benefits */
+		wp.element.createElement('div', { style: { marginTop: '4px' } },
+			wp.element.createElement('p', { style: { fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '8px', color: '#1e1e1e' } },
+				__('Benefits List', 'grosharp')
+			),
+			...(item.features || []).map((feature, fi) =>
+				wp.element.createElement('div', { key: fi, style: { display: 'flex', gap: '6px', alignItems: 'flex-start', marginBottom: '6px' } },
+					wp.element.createElement('div', { style: { flex: 1, minWidth: 0 } },
+						wp.element.createElement(TextControl, { value: feature, onChange: (v) => setFeature(fi, v), placeholder: __('Benefit description…', 'grosharp'), hideLabelFromVision: true, label: `Benefit ${fi + 1}` })
+					),
+					wp.element.createElement(Button, { variant: 'secondary', size: 'small', isDestructive: true, onClick: () => removeFeature(fi), icon: 'no-alt', label: __('Remove benefit', 'grosharp'), style: { marginTop: '2px', flexShrink: 0 } })
+				)
+			),
+			wp.element.createElement(Button, { variant: 'secondary', size: 'small', onClick: addFeature, style: { width: '100%', justifyContent: 'center', marginBottom: '12px' } },
+				__('+ Add Benefit', 'grosharp')
+			)
+		),
+
+		/* CTA */
+		wp.element.createElement('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' } },
+			wp.element.createElement(TextControl, { label: __('Button Label', 'grosharp'), value: item.cta_label || '', onChange: (v) => set('cta_label', v) }),
+			wp.element.createElement(TextControl, { label: __('Button URL', 'grosharp'), value: item.cta_url || '', onChange: (v) => set('cta_url', v), type: 'url' })
+		),
+
+		/* Featured */
+		wp.element.createElement(ToggleControl, {
+			label: __('Featured card', 'grosharp'),
+			checked: !!item.featured,
+			onChange: (v) => set('featured', v),
+			help: __('Highlights this card with a violet background.', 'grosharp')
+		})
+	);
+}
+
+function Edit({ attributes, setAttributes }) {
+	const blockProps = useBlockProps();
+	const { eyebrow, heading, text, items = [] } = attributes;
+
+	const updateItem = (index, newItem) => {
+		const next = [...items];
+		next[index] = newItem;
+		setAttributes({ items: next });
+	};
+	const removeItem = (index) => setAttributes({ items: items.filter((_, i) => i !== index) });
+	const moveItem = (from, to) => {
+		const next = [...items];
+		const [moved] = next.splice(from, 1);
+		next.splice(to, 0, moved);
+		setAttributes({ items: next });
+	};
+	const addItem = () => setAttributes({ items: [...items, { ...DEFAULT_ITEM }] });
+
+	return wp.element.createElement('div', { ...blockProps },
+		wp.element.createElement(InspectorControls, null,
+
+			/* Section header */
+			wp.element.createElement(PanelBody, { title: __('Section Header', 'grosharp'), initialOpen: true },
+				wp.element.createElement(TextControl, { label: __('Eyebrow', 'grosharp'), value: eyebrow || '', onChange: (v) => setAttributes({ eyebrow: v }) }),
+				wp.element.createElement(TextControl, { label: __('Heading', 'grosharp'), value: heading || '', onChange: (v) => setAttributes({ heading: v }) }),
+				wp.element.createElement(TextareaControl, { label: __('Subtext', 'grosharp'), value: text || '', onChange: (v) => setAttributes({ text: v }), rows: 2 })
+			),
+
+			/* Card repeater */
+			...items.map((item, i) =>
+				wp.element.createElement(PricingCardPanel, {
+					key: i,
+					item,
+					index: i,
+					total: items.length,
+					onChange: (newItem) => updateItem(i, newItem),
+					onRemove: () => removeItem(i),
+					onMove: moveItem,
+				})
+			),
+
+			/* Add card */
+			wp.element.createElement('div', { style: { padding: '16px' } },
+				wp.element.createElement(Button, { variant: 'primary', onClick: addItem, style: { width: '100%', justifyContent: 'center' } },
+					__('+ Add Pricing Plan', 'grosharp')
+				)
+			)
+		),
+
+		/* Live preview */
+		wp.element.createElement(ServerSideRender, { block: metadata.name, attributes })
+	);
+}
+
+registerBlockType(metadata.name, { edit: Edit });
+
+/******/ })();

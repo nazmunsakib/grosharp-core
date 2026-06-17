@@ -2,21 +2,77 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "grosharp/pricing",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"title": "Grosharp Pricing",
 	"category": "grosharp",
-	"description": "Engagement models or package cards.",
+	"description": "Pricing table with repeatable plan cards — title, description, price, period, benefits list, CTA, and featured toggle.",
 	"example": {},
 	"textdomain": "grosharp",
 	"attributes": {
-		"heading": { "type": "string", "default": "Engagement models" },
-		"text": { "type": "string", "default": "Choose the support level that fits your growth stage." },
+		"eyebrow": {
+			"type": "string",
+			"default": "Engagement Models"
+		},
+		"heading": {
+			"type": "string",
+			"default": "The right model for your growth stage."
+		},
+		"text": {
+			"type": "string",
+			"default": "Whether you need a one-time launch or a long-term growth partner, we have a model that fits. All engagements include direct access to our senior team."
+		},
 		"items": {
 			"type": "array",
 			"default": [
-				{ "title": "Launch", "text": "A focused website or campaign foundation." },
-				{ "title": "Growth", "text": "Ongoing design, development, and marketing support." },
-				{ "title": "Scale", "text": "Custom systems for ambitious digital teams." }
+				{
+					"title": "Discovery Sprint",
+					"desc": "A focused project to launch or refresh your digital presence fast. Ideal for new brands and funded startups ready to ship.",
+					"price": "From $2,500",
+					"period": "one-time",
+					"features": [
+						"Brand audit & positioning",
+						"Up to 7-page website",
+						"Mobile-first responsive build",
+						"On-page SEO setup",
+						"30-day post-launch support"
+					],
+					"cta_label": "Get started",
+					"cta_url": "/contact/",
+					"featured": false
+				},
+				{
+					"title": "Growth Partner",
+					"desc": "An ongoing design, development, and marketing retainer. We become your in-house digital team without the overhead.",
+					"price": "From $2,500",
+					"period": "per month",
+					"features": [
+						"Unlimited design requests",
+						"20 hrs dev per month",
+						"Monthly SEO & content",
+						"Analytics & reporting dashboard",
+						"Priority Slack access",
+						"Quarterly strategy session"
+					],
+					"cta_label": "Start growing",
+					"cta_url": "/contact/",
+					"featured": true
+				},
+				{
+					"title": "Scale Package",
+					"desc": "A fully scoped engagement for established brands undergoing a complete digital transformation or platform rebuild.",
+					"price": "Custom",
+					"period": "scoped per project",
+					"features": [
+						"Full brand identity system",
+						"Custom web platform",
+						"Full-funnel marketing build",
+						"Dedicated team pod",
+						"Ongoing growth retainer option"
+					],
+					"cta_label": "Talk to us",
+					"cta_url": "/contact/",
+					"featured": false
+				}
 			]
 		}
 	},
@@ -24,4 +80,3 @@
 	"editorScript": "file:./index.js",
 	"render": "file:./render.php"
 }
-
