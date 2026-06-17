@@ -1,0 +1,12 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/not-found",
+	"title": "404 Not Found",
+	"category": "grosharp",
+	"description": "Premium 404 error page section.",
+	"supports": { "html": false, "align": ["full"] },
+	"attributes": {},
+	"render": "file:./render.php",
+	"textdomain": "grosharp"
+}

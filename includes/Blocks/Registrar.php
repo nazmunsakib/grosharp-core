@@ -49,6 +49,7 @@ final class Registrar {
 		'post-toc',
 		'contact-methods',
 		'contact-details',
+		'not-found',
 		'project-detail',
 		'project-gallery',
 		'project-results',
