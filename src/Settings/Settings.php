@@ -121,6 +121,9 @@ final class Settings {
 		$logo_id = absint( $value['logo_id'] ?? 0 );
 		if ( $logo_id && $logo_id !== (int) get_theme_mod( 'custom_logo' ) ) {
 			set_theme_mod( 'custom_logo', $logo_id );
+		} elseif ( ! $logo_id && get_theme_mod( 'custom_logo' ) ) {
+			// Logo was cleared — remove the theme mod so the header falls back to site title.
+			remove_theme_mod( 'custom_logo' );
 		}
 
 		$clean['social_links'] = array();
