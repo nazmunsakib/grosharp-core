@@ -113,11 +113,10 @@ $placeholder_projects = array(
 							<!-- Dark tint -->
 							<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-out group-hover:opacity-100"></div>
 
-							<!-- "View Project" button -->
+							<!-- Centered icon -->
 							<div class="absolute inset-0 flex items-center justify-center">
-								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[16px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
-									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-[16px]" aria-hidden="true">→</span>
+								<span class="gs-proj-icon flex h-16 w-16 scale-50 items-center justify-center rounded-full bg-white opacity-0 shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-100 group-hover:opacity-100" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#654cff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
 								</span>
 							</div>
 
@@ -155,11 +154,10 @@ $placeholder_projects = array(
 							<!-- Dark tint -->
 							<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-out group-hover:opacity-100"></div>
 
-							<!-- "View Project" button -->
+							<!-- Centered icon -->
 							<div class="absolute inset-0 flex items-center justify-center">
-								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[16px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
-									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-[16px]" aria-hidden="true">→</span>
+								<span class="gs-proj-icon flex h-16 w-16 scale-50 items-center justify-center rounded-full bg-white opacity-0 shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-100 group-hover:opacity-100" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#654cff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
 								</span>
 							</div>
 
