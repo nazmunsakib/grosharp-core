@@ -35,10 +35,9 @@ $query = new WP_Query(
 /* ── Fallback slides ────────────────────────────────────────────────────────── */
 $fallback = array(
 	array(
-		'headline'    => __( '"The team delivered beyond what we imagined. Results came faster than expected."', 'grosharp' ),
+		'title'       => __( 'Delivered beyond what we imagined.', 'grosharp' ),
+		'review'      => __( 'Within two months of launch our inbound lead volume doubled. Grosharp brought ideas we never would have thought of, then executed them flawlessly.', 'grosharp' ),
 		'name'        => 'Sarah Okeke',
-		'role'        => 'CEO',
-		'company'     => 'Elevance',
 		'designation' => 'CEO · Elevance',
 		'rating'      => '5.0',
 		'avatar_url'  => '',
@@ -47,10 +46,9 @@ $fallback = array(
 		'text'        => '#4f39c7',
 	),
 	array(
-		'headline'    => __( '"Six months later, organic traffic is up 148%. Couldn\'t be happier."', 'grosharp' ),
+		'title'       => __( 'Organic traffic up 148% in six months.', 'grosharp' ),
+		'review'      => __( 'We hired Grosharp for SEO and ended up getting a full content strategy that changed how we think about our brand. Game changing.', 'grosharp' ),
 		'name'        => 'James Whitfield',
-		'role'        => 'Head of Marketing',
-		'company'     => 'Foliocraft',
 		'designation' => 'Head of Marketing · Foliocraft',
 		'rating'      => '5.0',
 		'avatar_url'  => '',
@@ -59,10 +57,9 @@ $fallback = array(
 		'text'        => '#3730a3',
 	),
 	array(
-		'headline'    => __( '"Support tickets dropped 40% the week we launched. Fast, reliable, they listened."', 'grosharp' ),
+		'title'       => __( 'Support tickets dropped 40% at launch.', 'grosharp' ),
+		'review'      => __( 'The new client portal Grosharp built replaced a tool we had been struggling with for years. Launch week changed everything for our support team.', 'grosharp' ),
 		'name'        => 'Priya Nair',
-		'role'        => 'Product Manager',
-		'company'     => 'Meridian',
 		'designation' => 'Product Manager · Meridian',
 		'rating'      => '5.0',
 		'avatar_url'  => '',
@@ -71,10 +68,9 @@ $fallback = array(
 		'text'        => '#4f39c7',
 	),
 	array(
-		'headline'    => __( '"Conversion rate jumped 60% after the redesign. The ROI was immediate."', 'grosharp' ),
+		'title'       => __( 'Conversion rate jumped 60%. ROI was immediate.', 'grosharp' ),
+		'review'      => __( 'We expected a visual refresh and got a complete rethinking of our user journey. The data speaks for itself — we\'ve never seen numbers like this.', 'grosharp' ),
 		'name'        => 'Daniel Cross',
-		'role'        => 'Founder',
-		'company'     => 'Vizerto',
 		'designation' => 'Founder · Vizerto',
 		'rating'      => '5.0',
 		'avatar_url'  => '',
@@ -83,10 +79,9 @@ $fallback = array(
 		'text'        => '#6d28d9',
 	),
 	array(
-		'headline'    => __( '"Our new brand finally matches the quality of our product. Proud to show it off."', 'grosharp' ),
+		'title'       => __( 'Our brand finally matches the quality of our product.', 'grosharp' ),
+		'review'      => __( 'The Grosharp team took the time to understand what makes us different before opening Figma. That showed in every single design decision they made.', 'grosharp' ),
 		'name'        => 'Anika Mensah',
-		'role'        => 'CMO',
-		'company'     => 'Aria Studio',
 		'designation' => 'CMO · Aria Studio',
 		'rating'      => '5.0',
 		'avatar_url'  => '',
@@ -134,6 +129,7 @@ if ( $query->have_posts() ) {
 		/* ACF fields — with post title / content fallbacks */
 		$name        = '';
 		$designation = '';
+		$title       = '';
 		$review      = '';
 		$avatar_url  = '';
 		$rating      = '5.0';
@@ -141,6 +137,7 @@ if ( $query->have_posts() ) {
 		if ( function_exists( 'get_field' ) ) {
 			$name        = (string) ( get_field( 'testimonial_client_name', $pid ) ?: get_the_title() );
 			$designation = (string) ( get_field( 'testimonial_designation',  $pid ) ?: '' );
+			$title       = (string) ( get_field( 'testimonial_title',        $pid ) ?: '' );
 			$review      = (string) ( get_field( 'testimonial_review',       $pid ) ?: wp_strip_all_tags( get_the_content() ) );
 			$rating      = (string) ( get_field( 'testimonial_rating',       $pid ) ?: '5.0' );
 			$avatar_data = get_field( 'testimonial_avatar', $pid );
@@ -153,10 +150,11 @@ if ( $query->have_posts() ) {
 		}
 
 		if ( ! $name )   { $name   = $fb['name']; }
-		if ( ! $review ) { $review = $fb['body']; }
+		if ( ! $review ) { $review = $fb['headline']; }
 
 		$slides[] = array(
-			'headline'    => $review ? '"' . $review . '"' : $fb['headline'],
+			'title'       => $title,
+			'review'      => $review,
 			'name'        => $name,
 			'designation' => $designation ?: ( $fb['role'] . ' · ' . $fb['company'] ),
 			'rating'      => $rating,
@@ -231,10 +229,19 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 							</span>
 						</div>
 
-						<!-- Review quote -->
-						<p class="grow font-heading text-[19px] font-bold leading-[1.35] tracking-[-0.015em] text-[#0d0d12] md:text-[21px]">
-							<?php echo esc_html( $slide['headline'] ); ?>
-						</p>
+						<!-- Title -->
+						<?php if ( ! empty( $slide['title'] ) ) : ?>
+							<p class="font-heading text-[19px] font-bold leading-[1.3] tracking-[-0.015em] text-[#0d0d12] md:text-[21px]">
+								<?php echo esc_html( $slide['title'] ); ?>
+							</p>
+						<?php endif; ?>
+
+						<!-- Review text -->
+						<?php if ( ! empty( $slide['review'] ) ) : ?>
+							<p class="mt-3 grow font-body text-[14.5px] leading-relaxed text-[#5c5d6d]">
+								"<?php echo esc_html( $slide['review'] ); ?>"
+							</p>
+						<?php endif; ?>
 
 						<!-- Client info row -->
 						<div class="mt-8 flex items-center gap-3 border-t border-black/[0.06] pt-6">
