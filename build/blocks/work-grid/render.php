@@ -108,7 +108,7 @@ $arrow_svg = '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-h
 							<div class="relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] bg-[#e8e8f4]">
 								<?php if ( has_post_thumbnail() ) : ?>
 									<img class="w-full h-full object-cover block transition-transform duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-									     src="<?php the_post_thumbnail_url( 'large' ); ?>"
+									     src="<?php the_post_thumbnail_url( 'grosharp-card-lg' ); ?>"
 									     alt="<?php the_title_attribute(); ?>"
 									     loading="lazy" />
 								<?php endif; ?>

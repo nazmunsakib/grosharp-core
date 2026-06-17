@@ -84,7 +84,7 @@ $style_id  = $block_id . '-style';
 		<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
 
 			<?php foreach ( $images as $i => $img ) :
-				$src      = $img['sizes']['large'] ?? $img['url'] ?? '';
+				$src      = $img['sizes']['grosharp-gallery'] ?? $img['sizes']['large'] ?? $img['url'] ?? '';
 				$src_full = $img['url'] ?? $src;
 				$alt      = $img['alt'] ?? '';
 				if ( ! $src ) { continue; }

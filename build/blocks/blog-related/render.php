@@ -72,7 +72,7 @@ $cat_color_map = array(
 				$cat_name  = ! empty( $rcats ) ? $rcats[0]->name : '';
 				$cat_url   = ! empty( $rcats ) ? get_category_link( $rcats[0]->term_id ) : '';
 				$cat_c     = $cat_color_map[ $cat_name ] ?? array( 'bg' => '#f4f4f5', 'text' => '#3f3f46' );
-				$thumb     = get_the_post_thumbnail_url( $pid, 'large' );
+				$thumb     = get_the_post_thumbnail_url( $pid, 'grosharp-card-sm' );
 				$gradient  = $gradients[ $i % count( $gradients ) ];
 				$author    = get_the_author();
 				$words     = str_word_count( wp_strip_all_tags( get_post_field( 'post_content', $pid ) ) );

@@ -110,7 +110,7 @@ $cat_colors = array(
 					$cat_name = ( $cats && ! empty( $cats ) ) ? $cats[0]->name : '';
 					$cat_cls  = $cat_colors[ $cat_name ] ?? 'bg-[#f5f5f5] text-[#3f3f46]';
 					$gradient = $gradients[ $i % count( $gradients ) ];
-					$thumb    = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+					$thumb    = get_the_post_thumbnail_url( get_the_ID(), 'grosharp-card-sm' );
 					$date     = get_the_date( 'M j, Y' );
 					?>
 					<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.13)]" data-gs-post-card>

@@ -31,7 +31,7 @@ if ( ! $post || $post->post_type !== 'grosharp_project' || $post->post_status !=
 $title     = $post ? get_the_title( $post )     : __( 'Elevance — Brand & Website Redesign', 'grosharp' );
 $excerpt   = $post ? get_the_excerpt( $post )   : __( 'A complete identity and digital overhaul for a fast-growing fintech startup. We took them from generic SaaS to a brand people remember — and a site that converts.', 'grosharp' );
 $permalink = $post ? get_permalink( $post )      : '#';
-$img_url   = $post && has_post_thumbnail( $post ) ? get_the_post_thumbnail_url( $post, 'large' ) : '';
+$img_url   = $post && has_post_thumbnail( $post ) ? get_the_post_thumbnail_url( $post, 'grosharp-card-lg' ) : '';
 $type_terms = $post ? get_the_terms( $post->ID, 'project_type' ) : array();
 $type_name  = ( is_array( $type_terms ) && ! empty( $type_terms ) ) ? $type_terms[0]->name : __( 'Web Design', 'grosharp' );
 

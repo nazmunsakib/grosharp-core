@@ -116,7 +116,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 			$cat_name  = ! empty( $cats ) ? $cats[0]->name : '';
 			$cat_url   = ! empty( $cats ) ? get_category_link( $cats[0]->term_id ) : '';
 			$cat_style = grosharp_cat_style( $cat_name, $cat_color_map );
-			$thumb     = get_the_post_thumbnail_url( $pid, 'large' );
+			$thumb     = get_the_post_thumbnail_url( $pid, 'grosharp-card-lg' );
 			$gradient  = $gradients[ $i % count( $gradients ) ];
 			$author    = get_the_author();
 			$author_id = get_post_field( 'post_author', $pid );

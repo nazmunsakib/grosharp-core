@@ -49,7 +49,7 @@ $next_query->the_post();
 $next_id    = get_the_ID();
 $next_title = get_the_title();
 $next_url   = get_permalink();
-$next_img   = get_the_post_thumbnail_url( $next_id, 'large' );
+$next_img   = get_the_post_thumbnail_url( $next_id, 'grosharp-card-lg' );
 $next_cat   = '';
 
 $terms = get_the_terms( $next_id, 'grosharp_project_type' );

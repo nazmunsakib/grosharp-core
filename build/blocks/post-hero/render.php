@@ -107,7 +107,7 @@ $image_url = '';
 $image_alt = '';
 
 if ( $show_image && has_post_thumbnail( $post_id ) ) {
-	$image_url = get_the_post_thumbnail_url( $post_id, 'full' );
+	$image_url = get_the_post_thumbnail_url( $post_id, 'grosharp-hero' );
 	$thumb_id  = get_post_thumbnail_id( $post_id );
 	$image_alt = (string) get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
 	if ( ! $image_alt ) {

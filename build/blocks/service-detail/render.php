@@ -53,7 +53,7 @@ foreach ( array_slice( $stats_rows, 0, 3 ) as $row ) {
 $post_content = apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) );
 
 // ── Featured image ────────────────────────────────────────────────────────
-$thumb_url = (string) get_the_post_thumbnail_url( $post_id, 'full' );
+$thumb_url = (string) get_the_post_thumbnail_url( $post_id, 'grosharp-hero' );
 $thumb_alt = esc_attr( get_the_title() );
 
 $has_content  = ! empty( trim( strip_tags( $post_content ) ) );

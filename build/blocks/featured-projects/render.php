@@ -99,7 +99,7 @@ $placeholder_projects = array(
 							<?php if ( has_post_thumbnail() ) : ?>
 								<img
 									class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-									src="<?php the_post_thumbnail_url( 'large' ); ?>"
+									src="<?php the_post_thumbnail_url( 'grosharp-card-lg' ); ?>"
 									alt="<?php the_title_attribute(); ?>"
 									loading="lazy"
 									data-gs-project-img

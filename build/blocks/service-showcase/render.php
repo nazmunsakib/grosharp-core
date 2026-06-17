@@ -67,7 +67,7 @@ if ( $query->have_posts() ) {
 			'title'     => get_the_title(),
 			'excerpt'   => wp_strip_all_tags( get_the_excerpt() ),
 			'permalink' => get_permalink(),
-			'thumb_url' => (string) get_the_post_thumbnail_url( $post_id, 'large' ),
+			'thumb_url' => (string) get_the_post_thumbnail_url( $post_id, 'grosharp-card-lg' ),
 		);
 	}
 	wp_reset_postdata();
