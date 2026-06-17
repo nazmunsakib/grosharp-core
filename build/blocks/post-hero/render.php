@@ -116,7 +116,7 @@ if ( $show_image && has_post_thumbnail( $post_id ) ) {
 }
 ?>
 
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-post-hero bg-white pt-24 pb-0 md:pt-[clamp(5rem,10vw,8rem)]' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-post-hero bg-white pt-24 md:pt-[clamp(5rem,10vw,8rem)]' ) ); ?> style="padding-bottom:30px;">
 	<div class="gs-container">
 
 		<div class="max-w-[860px]">
@@ -180,7 +180,7 @@ if ( $show_image && has_post_thumbnail( $post_id ) ) {
 
 		<!-- Thumbnail -->
 		<?php if ( $image_url ) : ?>
-			<div class="mt-10 pb-2 md:mt-[clamp(2.5rem,5vw,4rem)] md:pb-4" data-ph-img>
+			<div class="mt-10 md:mt-[clamp(2.5rem,5vw,4rem)]" data-ph-img>
 				<figure class="m-0 overflow-hidden rounded-xl md:rounded-2xl">
 					<img src="<?php echo esc_url( $image_url ); ?>"
 					     alt="<?php echo esc_attr( $image_alt ); ?>"

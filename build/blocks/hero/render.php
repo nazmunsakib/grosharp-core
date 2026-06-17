@@ -22,7 +22,7 @@ $attributes = wp_parse_args(
 	)
 );
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-hero relative overflow-hidden pt-[8rem] pb-[6rem]' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-hero relative overflow-hidden pt-[8rem]' ) ); ?> style="padding-bottom:30px;">
 
 	<!-- ── Decorative background layer ──────────────────────────────────── -->
 	<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
