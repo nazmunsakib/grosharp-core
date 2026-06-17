@@ -72,7 +72,7 @@ if ( empty( $meta ) ) {
 						   rel="noopener noreferrer"
 						   class="inline-flex items-center gap-1.5 font-body text-[1rem] font-semibold text-[#654cff] transition-colors duration-200 hover:text-[#0d0d12]">
 							<?php echo esc_html( $item['value'] ); ?>
-							<span aria-hidden="true" class="text-[0.8em]">↗</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
 						</a>
 					<?php else : ?>
 						<p class="font-body text-[1rem] font-semibold text-[#0d0d12]">

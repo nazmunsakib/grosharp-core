@@ -38,7 +38,9 @@ final class Settings {
 			'tagline'       => 'Development, design, and marketing for sharper digital growth.',
 			'email'         => '',
 			'phone'         => '',
-			'address'       => '',
+			'address'          => '',
+			'working_hours'    => 'Mon – Fri, 9am – 6pm (GMT+6)',
+			'calendly_url'     => '',
 			'cta_label'        => 'Start a Project',
 			'cta_url'          => '/contact/',
 			'footer_text'      => 'Development, design, and marketing for brands that want sharper digital growth.',
@@ -104,8 +106,10 @@ final class Settings {
 		$clean['tagline']      = sanitize_text_field( $value['tagline'] ?? $defaults['tagline'] );
 		$clean['email']        = sanitize_email( $value['email'] ?? '' );
 		$clean['phone']        = sanitize_text_field( $value['phone'] ?? '' );
-		$clean['address']      = sanitize_textarea_field( $value['address'] ?? '' );
-		$clean['cta_label']    = sanitize_text_field( $value['cta_label'] ?? $defaults['cta_label'] );
+		$clean['address']       = sanitize_textarea_field( $value['address'] ?? '' );
+		$clean['working_hours'] = sanitize_text_field( $value['working_hours'] ?? $defaults['working_hours'] );
+		$clean['calendly_url']  = esc_url_raw( $value['calendly_url'] ?? '' );
+		$clean['cta_label']     = sanitize_text_field( $value['cta_label'] ?? $defaults['cta_label'] );
 		$clean['cta_url']      = esc_url_raw( $value['cta_url'] ?? $defaults['cta_url'] );
 		$clean['footer_text']  = sanitize_text_field( $value['footer_text'] ?? $defaults['footer_text'] );
 

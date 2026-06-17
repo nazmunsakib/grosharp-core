@@ -47,6 +47,8 @@ final class Registrar {
 		'post-author-card',
 		'blog-related',
 		'post-toc',
+		'contact-methods',
+		'contact-details',
 		'project-detail',
 		'project-gallery',
 		'project-results',

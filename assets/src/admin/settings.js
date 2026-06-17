@@ -238,7 +238,9 @@
 								createElement(TextControl, { label: __('Tagline', 'grosharp'), value: settings.tagline || '', onChange: field(settings, setSettings, 'tagline') }),
 								createElement(TextControl, { label: __('Email', 'grosharp'), value: settings.email || '', type: 'email', onChange: field(settings, setSettings, 'email') }),
 								createElement(TextControl, { label: __('Phone', 'grosharp'), value: settings.phone || '', type: 'tel', onChange: field(settings, setSettings, 'phone') }),
-								createElement(TextareaControl, { label: __('Address', 'grosharp'), value: settings.address || '', onChange: field(settings, setSettings, 'address') })
+								createElement(TextareaControl, { label: __('Address', 'grosharp'), value: settings.address || '', onChange: field(settings, setSettings, 'address') }),
+								createElement(TextControl, { label: __('Working Hours', 'grosharp'), value: settings.working_hours || '', placeholder: 'Mon – Fri, 9am – 6pm (GMT+6)', onChange: field(settings, setSettings, 'working_hours') }),
+								createElement(TextControl, { label: __('Calendly / Book a Call URL', 'grosharp'), value: settings.calendly_url || '', placeholder: 'https://calendly.com/yourname', onChange: field(settings, setSettings, 'calendly_url') })
 							)
 						)
 					);
