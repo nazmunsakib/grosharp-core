@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/blog-grid",
+	"version": "0.1.0",
+	"title": "Grosharp Blog Grid",
+	"category": "grosharp",
+	"description": "Full blog archive grid with category filter pills, author, read time, and pagination.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"postsPerPage": { "type": "number", "default": 9 },
+		"showFilters":  { "type": "boolean", "default": true }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

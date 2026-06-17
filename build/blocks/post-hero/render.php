@@ -49,31 +49,38 @@ if ( ! $eyebrow ) {
 	}
 }
 
-/* ── Short brief ────────────────────────────────────────────────────────── */
-$brief = '';
+/* ── Date & read time ────────────────────────────────────────────────────── */
+$date      = get_the_date( 'M j, Y', $post_id );
+$date_iso  = get_the_date( 'c',      $post_id );
+$words     = str_word_count( wp_strip_all_tags( $post->post_content ) );
+$read_time = max( 1, (int) ceil( $words / 200 ) );
 
+/* ── Category ────────────────────────────────────────────────────────────── */
+$cats     = get_the_category( $post_id );
+$cat      = ! empty( $cats ) ? $cats[0] : null;
+$cat_name = $cat ? $cat->name : '';
+$cat_url  = $cat ? get_category_link( $cat->term_id ) : '';
+
+$cat_color_map = array(
+	'Design'      => array( 'bg' => '#f0e9ff', 'text' => '#4f39c7' ),
+	'Development' => array( 'bg' => '#e8f4ff', 'text' => '#1d4ed8' ),
+	'Marketing'   => array( 'bg' => '#f0fdf4', 'text' => '#065f46' ),
+	'Strategy'    => array( 'bg' => '#fff7ed', 'text' => '#9a3412' ),
+	'Branding'    => array( 'bg' => '#fef3c7', 'text' => '#92400e' ),
+	'News'        => array( 'bg' => '#f4f4f5', 'text' => '#3f3f46' ),
+);
+$cat_c = $cat_color_map[ $cat_name ] ?? array( 'bg' => '#f4f4f5', 'text' => '#3f3f46' );
+
+/* ── Short brief (project CPT only — not shown on standard posts) ────────── */
+$brief = '';
 if ( $brief_meta_key ) {
-	/* 1. ACF get_field() */
 	if ( function_exists( 'get_field' ) ) {
 		$val = get_field( $brief_meta_key, $post_id );
-		if ( $val && is_string( $val ) ) {
-			$brief = $val;
-		}
+		if ( $val && is_string( $val ) ) { $brief = $val; }
 	}
-	/* 2. Direct post meta */
 	if ( ! $brief ) {
 		$brief = (string) get_post_meta( $post_id, $brief_meta_key, true );
 	}
-}
-
-/* 3. Post excerpt field */
-if ( ! $brief && $post->post_excerpt ) {
-	$brief = $post->post_excerpt;
-}
-
-/* 4. Auto-generated from post content */
-if ( ! $brief && $post->post_content ) {
-	$brief = wp_trim_words( wp_strip_all_tags( $post->post_content ), 30, '…' );
 }
 
 /* ── Tech stack tags ────────────────────────────────────────────────────── */
@@ -128,12 +135,34 @@ if ( $show_image && has_post_thumbnail( $post_id ) ) {
 				<span class="ph-heading-dark"><?php echo esc_html( $post->post_title ); ?></span>
 			</h1>
 
-			<!-- Short brief -->
+			<!-- Brief (project CPT only) -->
 			<?php if ( $brief ) : ?>
 				<p class="max-w-[56ch] font-body text-[1rem] leading-[1.75] text-[#5c5d6d] opacity-0 md:text-[1.125rem]"
 				   data-ph-sub>
 					<?php echo esc_html( $brief ); ?>
 				</p>
+			<?php endif; ?>
+
+			<!-- Meta row: category · date · read time (blog posts) -->
+			<?php if ( ! $brief_meta_key ) : ?>
+				<div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2" data-ph-sub>
+					<?php if ( $cat_name ) : ?>
+						<a href="<?php echo esc_url( $cat_url ); ?>"
+						   class="inline-flex items-center rounded-full px-3.5 py-1 font-body text-[0.75rem] font-semibold no-underline"
+						   style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['text'] ); ?>;">
+							<?php echo esc_html( $cat_name ); ?>
+						</a>
+						<span class="h-3.5 w-px bg-black/10" aria-hidden="true"></span>
+					<?php endif; ?>
+					<time datetime="<?php echo esc_attr( $date_iso ); ?>"
+					      class="font-body text-[0.875rem] text-[#9a9ab0]">
+						<?php echo esc_html( $date ); ?>
+					</time>
+					<span class="h-3.5 w-px bg-black/10" aria-hidden="true"></span>
+					<span class="font-body text-[0.875rem] text-[#9a9ab0]">
+						<?php echo esc_html( $read_time ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?>
+					</span>
+				</div>
 			<?php endif; ?>
 
 			<!-- Tech stack tags -->
@@ -151,7 +180,7 @@ if ( $show_image && has_post_thumbnail( $post_id ) ) {
 
 		<!-- Thumbnail -->
 		<?php if ( $image_url ) : ?>
-			<div class="mt-10 md:mt-[clamp(2.5rem,5vw,4rem)]" data-ph-img>
+			<div class="mt-10 pb-2 md:mt-[clamp(2.5rem,5vw,4rem)] md:pb-4" data-ph-img>
 				<figure class="m-0 overflow-hidden rounded-xl md:rounded-2xl">
 					<img src="<?php echo esc_url( $image_url ); ?>"
 					     alt="<?php echo esc_attr( $image_alt ); ?>"

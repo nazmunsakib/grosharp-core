@@ -28,7 +28,7 @@ $image_count = ( $image1_url ? 1 : 0 ) + ( $image2_url ? 1 : 0 );
 			<?php endif; ?>
 
 			<?php if ( $heading || $heading_accent ) : ?>
-				<h1 class="font-heading text-[clamp(2rem,5.5vw,4.6875rem)] font-extrabold tracking-[-0.04em] leading-[1.05] mb-5 md:mb-7 block" data-ph-heading>
+				<h1 class="font-heading text-[clamp(2rem,5.5vw,4.6875rem)] font-extrabold tracking-[-0.04em] leading-[1.05] mb-6 md:mb-10 block" data-ph-heading>
 					<?php if ( $heading ) : ?>
 						<span class="ph-heading-dark inline text-brand-dark"><?php echo esc_html( $heading ); ?> </span>
 					<?php endif; ?>

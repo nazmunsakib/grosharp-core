@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/post-meta-bar",
+	"version": "0.1.0",
+	"title": "Grosharp Post Meta Bar",
+	"category": "grosharp",
+	"description": "Author avatar + name, publish date, read time and category tag. Sits below the post hero.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "grosharp/blog-related",
+	"version": "0.1.0",
+	"title": "Grosharp Blog Related Posts",
+	"category": "grosharp",
+	"description": "3 related posts from the same category. Uses the same card style as blog-grid.",
+	"example": {},
+	"textdomain": "grosharp",
+	"attributes": {
+		"heading": { "type": "string", "default": "More Articles" }
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": false,
+		"typography": false,
+		"spacing": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
