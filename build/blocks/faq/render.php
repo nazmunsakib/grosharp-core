@@ -120,6 +120,33 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 
 	</div>
 </section>
+<?php
+/* ── FAQPage JSON-LD (Google accepts ld+json anywhere in the document) ─── */
+$faq_schema_items = array();
+foreach ( $items as $item ) {
+	$q = trim( $item['question'] ?? '' );
+	$a = trim( $item['answer']   ?? '' );
+	if ( $q && $a ) {
+		$faq_schema_items[] = array(
+			'@type'          => 'Question',
+			'name'           => $q,
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => $a,
+			),
+		);
+	}
+}
+if ( ! empty( $faq_schema_items ) ) :
+?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( array(
+	'@context'   => 'https://schema.org',
+	'@type'      => 'FAQPage',
+	'mainEntity' => $faq_schema_items,
+), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>
+</script>
+<?php endif; ?>
 <script>
 (function(){
 	var section = document.getElementById('<?php echo esc_js( $block_id ); ?>');
