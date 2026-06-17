@@ -7,7 +7,7 @@
  *   2. Two-column: key features checklist (left) + stats row + detail text (right)
  *   3. Full-width featured image
  *
- * ACF fields (free): service_key_features, service_detail_text, service_stats
+ * ACF fields (free): service_key_features, service_detail_text
  * Falls back gracefully if ACF is not active.
  *
  * @package GrosharpCore
@@ -33,22 +33,6 @@ $detail_text = $acf
 	? (string) get_field( 'service_detail_text', $post_id )
 	: (string) get_post_meta( $post_id, 'service_detail_text', true );
 
-// ── Stats (value|label per line, max 3) ──────────────────────────────────
-$stats_raw  = $acf
-	? (string) get_field( 'service_stats', $post_id )
-	: (string) get_post_meta( $post_id, 'service_stats', true );
-$stats_rows = array_values( array_filter( array_map( 'trim', explode( "\n", $stats_raw ) ) ) );
-$stats      = array();
-foreach ( array_slice( $stats_rows, 0, 3 ) as $row ) {
-	$parts = array_map( 'trim', explode( '|', $row, 2 ) );
-	if ( ! empty( $parts[0] ) ) {
-		$stats[] = array(
-			'value' => $parts[0],
-			'label' => $parts[1] ?? '',
-		);
-	}
-}
-
 // ── Post content ─────────────────────────────────────────────────────────
 $post_content = apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) );
 
@@ -58,7 +42,7 @@ $thumb_alt = esc_attr( get_the_title() );
 
 $has_content  = ! empty( trim( strip_tags( $post_content ) ) );
 $has_features = ! empty( $features );
-$has_right    = ! empty( $stats ) || $detail_text;
+$has_right    = ! empty( $detail_text );
 $has_image    = ! empty( $thumb_url );
 ?>
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-service-detail bg-white' ) ); ?> data-gs-service-detail>
@@ -100,29 +84,10 @@ $has_image    = ! empty( $thumb_url );
 				<?php endif; ?>
 
 				<?php if ( $has_right ) : ?>
-					<!-- Right: stats + detail text -->
+					<!-- Right: detail text -->
 					<div class="flex flex-col gap-8" data-sd-right>
 
-						<?php if ( ! empty( $stats ) ) : ?>
-							<!-- Stats row -->
-							<div class="grid gap-6" style="grid-template-columns: repeat(<?php echo count( $stats ); ?>, 1fr);">
-								<?php foreach ( $stats as $stat ) : ?>
-									<div class="flex flex-col gap-1.5 border-l-[3px] border-[#654cff] pl-4">
-										<span class="font-heading text-[clamp(2rem,4vw,2.75rem)] font-extrabold leading-none tracking-[-0.04em] text-[#0d0d12]">
-											<?php echo esc_html( $stat['value'] ); ?>
-										</span>
-										<?php if ( $stat['label'] ) : ?>
-											<span class="font-body text-[0.75rem] font-medium uppercase tracking-[0.06em] text-[#8b8c9b]">
-												<?php echo esc_html( $stat['label'] ); ?>
-											</span>
-										<?php endif; ?>
-									</div>
-								<?php endforeach; ?>
-							</div>
-						<?php endif; ?>
-
 						<?php if ( $detail_text ) : ?>
-							<!-- Detail paragraph -->
 							<div class="rounded-2xl bg-[rgba(101,76,255,0.04)] border border-[rgba(101,76,255,0.1)] p-6 lg:p-8">
 								<p class="font-body text-[0.9375rem] leading-[1.75] text-[#5c5d6d] m-0">
 									<?php echo esc_html( $detail_text ); ?>
