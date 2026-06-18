@@ -20,7 +20,7 @@
 							textAlign: 'center',
 						},
 					},
-					el('p', { style: { margin: '0 0 6px', fontWeight: 700, fontSize: '15px', color: '#654cff' } },
+					el('p', { style: { margin: '0 0 6px', fontWeight: 700, fontSize: '15px', color: 'var(--grosharp-primary)' } },
 						'✦ Service Detail Block'
 					),
 					el('p', { style: { margin: 0, color: '#777', fontSize: '13px' } },

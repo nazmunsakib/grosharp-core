@@ -38,14 +38,14 @@ $rows = array(
 
 				<!-- Label column -->
 				<div class="flex-none md:w-[220px] lg:w-[260px]">
-					<h3 class="font-heading text-[1.25rem] font-bold leading-[1.2] tracking-[-0.02em] text-[#0d0d12] m-0 md:text-[1.5rem]">
+					<h3 class="font-heading text-[1.25rem] font-bold leading-[1.2] tracking-[-0.02em] text-brand-dark m-0 md:text-[1.5rem]">
 						<?php echo esc_html( $row['label'] ); ?>
 					</h3>
 				</div>
 
 				<!-- Text column -->
 				<div class="flex-1">
-					<p class="font-body text-[1.1875rem] leading-[1.75] text-[#3a3a4c] md:text-[1.25rem]">
+					<p class="font-body text-[1.1875rem] leading-[1.75] text-brand-ink md:text-[1.25rem]">
 						<?php echo wp_kses_post( wpautop( $row['text'] ) ); ?>
 					</p>
 				</div>

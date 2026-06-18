@@ -69,16 +69,16 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		<!-- ── Section header ── -->
 		<div class="gs-reveal mx-auto mb-16 max-w-2xl text-center md:mb-20">
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[rgba(101,76,255,0.07)] px-4 py-1.5 font-body text-[13px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
-				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+			<p class="gs-eyebrow" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
+			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
-			<p class="mt-5 font-body text-[1.125rem] leading-[1.7] text-[#5c5d6d]">
+			<p class="mt-5 font-body text-[1.125rem] leading-[1.7] text-brand-muted">
 				<?php echo esc_html( $text ); ?>
 			</p>
 
@@ -92,11 +92,11 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 
 			<?php if ( $featured ) : ?>
 			<!-- ── Featured card (violet) ── -->
-			<article class="gs-reveal relative flex flex-col rounded-[24px] bg-[#654cff] p-8 md:p-10">
+			<article class="gs-reveal relative flex flex-col rounded-[24px] bg-brand-violet p-8 md:p-10">
 
 				<!-- Badge -->
 				<div class="mb-6 inline-flex self-start items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-body text-[11px] font-bold uppercase tracking-widest text-white/90">
-					<span class="h-1.5 w-1.5 rounded-full bg-[#C9A96E]" aria-hidden="true"></span>
+					<span class="h-1.5 w-1.5 rounded-full bg-brand-accent" aria-hidden="true"></span>
 					<?php esc_html_e( 'Most Popular', 'grosharp' ); ?>
 				</div>
 
@@ -139,36 +139,36 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 
 				<!-- CTA -->
 				<a href="<?php echo esc_url( $item['cta_url'] ?? '/contact/' ); ?>"
-				   class="mt-8 flex min-h-[48px] w-full items-center justify-between gap-3 rounded-full bg-white py-3 pl-6 pr-2 font-body text-[15px] font-semibold text-[#654cff] no-underline shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.20)]">
+				   class="mt-8 flex min-h-[48px] w-full items-center justify-between gap-3 rounded-full bg-white py-3 pl-6 pr-2 font-body text-[15px] font-semibold text-brand-violet no-underline shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.20)]">
 					<?php echo esc_html( $item['cta_label'] ?? __( 'Get started', 'grosharp' ) ); ?>
-					<span class="inline-flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#654cff] text-[15px] text-white" aria-hidden="true">→</span>
+					<span class="inline-flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand-violet text-[15px] text-white" aria-hidden="true">→</span>
 				</a>
 
 			</article>
 
 			<?php else : ?>
 			<!-- ── Standard card (white) ── -->
-			<article class="gs-reveal flex flex-col rounded-[24px] border border-black/[0.08] bg-white p-8 shadow-[0_4px_20px_rgba(101,76,255,0.05)] md:p-10">
+			<article class="gs-reveal flex flex-col rounded-[24px] border border-black/[0.08] bg-white p-8 shadow-[0_4px_20px_var(--grosharp-violet-05)] md:p-10">
 
 				<!-- Title -->
-				<h3 class="font-heading text-[22px] font-bold tracking-[-0.02em] text-[#0d0d12]">
+				<h3 class="font-heading text-[22px] font-bold tracking-[-0.02em] text-brand-dark">
 					<?php echo esc_html( $item['title'] ?? '' ); ?>
 				</h3>
 
 				<!-- Price + period stacked -->
 				<div class="mt-4">
-					<span class="block font-heading text-[36px] font-bold leading-none tracking-[-0.03em] text-[#0d0d12]">
+					<span class="block font-heading text-[36px] font-bold leading-none tracking-[-0.03em] text-brand-dark">
 						<?php echo esc_html( $item['price'] ?? '' ); ?>
 					</span>
 					<?php if ( ! empty( $item['period'] ) ) : ?>
-					<span class="mt-1.5 block font-body text-[13px] font-medium text-[#9a9ab0]">
+					<span class="mt-1.5 block font-body text-[13px] font-medium text-brand-subtle">
 						<?php echo esc_html( $item['period'] ); ?>
 					</span>
 					<?php endif; ?>
 				</div>
 
 				<!-- Description -->
-				<p class="mt-4 font-body text-[15px] leading-relaxed text-[#5c5d6d]">
+				<p class="mt-4 font-body text-[15px] leading-relaxed text-brand-muted">
 					<?php echo esc_html( $item['desc'] ?? '' ); ?>
 				</p>
 
@@ -179,8 +179,8 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 				<?php if ( ! empty( $item['features'] ) ) : ?>
 				<ul class="flex-1 space-y-3">
 					<?php foreach ( $item['features'] as $feature ) : ?>
-					<li class="flex items-start gap-3 font-body text-[14.5px] leading-snug text-[#5c5d6d]">
-						<span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[rgba(101,76,255,0.08)] text-[11px] font-bold text-[#654cff]" aria-hidden="true">✓</span>
+					<li class="flex items-start gap-3 font-body text-[14.5px] leading-snug text-brand-muted">
+						<span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[var(--grosharp-violet-08)] text-[11px] font-bold text-brand-violet" aria-hidden="true">✓</span>
 						<?php echo esc_html( $feature ); ?>
 					</li>
 					<?php endforeach; ?>
@@ -189,7 +189,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 
 				<!-- CTA -->
 				<a href="<?php echo esc_url( $item['cta_url'] ?? '/contact/' ); ?>"
-				   class="mt-8 flex min-h-[48px] w-full items-center justify-center rounded-full border border-black/15 bg-transparent px-7 font-body text-[15px] font-semibold text-[#0d0d12] no-underline transition-all duration-200 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-8 flex min-h-[48px] w-full items-center justify-center rounded-full border border-black/15 bg-transparent px-7 font-body text-[15px] font-semibold text-brand-dark no-underline transition-all duration-200 hover:border-brand-violet hover:bg-brand-violet hover:text-white hover:shadow-[0_8px_24px_var(--grosharp-violet-28)]">
 					<?php echo esc_html( $item['cta_label'] ?? __( 'Get started', 'grosharp' ) ); ?>
 				</a>
 
@@ -200,7 +200,7 @@ $items = isset( $attributes['items'] ) && is_array( $attributes['items'] ) && ! 
 		</div>
 
 		<!-- ── Trust note ── -->
-		<p class="gs-reveal mt-12 text-center font-body text-[14px] text-[#9a9ab0]">
+		<p class="gs-reveal mt-12 text-center font-body text-[14px] text-brand-subtle">
 			<?php esc_html_e( 'All plans include a free 30-minute strategy call. No lock-in contracts. Cancel or pause any time.', 'grosharp' ); ?>
 		</p>
 

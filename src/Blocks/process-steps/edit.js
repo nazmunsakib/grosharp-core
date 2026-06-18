@@ -59,7 +59,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						<div
 							key={ index }
 							style={ {
-								borderLeft: '3px solid #654cff',
+								borderLeft: '3px solid var(--grosharp-primary)',
 								paddingLeft: '12px',
 								marginBottom: '20px',
 								paddingBottom: '12px',
@@ -67,7 +67,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							} }
 						>
 							<div style={ { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' } }>
-								<strong style={ { color: '#654cff', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' } }>
+								<strong style={ { color: 'var(--grosharp-primary)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' } }>
 									{ __( 'Step', 'grosharp' ) } { index + 1 }
 								</strong>
 								{ steps.length > 1 && (

@@ -46,7 +46,7 @@ $address_lines = array_map( 'trim', explode( "\n", $address ) );
 
 			<!-- Office -->
 			<div class="md:border-r md:border-black/[0.07] md:pr-10 lg:pr-16">
-				<p class="mb-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-[#9a9ab0]">
+				<p class="mb-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-brand-subtle">
 					<?php esc_html_e( 'Our Office', 'grosharp' ); ?>
 				</p>
 				<?php foreach ( $address_lines as $line ) : ?>
@@ -58,7 +58,7 @@ $address_lines = array_map( 'trim', explode( "\n", $address ) );
 
 			<!-- Hours -->
 			<div class="md:border-r md:border-black/[0.07] md:px-10 lg:px-16">
-				<p class="mb-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-[#9a9ab0]">
+				<p class="mb-3 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-brand-subtle">
 					<?php esc_html_e( 'Working Hours', 'grosharp' ); ?>
 				</p>
 				<p class="font-body text-[0.9375rem] leading-[1.65] text-[#3d3e4e] m-0">
@@ -67,7 +67,7 @@ $address_lines = array_map( 'trim', explode( "\n", $address ) );
 				<!-- Availability indicator -->
 				<div class="mt-4 inline-flex items-center gap-2">
 					<span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_5px_rgba(52,211,153,0.8)]"></span>
-					<span class="font-body text-[0.75rem] font-medium text-[#5c5d6d]">
+					<span class="font-body text-[0.75rem] font-medium text-brand-muted">
 						<?php esc_html_e( 'Available for new projects', 'grosharp' ); ?>
 					</span>
 				</div>
@@ -75,10 +75,10 @@ $address_lines = array_map( 'trim', explode( "\n", $address ) );
 
 			<!-- Company identity (desktop only, keeps columns balanced) -->
 			<div class="hidden md:flex md:flex-col md:justify-end md:pl-10 lg:pl-16">
-				<p class="font-heading text-[clamp(1.5rem,2.5vw,2.25rem)] font-extrabold tracking-[-0.04em] text-[#0d0d12] leading-[1] m-0">
+				<p class="font-heading text-[clamp(1.5rem,2.5vw,2.25rem)] font-extrabold tracking-[-0.04em] text-brand-dark leading-[1] m-0">
 					<?php echo esc_html( $company ); ?>
 				</p>
-				<p class="font-body text-[0.8125rem] text-[#9a9ab0] m-0 mt-1.5">
+				<p class="font-body text-[0.8125rem] text-brand-subtle m-0 mt-1.5">
 					<?php esc_html_e( 'Digital Agency', 'grosharp' ); ?>
 				</p>
 			</div>
@@ -89,7 +89,7 @@ $address_lines = array_map( 'trim', explode( "\n", $address ) );
 		<?php if ( ! empty( $socials ) ) : ?>
 			<div data-gs-cd-socials>
 
-				<p class="mb-6 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-[#9a9ab0]">
+				<p class="mb-6 font-body text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-brand-subtle">
 					<?php esc_html_e( 'Find us online', 'grosharp' ); ?>
 				</p>
 
@@ -99,10 +99,10 @@ $address_lines = array_map( 'trim', explode( "\n", $address ) );
 						   target="_blank" rel="noopener noreferrer"
 						   class="group inline-flex items-center gap-2 no-underline transition-all duration-200"
 						   data-gs-cd-social>
-							<span class="font-heading text-[1.75rem] font-extrabold tracking-[-0.03em] leading-none text-[#c9c9d8] transition-colors duration-200 group-hover:text-[#654cff] md:text-[2.25rem]">
+							<span class="font-heading text-[1.75rem] font-extrabold tracking-[-0.03em] leading-none text-[#c9c9d8] transition-colors duration-200 group-hover:text-brand-violet md:text-[2.25rem]">
 								<?php echo esc_html( $name ); ?>
 							</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 text-[#654cff]"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 text-brand-violet"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
 						</a>
 					<?php endforeach; ?>
 				</div>

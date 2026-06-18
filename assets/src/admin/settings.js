@@ -171,10 +171,12 @@
 						createElement(CardHeader, null, __('Brand Colors', 'grosharp')),
 						createElement(CardBody, { className: 'grosharp-settings-grid' },
 							colorField(settings, setSettings, 'primary_color', __('Primary', 'grosharp')),
+							colorField(settings, setSettings, 'secondary_color', __('Secondary (Header CTA)', 'grosharp')),
 							colorField(settings, setSettings, 'accent_color', __('Accent', 'grosharp')),
 							colorField(settings, setSettings, 'dark_color', __('Dark', 'grosharp')),
 							colorField(settings, setSettings, 'ink_color', __('Ink', 'grosharp')),
 							colorField(settings, setSettings, 'muted_color', __('Muted', 'grosharp')),
+							colorField(settings, setSettings, 'subtle_color', __('Subtle', 'grosharp')),
 							colorField(settings, setSettings, 'soft_color', __('Soft Surface', 'grosharp'))
 						)
 					);

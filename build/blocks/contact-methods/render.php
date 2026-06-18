@@ -62,15 +62,15 @@ if ( empty( $methods ) ) return;
 			<!-- Left: statement -->
 			<div class="flex flex-col justify-between gap-8" data-gs-cm-left>
 				<div>
-					<p class="mb-4 font-body text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-[#9a9ab0]">
+					<p class="mb-4 font-body text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-brand-subtle">
 						<?php esc_html_e( 'Get in touch', 'grosharp' ); ?>
 					</p>
-					<h2 class="font-heading text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12] m-0">
+					<h2 class="font-heading text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark m-0">
 						<?php esc_html_e( 'Let\'s start a', 'grosharp' ); ?><br>
-						<span style="color:#654cff"><?php esc_html_e( 'conversation.', 'grosharp' ); ?></span>
+						<span style="color:var(--grosharp-primary);"><?php esc_html_e( 'conversation.', 'grosharp' ); ?></span>
 					</h2>
 				</div>
-				<p class="font-body text-[0.9375rem] leading-[1.75] text-[#5c5d6d] max-w-[32ch] m-0">
+				<p class="font-body text-[0.9375rem] leading-[1.75] text-brand-muted max-w-[32ch] m-0">
 					<?php esc_html_e( 'We work with ambitious brands worldwide. Tell us about your project and we\'ll be in touch.', 'grosharp' ); ?>
 				</p>
 			</div>
@@ -88,19 +88,19 @@ if ( empty( $methods ) ) return;
 								<?php echo esc_html( $m['num'] ); ?>
 							</span>
 							<div class="min-w-0">
-								<p class="font-body text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-[#9a9ab0] m-0 mb-1">
+								<p class="font-body text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-brand-subtle m-0 mb-1">
 									<?php echo esc_html( $m['label'] ); ?>
 								</p>
-								<p class="font-heading text-[1.25rem] font-bold tracking-[-0.02em] text-[#0d0d12] m-0 truncate transition-colors duration-200 group-hover:text-[#654cff] md:text-[1.5rem]">
+								<p class="font-heading text-[1.25rem] font-bold tracking-[-0.02em] text-brand-dark m-0 truncate transition-colors duration-200 group-hover:text-brand-violet md:text-[1.5rem]">
 									<?php echo esc_html( $m['value'] ); ?>
 								</p>
-								<p class="font-body text-[0.8125rem] text-[#9a9ab0] m-0 mt-0.5">
+								<p class="font-body text-[0.8125rem] text-brand-subtle m-0 mt-0.5">
 									<?php echo esc_html( $m['note'] ); ?>
 								</p>
 							</div>
 						</div>
 
-						<div class="flex-none flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#9a9ab0] transition-all duration-300 group-hover:border-[#654cff] group-hover:bg-[#654cff] group-hover:text-white group-hover:scale-110">
+						<div class="flex-none flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-brand-subtle transition-all duration-300 group-hover:border-brand-violet group-hover:bg-brand-violet group-hover:text-white group-hover:scale-110">
 							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
 						</div>
 

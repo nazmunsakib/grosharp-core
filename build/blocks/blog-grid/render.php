@@ -89,7 +89,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 	<div class="mb-10 flex flex-wrap gap-2" data-gs-bg-filters>
 		<a href="<?php echo esc_url( $base_url ); ?>"
 		   class="inline-flex items-center rounded-full px-5 py-2 font-body text-[0.875rem] font-semibold no-underline transition-all duration-200"
-		   style="<?php echo $active_cat === 0 ? 'background:#654cff;color:#fff;' : 'background:rgba(13,13,18,0.05);color:#5c5d6d;'; ?>">
+		   style="<?php echo $active_cat === 0 ? 'background:var(--grosharp-primary);color:#fff;' : 'background:rgba(13,13,18,0.05);color:#5c5d6d;'; ?>">
 			<?php esc_html_e( 'All', 'grosharp' ); ?>
 		</a>
 		<?php foreach ( $categories as $cat ) :
@@ -97,7 +97,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 		?>
 			<a href="<?php echo esc_url( add_query_arg( 'cat', $cat->term_id, $base_url ) ); ?>"
 			   class="inline-flex items-center rounded-full px-5 py-2 font-body text-[0.875rem] font-semibold no-underline transition-all duration-200"
-			   style="<?php echo $is_active ? 'background:#654cff;color:#fff;' : 'background:rgba(13,13,18,0.05);color:#5c5d6d;'; ?>">
+			   style="<?php echo $is_active ? 'background:var(--grosharp-primary);color:#fff;' : 'background:rgba(13,13,18,0.05);color:#5c5d6d;'; ?>">
 				<?php echo esc_html( $cat->name ); ?>
 			</a>
 		<?php endforeach; ?>
@@ -123,7 +123,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 			$avatar    = get_avatar_url( $author_id, array( 'size' => 40 ) );
 			$read_time = grosharp_read_time( $pid );
 	?>
-		<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.12)]"
+		<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_var(--grosharp-violet-05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_var(--grosharp-violet-12)]"
 		         data-gs-bg-card>
 
 			<!-- Thumbnail -->
@@ -151,20 +151,20 @@ function grosharp_cat_style( string $name, array $map ): string {
 							<?php echo esc_html( $cat_name ); ?>
 						</a>
 					<?php endif; ?>
-					<span class="font-body text-[0.8125rem] text-[#9a9ab0]">
+					<span class="font-body text-[0.8125rem] text-brand-subtle">
 						<?php echo esc_html( get_the_date( 'M j, Y' ) ); ?>
 					</span>
 				</div>
 
 				<!-- Title -->
-				<h3 class="font-heading text-[1.125rem] font-bold leading-snug tracking-[-0.015em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[1.1875rem]">
+				<h3 class="font-heading text-[1.125rem] font-bold leading-snug tracking-[-0.015em] text-brand-dark transition-colors duration-200 group-hover:text-brand-violet md:text-[1.1875rem]">
 					<a href="<?php the_permalink(); ?>" class="no-underline">
 						<?php the_title(); ?>
 					</a>
 				</h3>
 
 				<!-- Excerpt -->
-				<p class="mt-2.5 line-clamp-2 flex-1 font-body text-[0.9rem] leading-relaxed text-[#5c5d6d]">
+				<p class="mt-2.5 line-clamp-2 flex-1 font-body text-[0.9rem] leading-relaxed text-brand-muted">
 					<?php echo esc_html( wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_the_content() ), 20, '…' ) ); ?>
 				</p>
 
@@ -175,10 +175,10 @@ function grosharp_cat_style( string $name, array $map ): string {
 					     class="h-8 w-8 flex-none rounded-full object-cover"
 					     loading="lazy" />
 					<div class="flex flex-1 items-center justify-between gap-2">
-						<span class="font-body text-[0.8125rem] font-semibold text-[#0d0d12]">
+						<span class="font-body text-[0.8125rem] font-semibold text-brand-dark">
 							<?php echo esc_html( $author ); ?>
 						</span>
-						<span class="font-body text-[0.8125rem] text-[#9a9ab0]">
+						<span class="font-body text-[0.8125rem] text-brand-subtle">
 							<?php echo esc_html( $read_time ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?>
 						</span>
 					</div>
@@ -193,7 +193,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 		<?php foreach ( $fallback as $idx => $post ) :
 			$cat_style = grosharp_cat_style( $post['category'], $cat_color_map );
 		?>
-			<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_rgba(101,76,255,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(101,76,255,0.12)]"
+			<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_20px_var(--grosharp-violet-05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_var(--grosharp-violet-12)]"
 			         data-gs-bg-card>
 				<div class="relative aspect-[16/10] overflow-hidden">
 					<div class="h-full w-full" style="background:<?php echo esc_attr( $post['gradient'] ); ?>;"></div>
@@ -204,21 +204,21 @@ function grosharp_cat_style( string $name, array $map ): string {
 						      style="<?php echo esc_attr( $cat_style ); ?>">
 							<?php echo esc_html( $post['category'] ); ?>
 						</span>
-						<span class="font-body text-[0.8125rem] text-[#9a9ab0]"><?php echo esc_html( $post['date'] ); ?></span>
+						<span class="font-body text-[0.8125rem] text-brand-subtle"><?php echo esc_html( $post['date'] ); ?></span>
 					</div>
-					<h3 class="font-heading text-[1.125rem] font-bold leading-snug tracking-[-0.015em] text-[#0d0d12] md:text-[1.1875rem]">
+					<h3 class="font-heading text-[1.125rem] font-bold leading-snug tracking-[-0.015em] text-brand-dark md:text-[1.1875rem]">
 						<?php echo esc_html( $post['title'] ); ?>
 					</h3>
-					<p class="mt-2.5 line-clamp-2 flex-1 font-body text-[0.9rem] leading-relaxed text-[#5c5d6d]">
+					<p class="mt-2.5 line-clamp-2 flex-1 font-body text-[0.9rem] leading-relaxed text-brand-muted">
 						<?php echo esc_html( $post['excerpt'] ); ?>
 					</p>
 					<div class="mt-5 flex items-center gap-3 border-t border-black/[0.06] pt-4">
-						<div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[rgba(101,76,255,0.1)] font-heading text-[0.6875rem] font-bold text-[#654cff]">
+						<div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[var(--grosharp-violet-10)] font-heading text-[0.6875rem] font-bold text-brand-violet">
 							<?php echo esc_html( mb_strtoupper( mb_substr( $post['author'], 0, 2 ) ) ); ?>
 						</div>
 						<div class="flex flex-1 items-center justify-between gap-2">
-							<span class="font-body text-[0.8125rem] font-semibold text-[#0d0d12]"><?php echo esc_html( $post['author'] ); ?></span>
-							<span class="font-body text-[0.8125rem] text-[#9a9ab0]"><?php echo esc_html( $post['read_time'] ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?></span>
+							<span class="font-body text-[0.8125rem] font-semibold text-brand-dark"><?php echo esc_html( $post['author'] ); ?></span>
+							<span class="font-body text-[0.8125rem] text-brand-subtle"><?php echo esc_html( $post['read_time'] ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?></span>
 						</div>
 					</div>
 				</div>
@@ -237,7 +237,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 	<nav class="mt-14 flex items-center justify-center gap-2" aria-label="<?php esc_attr_e( 'Posts pagination', 'grosharp' ); ?>">
 		<?php if ( $current > 1 ) : ?>
 			<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $current - 1, 'cat' => $active_cat ?: null ), $base_url ) ); ?>"
-			   class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 font-body text-[0.875rem] text-[#0d0d12] no-underline transition-all duration-200 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white">
+			   class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 font-body text-[0.875rem] text-brand-dark no-underline transition-all duration-200 hover:border-brand-violet hover:bg-brand-violet hover:text-white">
 				←
 			</a>
 		<?php endif; ?>
@@ -247,7 +247,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 		?>
 			<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $p, 'cat' => $active_cat ?: null ), $base_url ) ); ?>"
 			   class="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-full px-3 font-body text-[0.875rem] font-semibold no-underline transition-all duration-200"
-			   style="<?php echo $is_cur ? 'background:#654cff;color:#fff;border:2px solid #654cff;' : 'border:1px solid rgba(13,13,18,0.1);color:#0d0d12;'; ?>"
+			   style="<?php echo $is_cur ? 'background:var(--grosharp-primary);color:#fff;border:2px solid var(--grosharp-primary);' : 'border:1px solid rgba(13,13,18,0.1);color:#0d0d12;'; ?>"
 			   <?php echo $is_cur ? 'aria-current="page"' : ''; ?>>
 				<?php echo esc_html( $p ); ?>
 			</a>
@@ -255,7 +255,7 @@ function grosharp_cat_style( string $name, array $map ): string {
 
 		<?php if ( $current < $total_pages ) : ?>
 			<a href="<?php echo esc_url( add_query_arg( array( 'paged' => $current + 1, 'cat' => $active_cat ?: null ), $base_url ) ); ?>"
-			   class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 font-body text-[0.875rem] text-[#0d0d12] no-underline transition-all duration-200 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white">
+			   class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 font-body text-[0.875rem] text-brand-dark no-underline transition-all duration-200 hover:border-brand-violet hover:bg-brand-violet hover:text-white">
 				→
 			</a>
 		<?php endif; ?>

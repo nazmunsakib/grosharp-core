@@ -54,11 +54,11 @@ $cat_color_map = array(
 
 		<!-- Heading -->
 		<div class="mb-10 flex items-center justify-between gap-6" data-gs-related-header>
-			<h2 class="font-heading text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.03em] text-[#0d0d12] m-0">
+			<h2 class="font-heading text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-[-0.03em] text-brand-dark m-0">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 			<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/blog/' ) ); ?>"
-			   class="hidden shrink-0 items-center gap-2 font-body text-[0.875rem] font-semibold text-[#654cff] no-underline hover:gap-3 transition-all duration-200 sm:inline-flex">
+			   class="hidden shrink-0 items-center gap-2 font-body text-[0.875rem] font-semibold text-brand-violet no-underline hover:gap-3 transition-all duration-200 sm:inline-flex">
 				<?php esc_html_e( 'All articles', 'grosharp' ); ?>
 				<span aria-hidden="true">→</span>
 			</a>
@@ -78,7 +78,7 @@ $cat_color_map = array(
 				$words     = str_word_count( wp_strip_all_tags( get_post_field( 'post_content', $pid ) ) );
 				$read_time = max( 1, (int) ceil( $words / 200 ) );
 			?>
-				<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_16px_rgba(101,76,255,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(101,76,255,0.11)]"
+				<article class="group flex flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-white shadow-[0_4px_16px_var(--grosharp-violet-05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_var(--grosharp-violet-12)]"
 				         data-gs-related-card>
 
 					<a href="<?php the_permalink(); ?>" class="relative block aspect-[16/10] overflow-hidden no-underline" tabindex="-1" aria-hidden="true">
@@ -102,20 +102,20 @@ $cat_color_map = array(
 									<?php echo esc_html( $cat_name ); ?>
 								</a>
 							<?php endif; ?>
-							<span class="font-body text-[0.8rem] text-[#9a9ab0]"><?php echo esc_html( get_the_date( 'M j, Y' ) ); ?></span>
+							<span class="font-body text-[0.8rem] text-brand-subtle"><?php echo esc_html( get_the_date( 'M j, Y' ) ); ?></span>
 						</div>
 
-						<h3 class="font-heading text-[1rem] font-bold leading-snug tracking-[-0.01em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[1.0625rem]">
+						<h3 class="font-heading text-[1rem] font-bold leading-snug tracking-[-0.01em] text-brand-dark transition-colors duration-200 group-hover:text-brand-violet md:text-[1.0625rem]">
 							<a href="<?php the_permalink(); ?>" class="no-underline"><?php the_title(); ?></a>
 						</h3>
 
-						<p class="mt-2 line-clamp-2 flex-1 font-body text-[0.875rem] leading-relaxed text-[#5c5d6d]">
+						<p class="mt-2 line-clamp-2 flex-1 font-body text-[0.875rem] leading-relaxed text-brand-muted">
 							<?php echo esc_html( wp_trim_words( get_the_excerpt() ?: wp_strip_all_tags( get_the_content() ), 16, '…' ) ); ?>
 						</p>
 
 						<div class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-3.5">
-							<span class="font-body text-[0.8125rem] font-semibold text-[#0d0d12]"><?php echo esc_html( $author ); ?></span>
-							<span class="font-body text-[0.8rem] text-[#9a9ab0]"><?php echo esc_html( $read_time ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?></span>
+							<span class="font-body text-[0.8125rem] font-semibold text-brand-dark"><?php echo esc_html( $author ); ?></span>
+							<span class="font-body text-[0.8rem] text-brand-subtle"><?php echo esc_html( $read_time ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?></span>
 						</div>
 					</div>
 

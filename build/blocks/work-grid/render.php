@@ -52,7 +52,7 @@ $arrow_svg = '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-h
 					<span class="wg-eyebrow-dot w-1.5 h-1.5 rounded-full bg-brand-violet flex-shrink-0" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="wg-heading font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12] m-0 mb-2">
+				<h2 class="wg-heading font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark m-0 mb-2">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 				<?php if ( $text ) : ?>

@@ -118,16 +118,16 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 			<!-- ── Left: editorial copy ──────────────────────────────────── -->
 			<div class="gs-reveal">
 
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
-					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+				<p class="gs-eyebrow" data-gs-eyebrow>
+					<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 					<?php echo esc_html( $attributes['eyebrow'] ); ?>
 				</p>
 
-				<h2 class="mt-7 font-heading text-[38px] font-bold leading-[1.08] tracking-[-0.025em] text-[#0d0d12] md:text-[48px] lg:text-[54px]">
+				<h2 class="mt-7 font-heading text-[38px] font-bold leading-[1.08] tracking-[-0.025em] text-brand-dark md:text-[48px] lg:text-[54px]">
 					<?php echo esc_html( $attributes['heading'] ); ?>
 				</h2>
 
-				<p class="mt-6 font-body text-[18px] leading-relaxed text-[#5c5d6d]">
+				<p class="mt-6 font-body text-[18px] leading-relaxed text-brand-muted">
 					<?php echo esc_html( $attributes['text'] ); ?>
 				</p>
 
@@ -137,13 +137,13 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 						<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-60"></span>
 						<span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#25D366]"></span>
 					</span>
-					<p class="font-body text-[16px] font-semibold text-[#0d0d12]">
+					<p class="font-body text-[16px] font-semibold text-brand-dark">
 						<?php echo esc_html( $attributes['badge'] ); ?>
 					</p>
 				</div>
 
 				<!-- Decorative large ampersand -->
-				<div class="pointer-events-none mt-12 select-none font-heading text-[140px] font-bold leading-none tracking-tighter text-[#654cff]/[0.06] md:mt-14" aria-hidden="true">
+				<div class="pointer-events-none mt-12 select-none font-heading text-[140px] font-bold leading-none tracking-tighter text-[var(--grosharp-violet-06)] md:mt-14" aria-hidden="true">
 					&amp;
 				</div>
 
@@ -160,7 +160,7 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 				   class="gs-contact-card group relative flex items-center gap-4 overflow-hidden rounded-[20px] border border-black/[0.07] bg-[#fafaf9] p-5 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-black/[0.12] hover:bg-white hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
 
 					<!-- Icon circle -->
-					<div class="relative flex h-12 w-12 flex-none items-center justify-center rounded-[14px] bg-[#f0f0f0] text-[#0d0d12] transition-all duration-300 group-hover:bg-[#0d0d12] group-hover:text-white">
+					<div class="relative flex h-12 w-12 flex-none items-center justify-center rounded-[14px] bg-[#f0f0f0] text-brand-dark transition-all duration-300 group-hover:bg-brand-dark group-hover:text-white">
 						<?php echo $ch['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 
@@ -169,13 +169,13 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 						<p class="font-body text-[13px] font-semibold uppercase tracking-[0.08em] text-[#9899a6]">
 							<?php echo esc_html( $ch['name'] ); ?>
 						</p>
-						<p class="mt-0.5 truncate font-body text-[16px] font-semibold text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff]">
+						<p class="mt-0.5 truncate font-body text-[16px] font-semibold text-brand-dark transition-colors duration-200 group-hover:text-brand-violet">
 							<?php echo esc_html( $ch['label'] ); ?>
 						</p>
 					</div>
 
 					<!-- Arrow -->
-					<svg class="flex-none text-black/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-[#654cff]" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<svg class="flex-none text-black/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-brand-violet" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 						<path d="M3 9h12M9.5 4.5 15 9l-5.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
 

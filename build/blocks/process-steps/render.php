@@ -52,16 +52,16 @@ $count = count( $steps );
 			<!-- ── Section header ────────────────────────────────────────────── -->
 			<div class="mx-auto mb-14 max-w-2xl text-center" data-gs-step-header>
 
-				<p class="inline-flex items-center gap-2 rounded-full border border-[rgba(101,76,255,0.2)] bg-[rgba(101,76,255,0.07)] px-4 py-1.5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-[#654cff]" data-gs-eyebrow>
-					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+				<p class="gs-eyebrow" data-gs-eyebrow>
+					<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
 
-				<h2 class="mt-5 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
+				<h2 class="mt-5 font-heading text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-brand-dark">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 
-				<p class="mt-4 font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d] max-w-[52ch] mx-auto">
+				<p class="mt-4 font-body text-[1rem] leading-[1.75] text-brand-muted max-w-[52ch] mx-auto">
 					<?php echo esc_html( $text ); ?>
 				</p>
 
@@ -74,15 +74,15 @@ $count = count( $steps );
 					$num     = str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT );
 					$is_last = ( $index === $count - 1 );
 				?>
-				<div class="relative flex flex-col px-6 first:pl-0 last:pr-0 <?php echo ! $is_last ? 'border-r border-[rgba(13,13,18,0.08)]' : ''; ?>" data-gs-step>
+				<div class="relative flex flex-col px-6 first:pl-0 last:pr-0 mb-10 last:mb-0 md:mb-0 <?php echo ! $is_last ? 'md:border-r md:border-[var(--grosharp-dark-08)]' : ''; ?>" data-gs-step>
 
 					<!-- ── Timeline node: circle + connector ─────────────────── -->
 					<div class="mb-8 flex items-center gap-4">
-						<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-[rgba(101,76,255,0.25)] bg-[rgba(101,76,255,0.08)] font-heading text-[0.9375rem] font-bold text-[#654cff]">
+						<div class="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-[var(--grosharp-violet-25)] bg-[var(--grosharp-violet-08)] font-heading text-[0.9375rem] font-bold text-brand-violet">
 							<?php echo esc_html( $num ); ?>
 						</div>
 						<?php if ( ! $is_last ) : ?>
-						<div class="gs-process-connector h-px flex-1 bg-[rgba(13,13,18,0.08)]"></div>
+						<div class="gs-process-connector h-px flex-1 bg-[var(--grosharp-dark-08)]"></div>
 						<?php else : ?>
 						<div class="flex-1"></div>
 						<?php endif; ?>
@@ -91,12 +91,12 @@ $count = count( $steps );
 					<!-- ── Step content ──────────────────────────────────────── -->
 					<div class="flex-1">
 
-						<h3 class="font-heading text-[1.125rem] font-bold leading-[1.2] tracking-[-0.02em] text-[#0d0d12]">
+						<h3 class="font-heading text-[1.125rem] font-bold leading-[1.2] tracking-[-0.02em] text-brand-dark">
 							<?php echo esc_html( $step['title'] ?? '' ); ?>
 						</h3>
 
 						<?php if ( ! empty( $step['text'] ) ) : ?>
-						<p class="mt-3 font-body text-[0.9375rem] leading-[1.75] text-[#5c5d6d]">
+						<p class="mt-3 font-body text-[0.9375rem] leading-[1.75] text-brand-muted">
 							<?php echo esc_html( $step['text'] ); ?>
 						</p>
 						<?php endif; ?>

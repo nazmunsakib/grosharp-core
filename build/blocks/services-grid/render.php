@@ -11,9 +11,6 @@ $text      = $attributes['text']      ?? __( 'You need a partner who gets your b
 $cta_url   = $attributes['ctaUrl']    ?? '/services/';
 $cta_label = $attributes['ctaLabel']  ?? __( 'See All Services', 'grosharp' );
 
-// Hide section header when explicitly set, or when on the services archive (page-hero already provides it).
-$hide_header = ! empty( $attributes['hideHeader'] ) || is_post_type_archive( 'grosharp_service' );
-
 /* ─── Inline SVG icon library (fallback) ──────────────────────────────────── */
 if ( ! function_exists( 'grosharp_service_icon' ) ) :
 function grosharp_service_icon( string $key ): string {
@@ -126,29 +123,28 @@ if ( ! empty( $manual ) ) {
 ?>
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-services overflow-hidden bg-white py-[4rem]' ) ); ?>>
 
-	<!-- ── Section header (hidden on services archive — page-hero already handles it) ── -->
-	<?php if ( ! $hide_header ) : ?>
+	<!-- ── Section header ─────────────────────────────────────────────────── -->
 	<div class="gs-container pb-10">
 		<div class="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
 
 			<!-- Left: eyebrow + heading -->
 			<div class="max-w-[580px]">
-				<p class="inline-flex items-center gap-2 rounded-full border border-[rgba(101,76,255,0.2)] bg-[rgba(101,76,255,0.07)] px-4 py-1.5 font-body text-[0.875rem] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
-					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+				<p class="gs-eyebrow" data-gs-eyebrow>
+					<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-brand-dark md:text-[48px]">
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
 			<!-- Right: body text + CTA -->
 			<div class="max-w-[360px] md:shrink-0 md:pb-2 md:text-right">
-				<p class="font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d]">
+				<p class="font-body text-[20px] leading-[28px] text-brand-muted">
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-6 inline-flex min-h-[48px] items-center gap-3 rounded-full border border-black/15 px-7 font-body text-[0.9375rem] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-brand-dark no-underline transition-all duration-300 hover:border-brand-violet hover:bg-brand-violet hover:text-white hover:shadow-[0_8px_24px_var(--grosharp-violet-28)]">
 					<?php echo esc_html( $cta_label ); ?>
 					<span aria-hidden="true">→</span>
 				</a>
@@ -156,7 +152,6 @@ if ( ! empty( $manual ) ) {
 
 		</div>
 	</div>
-	<?php endif; ?>
 
 	<!-- ── 2-row service grid ────────────────────────────────────────────── -->
 	<div class="gs-container">
@@ -165,13 +160,13 @@ if ( ! empty( $manual ) ) {
 			<!-- ── Stat card (col 1, row 1) ───────────────────────────────── -->
 			<div class="relative overflow-hidden rounded-[24px] bg-white" style="min-height:320px;" data-gs-service-card>
 				<div class="flex h-full flex-col justify-center p-8">
-					<p class="font-heading text-[88px] font-bold leading-none tracking-[-0.04em] text-[#0d0d12]">
-						98<span class="text-[48px] align-top mt-3 inline-block text-[#654cff]">%</span>
+					<p class="font-heading text-[88px] font-bold leading-none tracking-[-0.04em] text-brand-dark">
+						98<span class="text-[48px] align-top mt-3 inline-block text-brand-violet">%</span>
 					</p>
-					<p class="mt-4 font-heading text-[22px] font-bold leading-tight tracking-[-0.02em] text-[#0d0d12]">
+					<p class="mt-4 font-heading text-[22px] font-bold leading-tight tracking-[-0.02em] text-brand-dark">
 						<?php esc_html_e( 'Client Satisfaction Rate', 'grosharp' ); ?>
 					</p>
-					<p class="mt-3 font-body text-[16px] leading-relaxed text-[#5c5d6d]">
+					<p class="mt-3 font-body text-[16px] leading-relaxed text-brand-muted">
 						<?php esc_html_e( 'Based on post-project surveys across all engagements since 2021.', 'grosharp' ); ?>
 					</p>
 				</div>
@@ -179,7 +174,7 @@ if ( ! empty( $manual ) ) {
 
 			<?php foreach ( $cards as $card ) : ?>
 
-				<article class="group relative overflow-hidden rounded-[24px] bg-[#0d0d12]" style="min-height:320px;" data-gs-service-card>
+				<article class="group relative overflow-hidden rounded-[24px] bg-brand-dark" style="min-height:320px;" data-gs-service-card>
 
 					<!-- Full-card link -->
 					<a href="<?php echo esc_url( $card['url'] ?? '/services/' ); ?>"
@@ -191,7 +186,7 @@ if ( ! empty( $manual ) ) {
 					<div class="relative z-20 flex h-full flex-col items-start justify-center p-8 pointer-events-none">
 
 						<!-- Icon -->
-						<div class="gs-service-icon mb-6 inline-block text-white transition-colors duration-300 group-hover:text-[#654cff]">
+						<div class="gs-service-icon mb-6 inline-block text-white transition-colors duration-300 group-hover:text-brand-violet">
 							<?php if ( ! empty( $card['icon_url'] ) ) : ?>
 								<img src="<?php echo esc_url( $card['icon_url'] ); ?>"
 								     alt=""
@@ -218,17 +213,17 @@ if ( ! empty( $manual ) ) {
 					</div>
 
 					<!-- Number watermark (absolute, bottom-right) -->
-					<div class="gs-service-number absolute bottom-2 right-4 select-none font-heading text-[100px] font-bold leading-none text-white/20 transition-colors duration-500 group-hover:text-[rgba(101,76,255,0.5)]"
+					<div class="gs-service-number absolute bottom-2 right-4 select-none font-heading text-[100px] font-bold leading-none text-white/20 transition-colors duration-500 group-hover:text-[var(--grosharp-violet-50)]"
 					     aria-hidden="true">
 						<?php echo esc_html( $card['number'] ?? '01' ); ?>
 					</div>
 
 					<!-- Hover: violet border ring -->
-					<div class="pointer-events-none absolute inset-0 rounded-[24px] border border-transparent transition-colors duration-300 group-hover:border-[rgba(101,76,255,0.4)]" aria-hidden="true"></div>
+					<div class="pointer-events-none absolute inset-0 rounded-[24px] border border-transparent transition-colors duration-300 group-hover:border-[var(--grosharp-violet-40)]" aria-hidden="true"></div>
 
 					<!-- Hover: subtle violet glow at bottom -->
 					<div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 rounded-b-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-					     style="background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(101,76,255,0.14), transparent);"
+					     style="background:radial-gradient(ellipse 80% 60% at 50% 100%, var(--grosharp-violet-14), transparent);"
 					     aria-hidden="true"></div>
 
 				</article>

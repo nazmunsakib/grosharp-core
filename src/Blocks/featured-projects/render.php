@@ -55,23 +55,24 @@ $placeholder_projects = array(
 
 			<!-- Left: eyebrow + heading -->
 			<div class="max-w-[580px]">
-				<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-project-eyebrow>
-					<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+				<p class="gs-eyebrow" data-gs-project-eyebrow>
+					<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
-				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-[#0d0d12] md:text-[48px]" data-gs-project-heading>
+				<h2 class="mt-6 font-heading text-[40px] font-bold leading-[1.1] tracking-[-0.025em] text-brand-dark md:text-[48px]" data-gs-project-heading>
 					<?php echo esc_html( $heading ); ?>
 				</h2>
 			</div>
 
 			<!-- Right: body text + CTA -->
 			<div class="flex max-w-[360px] flex-col items-start md:shrink-0 md:items-end md:pb-2">
-				<p class="font-body text-[20px] leading-[28px] text-[#5c5d6d]">
+				<p class="font-body text-[20px] leading-[28px] text-brand-muted">
 					<?php echo esc_html( $text ); ?>
 				</p>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="mt-7 inline-flex min-h-[48px] items-center rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_24px_rgba(101,76,255,0.28)]">
+				   class="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-black/15 px-7 font-body text-[16px] font-semibold text-brand-dark no-underline transition-all duration-300 hover:border-brand-violet hover:bg-brand-violet hover:text-white hover:shadow-[0_8px_24px_var(--grosharp-violet-28)]">
 					<?php esc_html_e( 'See more projects', 'grosharp' ); ?>
+					<span aria-hidden="true">→</span>
 				</a>
 			</div>
 
@@ -112,23 +113,20 @@ $placeholder_projects = array(
 							<!-- Dark tint -->
 							<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-out group-hover:opacity-100"></div>
 
-							<!-- "View Project" button -->
+							<!-- Icon-only hover overlay -->
 							<div class="absolute inset-0 flex items-center justify-center">
-								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[16px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
-									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-[16px]" aria-hidden="true">→</span>
-								</span>
+								<span class="inline-flex h-16 w-16 translate-y-3 scale-75 items-center justify-center rounded-full text-[22px] text-white opacity-0 shadow-[0_16px_40px_var(--grosharp-violet-50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:var(--grosharp-primary);" aria-hidden="true">→</span>
 							</div>
 
 						</a>
 
 						<!-- ── Info row ───────────────────────────────────── -->
 						<div class="mt-5 flex items-center justify-between gap-5">
-							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[24px]">
+							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-brand-dark transition-colors duration-200 group-hover:text-brand-violet md:text-[24px]">
 								<?php the_title(); ?>
 							</h3>
 							<?php if ( $type_label ) : ?>
-								<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold text-[#654cff]">
+								<span class="flex-none rounded-full border border-[var(--grosharp-violet-20)] bg-[var(--grosharp-violet-07)] px-4 py-1.5 font-body text-[16px] font-semibold text-brand-violet">
 									<?php echo esc_html( $type_label ); ?>
 								</span>
 							<?php endif; ?>
@@ -154,22 +152,19 @@ $placeholder_projects = array(
 							<!-- Dark tint -->
 							<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-[380ms] ease-out group-hover:opacity-100"></div>
 
-							<!-- "View Project" button -->
+							<!-- Icon-only hover overlay -->
 							<div class="absolute inset-0 flex items-center justify-center">
-								<span class="inline-flex translate-y-3 scale-90 items-center gap-3 rounded-full px-8 py-4 font-body text-[16px] font-semibold text-white opacity-0 shadow-[0_16px_40px_rgba(101,76,255,0.50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:linear-gradient(135deg,#654cff 0%,#7c3aed 100%);">
-									<?php esc_html_e( 'View Project', 'grosharp' ); ?>
-									<span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-white/25 text-[16px]" aria-hidden="true">→</span>
-								</span>
+								<span class="inline-flex h-16 w-16 translate-y-3 scale-75 items-center justify-center rounded-full text-[22px] text-white opacity-0 shadow-[0_16px_40px_var(--grosharp-violet-50)] transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100" style="background:var(--grosharp-primary);" aria-hidden="true">→</span>
 							</div>
 
 						</a>
 
 						<!-- ── Info row ───────────────────────────────────── -->
 						<div class="mt-5 flex items-center justify-between gap-5">
-							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-[#0d0d12] transition-colors duration-200 group-hover:text-[#654cff] md:text-[24px]">
+							<h3 class="font-heading text-[20px] font-bold leading-snug tracking-[-0.02em] text-brand-dark transition-colors duration-200 group-hover:text-brand-violet md:text-[24px]">
 								<?php echo esc_html( $project['title'] ); ?>
 							</h3>
-							<span class="flex-none rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold text-[#654cff]">
+							<span class="flex-none rounded-full border border-[var(--grosharp-violet-20)] bg-[var(--grosharp-violet-07)] px-4 py-1.5 font-body text-[16px] font-semibold text-brand-violet">
 								<?php echo esc_html( $project['type'] ); ?>
 							</span>
 						</div>

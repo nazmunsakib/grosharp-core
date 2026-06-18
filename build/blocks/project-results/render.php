@@ -74,12 +74,12 @@ $col_class = match ( true ) {
 
 		<!-- Section header -->
 		<div class="mb-10 lg:mb-14 max-w-[520px]">
-			<p class="inline-flex items-center gap-2 rounded-full border border-[rgba(101,76,255,0.2)] bg-[rgba(101,76,255,0.07)] px-4 py-1.5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.09em] text-[#654cff] mb-4"
+			<p class="inline-flex items-center gap-2 rounded-full border border-[var(--grosharp-violet-20)] bg-[var(--grosharp-violet-07)] px-4 py-1.5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.09em] text-brand-violet mb-4"
 			   data-gs-pr-eyebrow>
-				<span class="inline-block h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+				<span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php esc_html_e( 'Results & Metrics', 'grosharp' ); ?>
 			</p>
-			<h2 class="font-heading text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12] m-0"
+			<h2 class="font-heading text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark m-0"
 			    data-gs-pr-heading>
 				<?php esc_html_e( 'Impact measured.', 'grosharp' ); ?>
 			</h2>
@@ -96,29 +96,29 @@ $col_class = match ( true ) {
 
 				$ordinal = sprintf( '%02d', $idx + 1 );
 			?>
-				<div class="relative overflow-hidden rounded-2xl md:rounded-[1.5rem] border border-[rgba(101,76,255,0.12)] bg-white p-6 md:p-10 transition-all duration-300 hover:border-[rgba(101,76,255,0.35)] hover:shadow-[0_12px_40px_rgba(101,76,255,0.1)] hover:-translate-y-[3px]"
+				<div class="relative overflow-hidden rounded-2xl md:rounded-[1.5rem] border border-[var(--grosharp-violet-12)] bg-white p-6 md:p-10 transition-all duration-300 hover:border-[var(--grosharp-violet-35)] hover:shadow-[0_12px_40px_var(--grosharp-violet-10)] hover:-translate-y-[3px]"
 				     data-gs-value-card>
 
 					<!-- Ghost value — large, top-right -->
 					<span class="pointer-events-none select-none absolute -top-2 right-3 font-heading font-black leading-none tracking-[-0.05em]"
-					      style="font-size:clamp(4.5rem,9vw,7rem);color:rgba(101,76,255,0.05);"
+					      style="font-size:clamp(4.5rem,9vw,7rem);color:var(--grosharp-violet-05);"
 					      aria-hidden="true">
 						<?php echo esc_html( $value ); ?>
 					</span>
 
 					<!-- Ordinal pill -->
-					<div class="inline-flex items-center justify-center w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-[12px] md:rounded-[14px] bg-[rgba(101,76,255,0.08)] border border-[rgba(101,76,255,0.15)] text-[#654cff] font-heading font-bold text-[0.875rem] about-value-icon">
+					<div class="inline-flex items-center justify-center w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-[12px] md:rounded-[14px] bg-[var(--grosharp-violet-08)] border border-[var(--grosharp-violet-15)] text-brand-violet font-heading font-bold text-[0.875rem] about-value-icon">
 						<?php echo esc_html( $ordinal ); ?>
 					</div>
 
 					<!-- Metric title -->
-					<h3 class="font-heading text-[1.125rem] md:text-[1.25rem] font-bold tracking-[-0.02em] text-[#0d0d12] leading-[1.25] mt-4 md:mt-5 mb-0">
+					<h3 class="font-heading text-[1.125rem] md:text-[1.25rem] font-bold tracking-[-0.02em] text-brand-dark leading-[1.25] mt-4 md:mt-5 mb-0">
 						<?php echo esc_html( $label ); ?>
 					</h3>
 
 					<!-- Description -->
 					<?php if ( $desc ) : ?>
-						<p class="font-body text-[0.875rem] md:text-[0.9375rem] leading-[1.75] text-[#5c5d6d] mt-2 md:mt-3 mb-0">
+						<p class="font-body text-[0.875rem] md:text-[0.9375rem] leading-[1.75] text-brand-muted mt-2 md:mt-3 mb-0">
 							<?php echo esc_html( $desc ); ?>
 						</p>
 					<?php endif; ?>

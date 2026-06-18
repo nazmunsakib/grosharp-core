@@ -65,7 +65,7 @@ function Edit({ attributes, setAttributes }) {
 					el('div', {
 						key: index,
 						style: {
-							borderLeft:   '3px solid #654cff',
+							borderLeft: '3px solid var(--grosharp-primary)',
 							paddingLeft:  '12px',
 							marginBottom: '20px',
 							paddingBottom: '12px',
@@ -74,7 +74,7 @@ function Edit({ attributes, setAttributes }) {
 					},
 						// Step label + remove button row
 						el('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' } },
-							el('strong', { style: { color: '#654cff', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' } },
+							el('strong', { style: { color: 'var(--grosharp-primary)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' } },
 								`${__('Step', 'grosharp')} ${index + 1}`
 							),
 							steps.length > 1

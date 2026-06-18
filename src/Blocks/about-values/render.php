@@ -35,8 +35,8 @@ $values = array(
 
 		<!-- Section header -->
 		<div class="about-values-header">
-			<p class="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-body text-[13px] font-semibold uppercase tracking-widest" data-gs-eyebrow>
-				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+			<p class="gs-eyebrow" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 			<h2 class="about-values-heading mt-5">

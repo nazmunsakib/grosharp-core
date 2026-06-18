@@ -93,9 +93,9 @@ $fallback = array(
 
 /* ── Avatar palette (cycles by index) ───────────────────────────────────────── */
 $avatar_palette = array(
-	array( 'color' => '#654cff', 'text' => '#ffffff' ),
+	array( 'color' => 'var(--grosharp-primary)', 'text' => '#ffffff' ),
 	array( 'color' => '#0d0d12', 'text' => '#ffffff' ),
-	array( 'color' => '#e8f0fe', 'text' => '#654cff' ),
+	array( 'color' => '#e8f0fe', 'text' => 'var(--grosharp-primary)' ),
 	array( 'color' => '#fff4e6', 'text' => '#b45309' ),
 	array( 'color' => '#e6fff4', 'text' => '#047857' ),
 	array( 'color' => '#fce8ff', 'text' => '#9333ea' ),
@@ -166,12 +166,12 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 	<div class="gs-container">
 		<div class="mx-auto mb-14 max-w-2xl text-center md:mb-16">
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
-				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+			<p class="gs-eyebrow" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
+			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-brand-dark">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
@@ -204,18 +204,18 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 									</div>
 								<?php endif; ?>
 								<div>
-									<p class="font-body text-[16px] font-semibold text-[#0d0d12]">
+									<p class="font-body text-[16px] font-semibold text-brand-dark">
 										<?php echo esc_html( $slide['company'] ); ?>
 									</p>
 									<?php if ( ! empty( $slide['role'] ) && ! empty( $slide['name'] ) ) : ?>
-										<p class="font-body text-[16px] text-[#9a9ab0]">
+										<p class="font-body text-[16px] text-brand-subtle">
 											<?php echo esc_html( $slide['name'] . ' · ' . $slide['role'] ); ?>
 										</p>
 									<?php endif; ?>
 								</div>
 							</div>
 							<div class="flex flex-none items-center gap-1">
-								<span class="font-body text-[16px] font-bold text-[#0d0d12]">
+								<span class="font-body text-[16px] font-bold text-brand-dark">
 									<?php echo esc_html( $slide['rating'] ); ?>
 								</span>
 								<span class="text-amber-400 text-base" aria-label="stars">★</span>
@@ -223,13 +223,13 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 						</div>
 
 						<!-- Bold short quote (headline) -->
-						<p class="font-heading text-[20px] font-bold leading-[1.3] tracking-[-0.015em] text-[#0d0d12] md:text-[22px]">
+						<p class="font-heading text-[20px] font-bold leading-[1.3] tracking-[-0.015em] text-brand-dark md:text-[22px]">
 							<?php echo esc_html( $slide['headline'] ); ?>
 						</p>
 
 						<!-- Body text -->
 						<?php if ( ! empty( $slide['body'] ) ) : ?>
-							<p class="mt-4 grow font-body text-[14.5px] leading-relaxed text-[#5c5d6d]">
+							<p class="mt-4 grow font-body text-[14.5px] leading-relaxed text-brand-muted">
 								<?php echo esc_html( $slide['body'] ); ?>
 							</p>
 						<?php endif; ?>
@@ -246,20 +246,20 @@ $block_id = 'gs-testi-' . substr( md5( $attributes['heading'] ?? 'testi' ), 0, 6
 		<div class="flex items-center gap-5">
 
 			<!-- Prev button -->
-			<button class="gs-testi-prev flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0d0d12] bg-transparent font-body text-lg text-[#0d0d12] transition-all duration-200 hover:bg-[#0d0d12] hover:text-white"
+			<button class="gs-testi-prev flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-brand-dark bg-transparent font-body text-lg text-brand-dark transition-all duration-200 hover:bg-brand-dark hover:text-white"
 			        aria-label="<?php esc_attr_e( 'Previous testimonial', 'grosharp' ); ?>">
 				←
 			</button>
 
 			<!-- Next button -->
-			<button class="gs-testi-next flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-[#0d0d12] bg-transparent font-body text-lg text-[#0d0d12] transition-all duration-200 hover:bg-[#0d0d12] hover:text-white"
+			<button class="gs-testi-next flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-brand-dark bg-transparent font-body text-lg text-brand-dark transition-all duration-200 hover:bg-brand-dark hover:text-white"
 			        aria-label="<?php esc_attr_e( 'Next testimonial', 'grosharp' ); ?>">
 				→
 			</button>
 
 			<!-- Progress bar -->
 			<div class="h-[2px] flex-1 overflow-hidden rounded-full bg-black/10">
-				<div class="gs-testi-progress-fill h-full rounded-full bg-[#0d0d12] transition-[width] duration-300 ease-out" style="width:0%"></div>
+				<div class="gs-testi-progress-fill h-full rounded-full bg-brand-dark transition-[width] duration-300 ease-out" style="width:0%"></div>
 			</div>
 
 		</div>

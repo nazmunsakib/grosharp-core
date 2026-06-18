@@ -10,7 +10,7 @@
 				el('div', {
 					style: { padding: '16px 20px', background: 'rgba(101,76,255,0.04)', border: '1.5px dashed rgba(101,76,255,0.25)', borderRadius: '10px', textAlign: 'center' }
 				},
-					el('p', { style: { margin: 0, fontWeight: 700, fontSize: '13px', color: '#654cff' } }, '✦ Post Author Card'),
+					el('p', { style: { margin: 0, fontWeight: 700, fontSize: '13px', color: 'var(--grosharp-primary)' } }, '✦ Post Author Card'),
 					el('p', { style: { margin: '4px 0 0', color: '#777', fontSize: '12px' } }, 'Auto-populates from the post author\'s WP profile — avatar, name, bio.')
 				)
 			);

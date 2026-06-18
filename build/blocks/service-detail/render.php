@@ -52,7 +52,7 @@ $has_image    = ! empty( $thumb_url );
 		<?php if ( $has_content ) : ?>
 			<!-- ── Post content intro ──────────────────────────────────────── -->
 			<div class="max-w-[780px] mb-14 lg:mb-20" data-sd-intro>
-				<div class="font-body text-[1.0625rem] leading-[1.85] text-[#4a4b5a] [&>p]:mb-5 [&>p:last-child]:mb-0 [&>h2]:font-heading [&>h2]:text-[1.5rem] [&>h2]:font-bold [&>h2]:text-[#0d0d12] [&>h2]:mb-3 [&>ul]:mb-5 [&>ul]:pl-5">
+				<div class="font-body text-[1.0625rem] leading-[1.85] text-[#4a4b5a] [&>p]:mb-5 [&>p:last-child]:mb-0 [&>h2]:font-heading [&>h2]:text-[1.5rem] [&>h2]:font-bold [&>h2]:text-brand-dark [&>h2]:mb-3 [&>ul]:mb-5 [&>ul]:pl-5">
 					<?php echo wp_kses_post( $post_content ); ?>
 				</div>
 			</div>
@@ -65,15 +65,15 @@ $has_image    = ! empty( $thumb_url );
 				<?php if ( $has_features ) : ?>
 					<!-- Left: key features -->
 					<div data-sd-features>
-						<p class="font-body text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-[#654cff] mb-5">
+						<p class="font-body text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-brand-violet mb-5">
 							<?php esc_html_e( "What's Included", 'grosharp' ); ?>
 						</p>
 						<ul class="flex flex-col gap-3 m-0 p-0 list-none" role="list">
 							<?php foreach ( $features as $feature ) : ?>
 								<li class="flex items-start gap-3 font-body text-[0.9375rem] leading-[1.65] text-[#3d3e4e]">
-									<span class="mt-[3px] flex-shrink-0 w-5 h-5 rounded-full bg-[rgba(101,76,255,0.1)] flex items-center justify-center" aria-hidden="true">
+									<span class="mt-[3px] flex-shrink-0 w-5 h-5 rounded-full bg-[var(--grosharp-violet-10)] flex items-center justify-center" aria-hidden="true">
 										<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M1 4.5L3.8 7.5L10 1" stroke="#654cff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+											<path d="M1 4.5L3.8 7.5L10 1" stroke="var(--grosharp-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 										</svg>
 									</span>
 									<?php echo esc_html( $feature ); ?>
@@ -88,8 +88,8 @@ $has_image    = ! empty( $thumb_url );
 					<div class="flex flex-col gap-8" data-sd-right>
 
 						<?php if ( $detail_text ) : ?>
-							<div class="rounded-2xl bg-[rgba(101,76,255,0.04)] border border-[rgba(101,76,255,0.1)] p-6 lg:p-8">
-								<p class="font-body text-[0.9375rem] leading-[1.75] text-[#5c5d6d] m-0">
+							<div class="rounded-2xl bg-[var(--grosharp-violet-05)] border border-[var(--grosharp-violet-10)] p-6 lg:p-8">
+								<p class="font-body text-[0.9375rem] leading-[1.75] text-brand-muted m-0">
 									<?php echo esc_html( $detail_text ); ?>
 								</p>
 							</div>

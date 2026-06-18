@@ -10,7 +10,7 @@
 				el('div', {
 					style: { padding: '16px 20px', background: 'rgba(101,76,255,0.04)', border: '1.5px dashed rgba(101,76,255,0.25)', borderRadius: '10px', textAlign: 'center' }
 				},
-					el('p', { style: { margin: 0, fontWeight: 700, fontSize: '13px', color: '#654cff' } }, '✦ Contact Details'),
+					el('p', { style: { margin: 0, fontWeight: 700, fontSize: '13px', color: 'var(--grosharp-primary)' } }, '✦ Contact Details'),
 					el('p', { style: { margin: '4px 0 0', color: '#777', fontSize: '12px' } }, 'Address, working hours (left) + social links (right) — from Settings → Company & Social.')
 				)
 			);

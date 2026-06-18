@@ -24,11 +24,13 @@ final class Settings {
 	 */
 	public static function defaults(): array {
 		return array(
-			'primary_color' => '#654cff',
-			'accent_color'  => '#C9A96E',
-			'dark_color'    => '#09090F',
-			'ink_color'     => '#111827',
-			'muted_color'   => '#6B7280',
+			'primary_color'   => '#654cff',
+			'secondary_color' => '#ff6b35',
+			'accent_color'    => '#C9A96E',
+			'dark_color'    => '#0d0d12',
+			'ink_color'     => '#3a3a4c',
+			'muted_color'   => '#5c5d6d',
+			'subtle_color'  => '#9a9ab0',
 			'surface_color' => '#FAFAF9',
 			'soft_color'    => '#F4F3FF',
 			'heading_font'  => 'Plus Jakarta Sans',
@@ -95,7 +97,7 @@ final class Settings {
 		$defaults = self::defaults();
 		$clean    = array();
 
-		foreach ( array( 'primary_color', 'accent_color', 'dark_color', 'ink_color', 'muted_color', 'surface_color', 'soft_color' ) as $key ) {
+		foreach ( array( 'primary_color', 'secondary_color', 'accent_color', 'dark_color', 'ink_color', 'muted_color', 'subtle_color', 'surface_color', 'soft_color' ) as $key ) {
 			$clean[ $key ] = sanitize_hex_color( $value[ $key ] ?? $defaults[ $key ] ) ?: $defaults[ $key ];
 		}
 

@@ -63,19 +63,19 @@ if ( empty( $meta ) ) {
 
 			<?php foreach ( $meta as $item ) : ?>
 				<div data-gs-proj-meta>
-					<p class="mb-1.5 font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-[#9a9ab0]">
+					<p class="mb-1.5 font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-subtle">
 						<?php echo esc_html( $item['label'] ); ?>
 					</p>
 					<?php if ( $item['link'] ) : ?>
 						<a href="<?php echo esc_url( $item['link'] ); ?>"
 						   target="_blank"
 						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-1.5 font-body text-[1rem] font-semibold text-[#654cff] transition-colors duration-200 hover:text-[#0d0d12]">
+						   class="inline-flex items-center gap-1.5 font-body text-[1rem] font-semibold text-brand-violet transition-colors duration-200 hover:text-brand-dark">
 							<?php echo esc_html( $item['value'] ); ?>
 							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
 						</a>
 					<?php else : ?>
-						<p class="font-body text-[1rem] font-semibold text-[#0d0d12]">
+						<p class="font-body text-[1rem] font-semibold text-brand-dark">
 							<?php echo esc_html( $item['value'] ); ?>
 						</p>
 					<?php endif; ?>

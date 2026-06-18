@@ -70,14 +70,14 @@
 							textAlign:    'center',
 						},
 					},
-					el('p', { style: { margin: '0 0 6px', fontWeight: 700, fontSize: '15px', color: '#654cff' } },
+					el('p', { style: { margin: '0 0 6px', fontWeight: 700, fontSize: '15px', color: 'var(--grosharp-primary)' } },
 						'✦ Post Hero'
 					),
 					el('p', { style: { margin: 0, color: '#777', fontSize: '13px' } },
 						'Auto-populates: Post Title · Short Brief · Featured Image. Works on any CPT single page.'
 					),
 					attrs.briefMetaKey
-						? el('p', { style: { margin: '8px 0 0', color: '#654cff', fontSize: '12px' } },
+						? el('p', { style: { margin: '8px 0 0', color: 'var(--grosharp-primary)', fontSize: '12px' } },
 							'Brief key: ' + attrs.briefMetaKey)
 						: null,
 					attrs.eyebrowTaxonomy

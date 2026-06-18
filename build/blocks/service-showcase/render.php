@@ -111,19 +111,19 @@ if ( $query->have_posts() ) {
 			<!-- ── Content ────────────────────────────────────────────────── -->
 			<div class="<?php echo $is_even ? 'order-first lg:order-last' : ''; ?> flex flex-col gap-4" data-ss-content>
 
-				<h2 class="font-heading text-[clamp(1.375rem,3vw,2rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-[#0d0d12] m-0">
+				<h2 class="font-heading text-[clamp(1.375rem,3vw,2rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-brand-dark m-0">
 					<?php echo esc_html( $item['title'] ); ?>
 				</h2>
 
 				<!-- Detail text — directly below title -->
 				<?php if ( $item['detail'] ) : ?>
-					<p class="font-body text-[1rem] leading-[1.8] text-[#5c5d6d] m-0">
+					<p class="font-body text-[1rem] leading-[1.8] text-brand-muted m-0">
 						<?php echo esc_html( $item['detail'] ); ?>
 					</p>
 				<?php endif; ?>
 
 				<?php if ( $item['excerpt'] ) : ?>
-					<p class="font-body text-[1rem] leading-[1.8] text-[#5c5d6d] m-0">
+					<p class="font-body text-[1rem] leading-[1.8] text-brand-muted m-0">
 						<?php echo esc_html( $item['excerpt'] ); ?>
 					</p>
 				<?php endif; ?>
@@ -133,9 +133,9 @@ if ( $query->have_posts() ) {
 					<ul class="flex flex-col gap-1.5 m-0 p-0 list-none" role="list">
 						<?php foreach ( $item['features'] as $feature ) : ?>
 							<li class="flex items-start gap-2.5 font-body text-[0.9rem] leading-[1.55] text-[#3d3e4e]">
-								<span class="mt-[3px] flex-shrink-0 w-5 h-5 rounded-full bg-[rgba(101,76,255,0.1)] flex items-center justify-center" aria-hidden="true">
+								<span class="mt-[3px] flex-shrink-0 w-5 h-5 rounded-full bg-[var(--grosharp-violet-10)] flex items-center justify-center" aria-hidden="true">
 									<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M1 4.5L3.8 7.5L10 1" stroke="#654cff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+										<path d="M1 4.5L3.8 7.5L10 1" stroke="var(--grosharp-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 									</svg>
 								</span>
 								<?php echo esc_html( $feature ); ?>
@@ -146,7 +146,7 @@ if ( $query->have_posts() ) {
 
 				<div>
 					<a href="<?php echo esc_url( $item['permalink'] ); ?>"
-					   class="inline-flex items-center gap-2.5 rounded-full border border-[#0d0d12] bg-transparent px-7 py-3.5 font-body text-[0.9375rem] font-semibold text-[#0d0d12] no-underline transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff] hover:text-white hover:shadow-[0_8px_28px_rgba(101,76,255,0.28)]">
+					   class="inline-flex items-center gap-2.5 rounded-full border border-brand-dark bg-transparent px-7 py-3.5 font-body text-[0.9375rem] font-semibold text-brand-dark no-underline transition-all duration-300 hover:border-brand-violet hover:bg-brand-violet hover:text-white hover:shadow-[0_8px_28px_var(--grosharp-violet-28)]">
 						<?php echo esc_html( $btn_label ); ?>
 						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</a>
@@ -164,8 +164,8 @@ if ( $query->have_posts() ) {
 						     loading="lazy" decoding="async" />
 					</figure>
 				<?php else : ?>
-					<div class="rounded-2xl lg:rounded-[1.75rem] bg-[rgba(101,76,255,0.05)] border border-[rgba(101,76,255,0.1)] flex items-center justify-center" style="aspect-ratio:4/3;" aria-hidden="true">
-						<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="rgba(101,76,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+					<div class="rounded-2xl lg:rounded-[1.75rem] bg-[var(--grosharp-violet-05)] border border-[var(--grosharp-violet-10)] flex items-center justify-center" style="aspect-ratio:4/3;" aria-hidden="true">
+						<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--grosharp-violet-32)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
 							<rect x="6" y="10" width="36" height="28" rx="3"/>
 							<circle cx="17" cy="20" r="4"/>
 							<path d="M6 30l9-7 7 6 5-4 15 9"/>

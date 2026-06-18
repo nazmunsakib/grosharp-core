@@ -47,7 +47,7 @@ $cat_c = $cat_color_map[ $cat_name ] ?? array( 'bg' => '#f4f4f5', 'text' => '#3f
 
 			<!-- Date -->
 			<time datetime="<?php echo esc_attr( $date_iso ); ?>"
-			      class="font-body text-[0.875rem] text-[#9a9ab0]">
+			      class="font-body text-[0.875rem] text-brand-subtle">
 				<?php echo esc_html( $date ); ?>
 			</time>
 
@@ -55,7 +55,7 @@ $cat_c = $cat_color_map[ $cat_name ] ?? array( 'bg' => '#f4f4f5', 'text' => '#3f
 			<span class="hidden h-4 w-px bg-black/10 sm:block" aria-hidden="true"></span>
 
 			<!-- Read time -->
-			<span class="font-body text-[0.875rem] text-[#9a9ab0]">
+			<span class="font-body text-[0.875rem] text-brand-subtle">
 				<?php echo esc_html( $read_time ); ?> <?php esc_html_e( 'min read', 'grosharp' ); ?>
 			</span>
 

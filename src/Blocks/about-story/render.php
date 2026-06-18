@@ -15,8 +15,8 @@ $p3      = $attributes['p3']      ?? '';
 	<div class="gs-container">
 
 		<!-- Eyebrow -->
-		<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[15px] font-semibold uppercase tracking-widest text-[#654cff] mb-14" data-gs-eyebrow>
-			<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+		<p class="gs-eyebrow" data-gs-eyebrow>
+			<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 			<?php echo esc_html( $eyebrow ); ?>
 		</p>
 

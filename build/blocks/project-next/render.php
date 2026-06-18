@@ -60,7 +60,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 wp_reset_postdata();
 ?>
 
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-project-next relative overflow-hidden bg-[#0d0d12]' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-project-next relative overflow-hidden bg-brand-dark' ) ); ?>>
 
 	<!-- Background image (if available) — subtle parallax target -->
 	<?php if ( $next_img ) : ?>
@@ -77,17 +77,17 @@ wp_reset_postdata();
 
 		<!-- Left: label + title -->
 		<div>
-			<p class="mb-4 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9a9ab0]">
+			<p class="mb-4 font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-subtle">
 				<?php esc_html_e( 'Next Project', 'grosharp' ); ?>
 			</p>
 
-			<h2 class="font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-white transition-colors duration-300 group-hover:text-[#654cff]"
+			<h2 class="font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-white transition-colors duration-300 group-hover:text-brand-violet"
 			    data-gs-pn-title>
 				<?php echo esc_html( $next_title ); ?>
 			</h2>
 
 			<?php if ( $next_cat ) : ?>
-				<p class="mt-3 font-body text-[0.9375rem] text-[#5c5d6d]">
+				<p class="mt-3 font-body text-[0.9375rem] text-brand-muted">
 					<?php echo esc_html( $next_cat ); ?>
 				</p>
 			<?php endif; ?>
@@ -95,7 +95,7 @@ wp_reset_postdata();
 
 		<!-- Right: CTA arrow -->
 		<div class="flex-none">
-			<span class="inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/20 font-body text-2xl text-white transition-all duration-300 hover:border-[#654cff] hover:bg-[#654cff]"
+			<span class="inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/20 font-body text-2xl text-white transition-all duration-300 hover:border-brand-violet hover:bg-brand-violet"
 			      aria-hidden="true"
 			      data-gs-pn-arrow>
 				→

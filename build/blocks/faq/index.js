@@ -123,7 +123,7 @@
 										{ style: { display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 } },
 										el(
 											'span',
-											{ style: { fontSize: '11px', color: '#654cff', transition: 'transform 0.2s', transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', flexShrink: 0 } },
+											{ style: { fontSize: '11px', color: 'var(--grosharp-primary)', transition: 'transform 0.2s', transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', flexShrink: 0 } },
 											'▶'
 										),
 										el(

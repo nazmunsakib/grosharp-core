@@ -16,8 +16,9 @@ $image2_url     = $attributes['image2Url']     ?? '';
 $image2_alt     = $attributes['image2Alt']     ?? '';
 
 $image_count = ( $image1_url ? 1 : 0 ) + ( $image2_url ? 1 : 0 );
+$no_media_class = $image_count === 0 ? ' has-no-media' : '';
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-page-hero' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-page-hero' . $no_media_class ) ); ?>>
 	<div class="gs-container">
 
 		<!-- Text area -->
@@ -25,6 +26,7 @@ $image_count = ( $image1_url ? 1 : 0 ) + ( $image2_url ? 1 : 0 );
 
 			<?php if ( $eyebrow ) : ?>
 				<p class="ph-eyebrow" data-ph-eyebrow>
+					<span class="h-1.5 w-1.5 rounded-full bg-brand-violet flex-shrink-0" aria-hidden="true"></span>
 					<?php echo esc_html( $eyebrow ); ?>
 				</p>
 			<?php endif; ?>

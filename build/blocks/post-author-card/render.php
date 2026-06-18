@@ -29,27 +29,27 @@ $post_count   = count_user_posts( $author_id, 'post' );
 				<img src="<?php echo esc_url( $avatar_url ); ?>"
 				     alt="<?php echo esc_attr( $name ); ?>"
 				     class="h-20 w-20 rounded-full object-cover ring-2 ring-white ring-offset-2"
-				     style="box-shadow:0 4px 16px rgba(101,76,255,0.12);"
+				     style="box-shadow:0 4px 16px var(--grosharp-violet-12);"
 				     loading="lazy" />
 			</a>
 
 			<!-- Info -->
 			<div class="flex-1 min-w-0">
-				<h3 class="font-heading text-[1.25rem] font-bold tracking-[-0.02em] text-[#0d0d12] mt-0 mb-2">
-					<a href="<?php echo esc_url( $author_url ); ?>" class="no-underline hover:text-[#654cff] transition-colors duration-200">
+				<h3 class="font-heading text-[1.25rem] font-bold tracking-[-0.02em] text-brand-dark mt-0 mb-2">
+					<a href="<?php echo esc_url( $author_url ); ?>" class="no-underline hover:text-brand-violet transition-colors duration-200">
 						<?php echo esc_html( $name ); ?>
 					</a>
 				</h3>
 
 				<?php if ( $bio ) : ?>
-					<p class="font-body text-[0.9375rem] leading-[1.7] text-[#5c5d6d] m-0">
+					<p class="font-body text-[0.9375rem] leading-[1.7] text-brand-muted m-0">
 						<?php echo esc_html( $bio ); ?>
 					</p>
 				<?php endif; ?>
 
 				<!-- Author posts link -->
 				<a href="<?php echo esc_url( $author_url ); ?>"
-				   class="mt-4 inline-flex items-center gap-2 font-body text-[0.875rem] font-semibold text-[#654cff] no-underline hover:gap-3 transition-all duration-200">
+				   class="mt-4 inline-flex items-center gap-2 font-body text-[0.875rem] font-semibold text-brand-violet no-underline hover:gap-3 transition-all duration-200">
 					<?php
 					/* translators: %d = number of articles */
 					echo esc_html( sprintf( _n( 'View %d article', 'View all %d articles', $post_count, 'grosharp' ), $post_count ) );

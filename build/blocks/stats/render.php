@@ -26,18 +26,18 @@ function grosharp_parse_stat( string $raw ): array {
 }
 endif;
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-stats bg-[#0d0d12] py-[4rem]' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-stats bg-brand-dark py-[4rem]' ) ); ?>>
 	<div class="gs-container">
 		<!--
 			gap-px + bg-white/[0.08] on the grid creates 1px white-tinted gaps between cells.
-			Each cell uses bg-[#0d0d12] to fill its area, making the gaps the only visible dividers.
+			Each cell uses bg-brand-dark to fill its area, making the gaps the only visible dividers.
 		-->
 		<dl class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/[0.08]">
 			<?php foreach ( $items as $item ) :
 				$raw              = $item['value'] ?? '';
 				[ $pfx, $num, $sfx ] = grosharp_parse_stat( $raw );
 			?>
-				<div class="flex flex-col items-center bg-[#0d0d12] px-8 py-14 text-center" data-gs-stat>
+				<div class="flex flex-col items-center bg-brand-dark px-8 py-14 text-center" data-gs-stat>
 					<dt class="font-heading text-[56px] font-semibold leading-none tracking-[-0.02em] text-white md:text-[64px]">
 						<?php if ( '' !== $num ) : ?>
 							<span
@@ -49,7 +49,7 @@ endif;
 							<?php echo esc_html( $raw ); ?>
 						<?php endif; ?>
 					</dt>
-					<dd class="mt-3 font-body text-[16px] font-medium uppercase tracking-widest text-[#9a9ab0]">
+					<dd class="mt-3 font-body text-[16px] font-medium uppercase tracking-widest text-brand-subtle">
 						<?php echo esc_html( $item['label'] ?? '' ); ?>
 					</dd>
 				</div>

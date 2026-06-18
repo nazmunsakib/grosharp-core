@@ -53,7 +53,7 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 <style>
 	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item summary { list-style: none; cursor: pointer; }
 	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item summary::-webkit-details-marker { display: none; }
-	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item[open] .gs-faq-icon { transform: rotate(45deg); background: #654cff; border-color: #654cff; color: #fff; }
+	#<?php echo esc_attr( $block_id ); ?> .gs-faq-item[open] .gs-faq-icon { transform: rotate(45deg); background: var(--grosharp-primary); border-color: var(--grosharp-primary); color: #fff; }
 	#<?php echo esc_attr( $block_id ); ?> .gs-faq-icon { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.25s, color 0.25s; }
 	/* Smooth height animation via overflow + grid trick */
 	#<?php echo esc_attr( $block_id ); ?> .gs-faq-inner { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1); }
@@ -67,16 +67,16 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 		<!-- ── Centered section header ──────────────────────────────────────── -->
 		<div class="mx-auto mb-14 max-w-2xl text-center gs-reveal">
 
-			<p class="inline-flex items-center gap-2 rounded-full border border-[#654cff]/20 bg-[#654cff]/[0.07] px-4 py-1.5 font-body text-[16px] font-semibold uppercase tracking-widest text-[#654cff]" data-gs-eyebrow>
-				<span class="h-1.5 w-1.5 rounded-full bg-[#654cff]" aria-hidden="true"></span>
+			<p class="gs-eyebrow" data-gs-eyebrow>
+				<span class="h-1.5 w-1.5 rounded-full bg-brand-violet" aria-hidden="true"></span>
 				<?php echo esc_html( $eyebrow ); ?>
 			</p>
 
-			<h2 class="mt-6 font-heading text-[clamp(2rem,4vw,3.375rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[#0d0d12]">
+			<h2 class="mt-6 font-heading text-[36px] font-bold leading-[1.1] tracking-[-0.025em] text-brand-dark md:text-[48px]">
 				<?php echo esc_html( $heading ); ?>
 			</h2>
 
-			<p class="mt-5 font-body text-[1.25rem] leading-[1.7] text-[#5c5d6d]">
+			<p class="mt-5 font-body text-[18px] leading-relaxed text-brand-muted">
 				<?php echo esc_html( $text ); ?>
 			</p>
 
@@ -86,17 +86,17 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-start">
 
 			<?php foreach ( $items as $index => $item ) : ?>
-				<details class="gs-faq-item group rounded-[18px] border border-black/[0.07] bg-[#fafaf9] px-7 py-6 transition-colors duration-300 open:border-[#654cff]/20 open:bg-white open:shadow-[0_8px_32px_rgba(101,76,255,0.08)]">
+				<details class="gs-faq-item group rounded-[18px] border border-black/[0.07] bg-[#fafaf9] px-7 py-6 transition-colors duration-300 open:border-[var(--grosharp-violet-20)] open:bg-white open:shadow-[0_8px_32px_var(--grosharp-violet-08)]">
 					<summary class="flex items-center justify-between gap-6 select-none">
-						<span class="font-heading text-[17px] font-semibold leading-snug tracking-[-0.01em] text-[#0d0d12] transition-colors duration-200 group-open:text-[#654cff] md:text-[18px]">
+						<span class="font-heading text-[17px] font-semibold leading-snug tracking-[-0.01em] text-brand-dark transition-colors duration-200 group-open:text-brand-violet md:text-[18px]">
 							<?php echo esc_html( $item['question'] ?? '' ); ?>
 						</span>
-						<span class="gs-faq-icon flex h-9 w-9 flex-none items-center justify-center rounded-full border border-black/[0.10] bg-white font-body text-[20px] font-light leading-none text-[#0d0d12] shadow-[0_2px_8px_rgba(0,0,0,0.06)]" aria-hidden="true">+</span>
+						<span class="gs-faq-icon flex h-9 w-9 flex-none items-center justify-center rounded-full border border-black/[0.10] bg-white font-body text-[20px] font-light leading-none text-brand-dark shadow-[0_2px_8px_rgba(0,0,0,0.06)]" aria-hidden="true">+</span>
 					</summary>
 					<div class="gs-faq-inner">
 						<div>
 							<div class="pt-4 pr-12 pb-1">
-								<p class="font-body text-[16px] leading-relaxed text-[#5c5d6d]">
+								<p class="font-body text-[16px] leading-relaxed text-brand-muted">
 									<?php echo esc_html( $item['answer'] ?? '' ); ?>
 								</p>
 							</div>
@@ -109,10 +109,10 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 
 		<!-- ── Bottom CTA ───────────────────────────────────────────────────── -->
 		<div class="mt-12 text-center">
-			<p class="font-body text-[16px] text-[#5c5d6d]">
+			<p class="font-body text-[16px] text-brand-muted">
 				<?php esc_html_e( "Can't find an answer?", 'grosharp' ); ?>
 				<a href="<?php echo esc_url( $cta_url ); ?>"
-				   class="ml-1 font-semibold text-[#654cff] no-underline hover:underline">
+				   class="ml-1 font-semibold text-brand-violet no-underline hover:underline">
 					<?php echo esc_html( $cta_label ); ?> →
 				</a>
 			</p>
@@ -120,33 +120,6 @@ $block_id = 'gs-faq-' . substr( md5( $heading ), 0, 6 );
 
 	</div>
 </section>
-<?php
-/* ── FAQPage JSON-LD (Google accepts ld+json anywhere in the document) ─── */
-$faq_schema_items = array();
-foreach ( $items as $item ) {
-	$q = trim( $item['question'] ?? '' );
-	$a = trim( $item['answer']   ?? '' );
-	if ( $q && $a ) {
-		$faq_schema_items[] = array(
-			'@type'          => 'Question',
-			'name'           => $q,
-			'acceptedAnswer' => array(
-				'@type' => 'Answer',
-				'text'  => $a,
-			),
-		);
-	}
-}
-if ( ! empty( $faq_schema_items ) ) :
-?>
-<script type="application/ld+json">
-<?php echo wp_json_encode( array(
-	'@context'   => 'https://schema.org',
-	'@type'      => 'FAQPage',
-	'mainEntity' => $faq_schema_items,
-), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); ?>
-</script>
-<?php endif; ?>
 <script>
 (function(){
 	var section = document.getElementById('<?php echo esc_js( $block_id ); ?>');
