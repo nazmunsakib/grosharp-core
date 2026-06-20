@@ -110,7 +110,7 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 	return ! empty( $ch['url'] );
 } ) );
 ?>
-<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-contact bg-white py-[4rem]' ) ); ?>>
+<section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-contact bg-white pb-[4rem] pt-[40px]' ) ); ?>>
 	<div class="gs-container">
 
 		<div class="grid gap-16 md:grid-cols-[1fr_1.1fr] md:gap-20 md:items-center">
@@ -160,7 +160,7 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 				   class="gs-contact-card group relative flex items-center gap-4 overflow-hidden rounded-[20px] border border-[var(--grosharp-violet-15)] bg-[var(--grosharp-violet-05)] p-5 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--grosharp-primary)] hover:bg-[var(--grosharp-violet-08)] hover:shadow-[0_12px_40px_var(--grosharp-violet-12)]">
 
 					<!-- Icon circle -->
-					<div class="relative flex h-12 w-12 flex-none items-center justify-center rounded-[14px] bg-white border border-[var(--grosharp-violet-15)] transition-all duration-300 group-hover:bg-[var(--grosharp-primary)] group-hover:border-[var(--grosharp-primary)] group-hover:text-white" style="color:var(--grosharp-primary);">
+					<div class="gs-contact-icon relative flex h-12 w-12 flex-none items-center justify-center rounded-[14px] bg-white border border-[var(--grosharp-violet-15)] transition-all duration-300 group-hover:bg-[var(--grosharp-primary)] group-hover:border-[var(--grosharp-primary)]">
 						<?php echo $ch['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 

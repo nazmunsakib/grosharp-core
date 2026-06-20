@@ -54,7 +54,7 @@ if ( empty( $methods ) ) return;
 ?>
 
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'grosharp-block grosharp-contact-methods' ) ); ?>
-         style="padding:0 0 5rem;">
+        >
 	<div class="gs-container">
 
 		<div class="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-20 lg:gap-32">
