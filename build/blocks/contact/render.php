@@ -157,16 +157,16 @@ $channels = array_values( array_filter( $channels_raw, function( $ch ) {
 				<a href="<?php echo esc_url( $ch['url'] ); ?>"
 				   target="<?php echo strpos( $ch['url'], 'mailto:' ) === 0 ? '_self' : '_blank'; ?>"
 				   rel="noopener noreferrer"
-				   class="gs-contact-card group relative flex items-center gap-4 overflow-hidden rounded-[20px] border border-black/[0.07] bg-[#fafaf9] p-5 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-black/[0.12] hover:bg-white hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+				   class="gs-contact-card group relative flex items-center gap-4 overflow-hidden rounded-[20px] border border-[var(--grosharp-violet-15)] bg-[var(--grosharp-violet-05)] p-5 no-underline transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--grosharp-primary)] hover:bg-[var(--grosharp-violet-08)] hover:shadow-[0_12px_40px_var(--grosharp-violet-12)]">
 
 					<!-- Icon circle -->
-					<div class="relative flex h-12 w-12 flex-none items-center justify-center rounded-[14px] bg-[#f0f0f0] text-brand-dark transition-all duration-300 group-hover:bg-brand-dark group-hover:text-white">
+					<div class="relative flex h-12 w-12 flex-none items-center justify-center rounded-[14px] bg-white border border-[var(--grosharp-violet-15)] transition-all duration-300 group-hover:bg-[var(--grosharp-primary)] group-hover:border-[var(--grosharp-primary)] group-hover:text-white" style="color:var(--grosharp-primary);">
 						<?php echo $ch['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 
 					<!-- Text -->
 					<div class="min-w-0 flex-1">
-						<p class="font-body text-[13px] font-semibold uppercase tracking-[0.08em] text-[#9899a6]">
+						<p class="font-body text-[13px] font-semibold uppercase tracking-[0.08em] text-brand-subtle">
 							<?php echo esc_html( $ch['name'] ); ?>
 						</p>
 						<p class="mt-0.5 truncate font-body text-[16px] font-semibold text-brand-dark transition-colors duration-200 group-hover:text-brand-violet">
