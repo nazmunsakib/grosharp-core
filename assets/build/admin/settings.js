@@ -29,14 +29,21 @@
 	}
 
 	function colorField(settings, setSettings, key, label) {
+		var handler = function (value) {
+			// WP 7.x legacy mode: onChange receives { hex, rgb, hsl } object.
+			// New API: receives plain hex string. Handle both.
+			var hex = (value && typeof value === 'object') ? (value.hex || '') : (value || '');
+			if (hex && hex.charAt(0) !== '#') { hex = '#' + hex; }
+			field(settings, setSettings, key)(hex);
+		};
 		return createElement(
 			'div',
 			{ className: 'grosharp-setting-color' },
 			createElement('strong', null, label),
 			createElement(ColorPicker, {
-				color: settings[key] || defaults[key],
+				value: settings[key] || defaults[key],
 				enableAlpha: false,
-				onChange: field(settings, setSettings, key)
+				onChange: handler
 			})
 		);
 	}
